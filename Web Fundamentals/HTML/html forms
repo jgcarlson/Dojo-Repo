@@ -38,7 +38,6 @@
 
     <!-- When the user can choose multiple things from a variety of options, such as choosing their favorite 3 colors from 5 options. -->
     <label for="blue">Blue</label>
-
     <input type="checkbox" id="blue" name="color" value="blue">
 
     <label for="green">Green</label>
