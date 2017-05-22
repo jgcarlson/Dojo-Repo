@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Awesome Webpage</title>
+    <meta name="description" content="description content">
+    <link rel="stylesheet" href="styles.css">
+    <script src="library.js"></script>
+  </head>
+  <body>
+
+    <!-- When the user needs to enter a short amount of text, such as an email address or name. -->
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name">
+
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name">
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email">
+
+    <!-- A password field. -->
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password">
+
+    <!-- When the user can choose only 1 option from a variety of options. A good example is a gender selector. -->
+    <label for="male">Male</label>
+    <input type="radio" id="male" name="gender" value="male">
+
+    <label for="female">Female</label>
+    <input type="radio" id="female" name="gender" value="female">
+
+    <!-- Another option is a dropdown menu, which uses <select> and <option> tags. -->
+    <select name="gender">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    </select>
+
+    <!-- When the user can choose multiple things from a variety of options, such as choosing their favorite 3 colors from 5 options. -->
+    <label for="blue">Blue</label>
+
+    <input type="checkbox" id="blue" name="color" value="blue">
+
+    <label for="green">Green</label>
+    <input type="checkbox" id="green" name="color" value="green">
+
+    <label for="red">Red</label>
+    <input type="checkbox" id="red" name="color" value="red">
+
+    <label for="black">Black</label>
+    <input type="checkbox" id="black" name="color" value="black">
+
+    <label for="purple">Purple</label>
+    <input type="checkbox" id="purple" name="color" value="purple">
+
+    <!-- When the user might want to enter longer text. This can be used in forums for comments, or for user profile descriptions. -->
+    <textarea name="description"></textarea>
+
+    <!-- When a form needs to submit more than just user input. -->
+    <input type="hidden" name="id" value="7">
+
+    <!-- Finally, to create a submit button: -->
+    <input type="submit" value="Submit">
+
+    <!-- Complete registration form. -->
+    <form action="process.php" method="post">
+      <p>Please Register</p>
+      <label for="first_name">First Name:</label>
+      <input type="text" id="first_name" name="first_name">
+
+      <label for="last_name">Last Name:</label>
+      <input type="text" id="last_name" name="last_name">
+
+      <label id="email">Email:</label>
+      <input type="text" id="email" name="email">
+
+      <p>Select your gender:</p>
+      <label for="male">Male</label>
+      <input type="radio" id="male" name="gender" value="male">
+
+      <label for="female">Female</label>
+      <input type="radio" name="gender" value="female">
+
+      <p>Select 3 of your favorite colors:</p>
+      <label for="blue">Blue</label>
+      <input type="checkbox" id="blue" name="color" value="blue">
+
+      <label for="green">Green</label>
+      <input type="checkbox" id="green" name="color" value="green">
+
+      <label for="red">Red</label>
+      <input type="checkbox" id="red" name="color" value="red">
+
+      <label for="black">Black</label>
+      <input type="checkbox" id="black" name="color" value="black">
+
+      <label for="purple">Purple</label>
+      <input type="checkbox" id="purple" name="color" value="Purple">
+
+
+      <p>Say a few words about yourself:</p>
+      <textarea name="description"></textarea>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password">
+      </label>
+      <label for="pw_confirm">Password Confirmation:</label>
+      <input type="password" for="pw_confirm" name="password_confirmation">
+
+      <input type="submit" value="Click here to register">
+    </form>
+
+
+    <!-- Other label-input Declaration (Facebook and Twitter, etc.) -->
+    <form>
+      <p>Please Register</p>
+      <label>Name:<input type="text" name="name"></label>
+      <p>Select your gender:</p>
+      <label>Male<input type="radio" name="gender" value="male"></label>
+      <label>Female<input type="radio" name="gender" value="female"></label>
+      <p>For security, enter your password.</p>
+      <label>Password:<input type="password" name="password"></label>
+      <input type="submit" value="Click here to register">
+    </form>
+
+    <script src="actions.js"></script>
+  </body>
+</html>
