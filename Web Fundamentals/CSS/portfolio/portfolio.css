@@ -1,0 +1,90 @@
+
+body {
+  width: 970px;
+  background: #745765;
+  border: 5px solid lightgreen;
+  font: 15px arial, sans-serif;
+  color: 	#786C6C;
+}
+
+/* Header */
+header {
+  height: 60px;
+  vertical-align: middle;
+  width: 970px;
+  background: #F9F9F9;
+}
+
+#name {
+  display: inline-block;
+  margin: 10px 0px 0px 22px;
+}
+
+#description {
+  display: inline-block;
+  position: absolute;
+  left: 650px;
+  top: 10px;
+}
+
+/* About Section */
+#about {
+  margin: 16px;
+  position: relative;
+}
+
+#picture{
+  max-width: 380px;
+  height: auto;
+  border: 5px solid #AAA8AD;
+  display: inline-block;
+  margin-right: 18px;
+}
+
+#about-box {
+  background: #EFEAF0;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  height: 260px;
+  width: 526px;
+}
+
+.topper  {
+  position: absolute;
+  top: 0;
+  max-height: 40px;
+  width: 526px;
+  background: #878590;
+  padding: auto auto 10px 10px;
+
+}
+
+.topper > h3 {
+  position: relative;
+  margin: 10px;
+}
+
+#firstp {
+  margin-top: 48px;
+}
+
+.friggin-indent {
+  margin: 16px 15px;
+}
+
+/* Columns */
+#columns {
+  margin-left: 16px;
+}
+
+.content {
+  width: 300px;
+  height: 400px;
+  background: #EFEAF0;
+}
+
+.col-img {
+  width: 300px;
+  height: auto;
+}
