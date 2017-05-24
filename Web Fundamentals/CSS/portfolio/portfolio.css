@@ -78,13 +78,24 @@ header {
   margin-left: 16px;
 }
 
+.grey {
+  height: 40px;
+  width: 268px;
+  background: #878590;
+}
+
 .content {
-  width: 300px;
-  height: 400px;
+  width: 268px;
+  height: 468px;
   background: #EFEAF0;
 }
 
+.small-pad {
+  margin: 8px;
+  font-size: 14px;
+}
+
 .col-img {
-  width: 300px;
+  width: 268px;
   height: auto;
 }
