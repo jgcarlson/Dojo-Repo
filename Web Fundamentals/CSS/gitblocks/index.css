@@ -1,0 +1,37 @@
+html {
+  background: #DDDFD4;
+}
+
+body {
+  width: 970px;
+  height: auto;
+  font-family: "Space Mono", monospace;
+  border: 2px dotted purple;
+}
+/* ---------- Header ---------- */
+header {
+  background: #38B0AD;
+  width: 970px;
+  height: 60px;
+}
+
+img[alt="github-icon"] {
+  height: 60px;
+  width: auto;
+}
+/* ---------- Section ---------- */
+section {
+  background: #FBE691;
+  width: 970px;
+  height: 600px;
+  margin-top: 18px;
+}
+
+container {
+  background: #153F43;
+  color: #DFE0D4;
+}
+/* ---------- Footer ---------- */
+footer {
+  color: #38B0AD;
+}
