@@ -25,12 +25,41 @@ section {
   width: 970px;
   height: 600px;
   margin-top: 18px;
+  display: inline-block;
 }
 
-container {
+.container {
   background: #153F43;
   color: #DFE0D4;
+  display: inline-block;
+  margin: 15px;
+  vertical-align: top;
 }
+
+aside {
+  height: 570px;
+  width: 260px;
+  display: inline-block;
+}
+
+.type1 {
+  height: 180px;
+  width: 180px;
+}
+
+#row2 {
+  width: 400px;
+  height: 180px;
+  background: grey;
+  display: inline-block;
+}
+
+.type2 {
+  width: 100px;
+  height: 150px;
+}
+
+#bottom {}
 /* ---------- Footer ---------- */
 footer {
   color: #38B0AD;
