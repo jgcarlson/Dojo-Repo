@@ -13,3 +13,5 @@ function bday() {
 }
 
 bday();
+
+console.log("Happy birthday")
