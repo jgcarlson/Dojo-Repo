@@ -1,0 +1,10 @@
+.item-a {
+  grid-column-start: 2;
+  grid-column-end: five;
+  grid-row-start:row1-start grid-row-end: 3;
+}
+
+.container {
+  grid-template-columns: <track-size> ... | <line-name> <track-size> ...;
+  grid-template-rows: <track-size> ... | <line-name> <track-size> ...;
+}

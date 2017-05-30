@@ -1,0 +1,54 @@
+body {
+  width: 900px;
+  height: auto;
+  background: #D4D2AE;
+}
+/* ---------- Header ---------- */
+header {
+  text-align: center;
+  padding-top: 20px;
+}
+
+img[alt="catandninja"],
+img[alt="github"] {
+  width: 120px;
+  height: 60px;
+  display: inline-block;
+  background: white;
+}
+
+h1 {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: 43px;
+}
+/* ---------- Main ---------- */
+main {}
+
+.row {
+  height: auto;
+  width: 900px;
+  text-align: center;
+}
+
+.block {
+  display: inline-block;
+  outline: 4px solid black;
+  margin: 5px;
+}
+
+img:nth-child(2),
+img:nth-child(4) {
+  background: #F36971;
+  border: 13px solid #F36971;
+  width: 135px;
+  height: 135px;
+}
+
+.row > img:nth-child(1),
+.row > img:nth-child(3),
+.row > img:nth-child(5) {
+  border: 13px solid #7DADE4;
+  width: 135px;
+  height: 135px;
+}

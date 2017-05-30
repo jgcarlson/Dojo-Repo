@@ -1,0 +1,268 @@
+html {
+  background: lightgrey;
+}
+
+body {
+  width: 908px;
+  height: 974px;
+  font: 15px arial, sans-serif;
+  color: #786C6C;
+  /* IE10+ */
+  background-image: -ms-radial-gradient(center, ellipse farthest-corner, #867780 0%, #4E3A43 80%);
+  /* Mozilla Firefox */
+  background-image: -moz-radial-gradient(center, ellipse farthest-corner, #867780 0%, #4E3A43 80%);
+  /* Opera */
+  background-image: -o-radial-gradient(center, ellipse farthest-corner, #867780 0%, #4E3A43 80%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(radial, center center, 0, center center, 286, color-stop(0, #867780), color-stop(80, #4E3A43));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-radial-gradient(center, ellipse farthest-corner, #867780 0%, #4E3A43 80%);
+  /* W3C Markup */
+  background-image: radial-gradient(ellipse farthest-corner at center, #867780 0%, #4E3A43 80%);
+}
+
+
+/* Header */
+
+header {
+  height: 60px;
+  vertical-align: middle;
+  width: 908px;
+  background: #F9F9F9;
+  color: black;
+}
+
+#name {
+  display: inline-block;
+  margin: 15px 0px 0px 25px;
+}
+
+#description {
+  display: inline-block;
+  position: absolute;
+  left: 565px;
+  top: 12px;
+}
+
+
+/* About Section */
+
+#about {
+  margin: 20px 24px;
+  position: relative;
+}
+
+#picture {
+  max-width: 367px;
+  height: auto;
+  border: 5px solid #AAA8AD;
+  display: inline-block;
+  margin-right: 21px;
+}
+
+#about-box {
+  /* IE10+ */
+  background-image: -ms-linear-gradient(left, #FDFCFD 0%, #DBCCDA 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(left, #FDFCFD 0%, #DBCCDA 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(left, #FDFCFD 0%, #DBCCDA 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #FDFCFD), color-stop(100, #DBCCDA));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(left, #FDFCFD 0%, #DBCCDA 100%);
+  /* W3C Markup */
+  background-image: linear-gradient(to right, #FDFCFD 0%, #DBCCDA 100%);
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  height: 251px;
+  width: 462px;
+}
+
+.topper {
+  position: absolute;
+  max-height: 40px;
+  width: 442px;
+  padding: 10px;
+  top: -18px;
+  color: white;
+  /* IE10+ */
+  background-image: -ms-linear-gradient(top, #B7B7BD 0%, #83828C 50%, #B7B7BD 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(top, #B7B7BD 0%, #83828C 50%, #B7B7BD 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(top, #B7B7BD 0%, #83828C 50%, #B7B7BD 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #B7B7BD), color-stop(50, #83828C), color-stop(100, #B7B7BD));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(top, #B7B7BD 0%, #83828C 50%, #B7B7BD 100%);
+  /* W3C Markup */
+  background-image: linear-gradient(to bottom, #B7B7BD 0%, #83828C 50%, #B7B7BD 100%);
+}
+
+#about p:first-of-type {
+  margin-top: 48px;
+}
+
+.friggin-indent {
+  margin: 16px 15px;
+}
+
+
+/* Columns */
+
+#columns {
+  margin: 0px 1px;
+  height: 530px;
+}
+
+.apps {
+  margin-left: 23px;
+  display: inline-block;
+}
+
+.grey {
+  height: 40px;
+  width: 258px;
+  position: relative;
+  /* IE10+ */
+  background-image: -ms-linear-gradient(top, #B7B7BD 0%, #83828C 50%, #B7B7BD 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(top, #B7B7BD 0%, #83828C 50%, #B7B7BD 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(top, #B7B7BD 0%, #83828C 50%, #B7B7BD 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #B7B7BD), color-stop(50, #83828C), color-stop(100, #B7B7BD));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(top, #B7B7BD 0%, #83828C 50%, #B7B7BD 100%);
+  /* W3C Markup */
+  background-image: linear-gradient(to bottom, #B7B7BD 0%, #83828C 50%, #B7B7BD 100%);
+}
+
+.item {
+  margin: auto;
+  padding-left: 10px;
+}
+
+.content {
+  width: 268px;
+  height: 310px;
+  /* IE10+ */
+  background-image: -ms-linear-gradient(left, #FDFCFD 0%, #DBCCDA 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(left, #FDFCFD 0%, #DBCCDA 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(left, #FDFCFD 0%, #DBCCDA 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #FDFCFD), color-stop(100, #DBCCDA));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(left, #FDFCFD 0%, #DBCCDA 100%);
+  /* W3C Markup */
+  background-image: linear-gradient(to right, #FDFCFD 0%, #DBCCDA 100%);
+}
+
+.content2 {
+  width: 248px;
+  height: 130px;
+  /* IE10+ */
+  background-image: -ms-linear-gradient(left, #FDFCFD 0%, #DBCCDA 100%);
+  /* Mozilla Firefox */
+  background-image: -moz-linear-gradient(left, #FDFCFD 0%, #DBCCDA 100%);
+  /* Opera */
+  background-image: -o-linear-gradient(left, #FDFCFD 0%, #DBCCDA 100%);
+  /* Webkit (Safari/Chrome 10) */
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #FDFCFD), color-stop(100, #DBCCDA));
+  /* Webkit (Chrome 11+) */
+  background-image: -webkit-linear-gradient(left, #FDFCFD 0%, #DBCCDA 100%);
+  /* W3C Markup */
+  background-image: linear-gradient(to right, #FDFCFD 0%, #DBCCDA 100%);
+  padding: 10px;
+  display: inline-block;
+}
+
+.col-img {
+  width: 268px;
+  height: auto;
+}
+
+.top {
+  vertical-align: top;
+}
+
+.indent {
+  position: relative;
+  margin: 5px 14px 0px 14px;
+}
+
+.grey-center {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  font-size: .95em;
+}
+
+.grey-center2 {
+  line-height: 40px;
+  width: 268px;
+  height: 40px;
+  font-size: .88em;
+  color: white;
+}
+
+.icon {
+  height: 38px;
+  width: auto;
+  margin: 2px 4px 8px 4px;
+}
+
+.tech-button {
+  height: 20px;
+  width: auto;
+  background: #417D62;
+  color: white;
+  font: 15px arial bold, sans-serif;
+  border-radius: 7px;
+  text-align: center;
+  padding-top: 4px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  box-shadow: 2px 2px 5px black;
+  border: 1px solid black;
+}
+
+.align {
+  text-align: center;
+}
+
+
+/* Footer */
+
+footer {
+  height: 60px;
+  vertical-align: bottom;
+  width: 908px;
+  background: #F9F9F9;
+  margin-top: 30px;
+  display: inline-block;
+  text-align: center;
+}
+
+.footer-content {
+  margin: 7px;
+}
+
+.footer-icon {
+  height: auto;
+  width: 18px;
+  vertical-align: middle;
+}
+
+.dec {
+  font-style: italic;
+  text-decoration: underline;
+}
