@@ -1,0 +1,41 @@
+
+body {
+  height: 500px;
+  width: 970px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: -25px;
+}
+
+#container {
+  height: 400px;
+  width: 800px;
+  margin: 50px 85px;
+  border: 2px solid red;
+  text-align: center;
+}
+
+.img {
+  height: 140px;
+  width: 140px;
+  margin: 25px;
+  display: inline-block;
+}
+
+.placeholder {
+    height: 140px;
+    width: 140px;
+    margin: 25px;
+    display: inline-block;
+}
+
+button {
+  display: block;
+  width: 800px;
+  height: 50px;
+  margin: -50px 85px;
+  background: red;
+  vertical-align: bottom;
+}
