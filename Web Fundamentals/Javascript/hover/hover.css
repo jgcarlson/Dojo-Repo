@@ -1,0 +1,22 @@
+body {
+  width: 1420px;
+}
+h1 {
+  text-align: center;
+  font-size: 70px;
+  margin-bottom: 20px;
+  font-family: 'Barrio', cursive;
+}
+
+div {
+  height: 620px;
+  width: 1220px;
+  margin: auto 100px;
+  outline: 5px solid black;
+  padding: 15px 0px 0px 15px;
+}
+
+img {
+  height: 300px;
+  width: 600px;
+}
