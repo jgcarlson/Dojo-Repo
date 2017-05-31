@@ -20,27 +20,45 @@
   </head>
   <body>
     <h1>Forms and Tables</h1>
-    <table class="table">
+    <table class="table table-responsive table-striped table-hover table-condensed">
       <thead>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
         <th>Phone Number</th>
       </thead>
-      <tbody>
+      <tbody class="table-hover">
+        <tr>
+          <td>Yuuki</td>
+          <td>Augustus</td>
+          <td>blah@blabla.com</td>
+          <td>626-555-5432</td>
+        </tr>
+        <tr>
+          <td>Quincey</td>
+          <td>Chris</td>
+          <td>something@blabla.com</td>
+          <td>323-555-1234</td>
+        </tr>
+        <tr>
+          <td>Dathan</td>
+          <td>Mal'akhi</td>
+          <td>blablabla@blabla.com</td>
+          <td>818-555-4567</td>
+        </tr>
 
       </tbody>
     </table>
-    <form name="contact-form" onsubmit="return post()" method="post">
+    <form>
       <div class="input-group">
         <span class="input-group-addon">This will be added </br>to the above table.</span>
         <input type="text" class="form-control" placeholder="First Name" name="first-name">
         <input type="text" class="form-control" placeholder="Last Name" name="last-name">
         <input type="text" class="form-control" placeholder="Email" name="email">
         <input type="text" class="form-control" placeholder="Phone Number" name="phone">
-      </div>
-      <button type="button" name="submit" class="btn btn-primary btn-block">Submit</button>
+      <button class="btn btn-primary btn-block">Submit</button>
     </form>
+  </div>
 
 
 

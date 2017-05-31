@@ -4,7 +4,7 @@ h1 {
 
 table {
   width: 80vw;
-  height: 50vh;
+  height: auto;
   margin: auto 10vw 10vh 10vw;
 }
 

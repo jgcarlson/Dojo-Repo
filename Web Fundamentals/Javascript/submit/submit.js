@@ -1,12 +1,12 @@
 $(document).ready(function() {
-
-  var firstName = document.forms['contact-form']['first-name'].value;
-  var lastName = document.forms['contact-form']['last-name'].value;
-  var email = document.forms['contact-form']['email'].value;
-  var phone = document.forms['contact-form']['phone'].value;
-  var form = '<td>' + firstName + '</td><td>' + lastName + '</td><td>' + email + '</td><td>' + phone + '</td>';
-
-  function post() {
+  $('form').submit(function() {
+    var firstName = $('input[name="first-name"]').val();
+    var lastName = $('input[name="last-name"]').val();
+    var email = $("input[name='email']").val();
+    var phone = $('input[name="phone"]').val();
+    var form = '<tr><td>' + firstName + '</td><td>' + lastName + '</td><td>' + email + '</td><td>' + phone + '</td></tr>';
     $('tbody').append(form);
-  }
+    $(this)[0].reset();
+    return false;
+  });
 });
