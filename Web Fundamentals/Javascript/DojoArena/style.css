@@ -1,0 +1,59 @@
+html{
+  background: white;
+  height: 100%;
+  width: 100%;
+}
+
+body{
+  background-color: black;
+  width: 970px;
+  height: 600px;
+  border: 8px solid grey;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.container{
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 300px;
+  height: 150px;
+  border-radius: 10px;
+  border: 4px solid #828180;
+  margin: auto;
+  margin-top: calc(20vh - 50px);
+  text-align: center;
+}
+
+h3{
+  font-size: 25px;
+  font-family: sans-serif;
+  font-weight: normal;
+  color: #F9AC48;
+  text-shadow: 1px 1px 0px white;
+}
+
+button{
+  width: 80px;
+  border: none;
+  border-radius: 3px;
+  padding: 7px 0px;
+  margin-top: 3px;
+  font-size: 12px;
+  background-color: white;
+}
+
+h2{
+  font-size: 30px;
+  font-family: sans-serif;
+  font-weight: normal;
+  color: #F9AC48;
+  text-shadow: 1px 1px 0px white;
+}
+
+.player{
+  width: 250px;
+  height: auto;
+  display: inline-block;
+  margin: 20px auto auto 185px;
+}
