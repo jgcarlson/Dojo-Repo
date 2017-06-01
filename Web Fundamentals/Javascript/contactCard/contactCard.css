@@ -1,10 +1,44 @@
-body {
-  font-family: 'Cinzel', serif;
+@media screen and (min-width: 75em) {
+  html {
+    font-size: 1.5em;
+  }
 }
 
+/* Document level adjustments */
+html {
+  font-size: 17px;
+}
+@media (max-width: 900px) {
+  html { font-size: 15px; }
+}
+@media (max-width: 400px) {
+  html { font-size: 13px; }
+}
+
+/* Modules will scale with document */
+.header {
+  font-size: 1.5rem;
+}
+.footer {
+  font-size: 0.75rem;
+}
+.sidebar {
+  font-size: 0.85rem;
+}
+
+/* Type will scale with modules */
 h1 {
+  font-size: 3em;
   text-align: center;
   font-weight: 900;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+body {
+  font-family: 'Cinzel', serif;
 }
 
 form {
