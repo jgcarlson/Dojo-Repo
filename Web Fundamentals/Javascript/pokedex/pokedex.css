@@ -1,13 +1,57 @@
-img {
+body {
+  font-family: 'Kanit', sans-serif;
+}
+header {
+  vertical-align: middle;
+  text-align: center;
+}
+
+#logo {
+  width: 300px;
+  height: auto;
+  vertical-align: middle;
+  display: inline;
+}
+
+h1 {
+  top: 20px;
+  font-size: 60px;
+  text-align: center;
+  display: inline;
+  vertical-align: middle;
+}
+
+.row {
+  margin-top: 20px;
+}
+
+section {
+  padding-left: 20px
+}
+section > img {
   width: 100px;
   height: 100px;
 }
 
 .floater {
   height: 50vh;
-  width: 100%;
-  border: 2px solid red;
+  width: 22vw;
   position: fixed;
   top: 25vh;
   padding: 15px;
+  text-align: center;
+}
+
+.floater > img {
+  width: 150px;
+  height: 150px;
+  alig
+}
+
+.floater > h1 {
+  font-size: 45px;
+}
+
+p {
+  font-size: 20px;
 }
