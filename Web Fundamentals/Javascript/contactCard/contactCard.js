@@ -18,14 +18,26 @@ $(document).ready(function() {
   });
 
   $(document).on('click', 'section', function() {
-    var x = $('section > h3').css('display');
-    var y = $('section > p').css('display');
+    var x = $(this).find('h3').css('display');
+    var y = $(this).find('p').css('display');
     $(this).find('h3').css('display', y);
     $(this).find('p').css('display', x);
-    console.log(x);
-    console.log(y);
   });
 
+  var start;
+  var end;
 
+  $(document).on('mousedown', 'section', function() {
+    start = new Date().getTime();
+    console.log(start);
+  });
+
+  $(document).on('mouseup', 'section', function() {
+    end = new Date().getTime();
+    if (end - start > 500) {
+      $(this).replaceWith('');
+      alert('deleted');
+    }
+  });
 
 });
