@@ -1,0 +1,13 @@
+img {
+  width: 100px;
+  height: 100px;
+}
+
+.floater {
+  height: 50vh;
+  width: 100%;
+  border: 2px solid red;
+  position: fixed;
+  top: 25vh;
+  padding: 15px;
+}
