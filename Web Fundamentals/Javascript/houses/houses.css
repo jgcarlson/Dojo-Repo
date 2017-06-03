@@ -1,0 +1,31 @@
+body {
+  font-family: 'Cormorant SC', serif;
+}
+
+h1 {
+  font-size: 60px;
+  margin-bottom: 0;
+}
+
+header {
+  text-align: center
+}
+
+section {
+  width: 100vw;
+  text-align: center;
+}
+img {
+  width: 20vw;
+  height: 11vw;
+  align-items: center;
+  display: inline-block;
+  margin: 2vh;
+}
+article {
+  text-align: center;
+}
+h4 {
+  text-decoration: underline;
+}
+}
