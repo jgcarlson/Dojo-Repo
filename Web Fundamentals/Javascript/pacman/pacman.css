@@ -2,6 +2,21 @@ body {
   background: black;
 }
 
+#pacman {
+  position: absolute;
+  background: url('images/pacman.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.container {
+  position: relative;
+}
+
+.row {
+  font-size: 0;
+}
+
 .brick {
   height: 30px;
   width: 30px;

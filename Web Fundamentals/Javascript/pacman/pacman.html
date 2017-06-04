@@ -8,39 +8,12 @@
   </head>
 
   <body>
-    <div id="world"></div>
+    <div class="container">
+      <div id="world">
+        <div id="pacman"></div>
+      </div>
+    </div>
   </body>
-  <script>
-    var world = [
-      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-      [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
-      [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
-      [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
-      [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
-      [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
-      [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
-      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
-    ]
-
-    function display() {
-      var output = '';
-      for (var i = 0; i < world.length; i++) {
-        output += '<div class="row">';
-        for (var j = 0; j < world[i].length; j++) {
-          if (world[i][j] === 2) {
-            output += '<div class="brick"></div>';
-          } else if (world[i][j] === 1) {
-            output += '<div class="coin"></div>'
-          } else {
-            output += '<div class="empty"></div>'
-          }
-        }
-        output += '</div>';
-      }
-      return output;
-    }
-    document.getElementById('world').innerHTML = display();
-
-  </script>
+  <script src='pacman.js'></script>
 
 </html>
