@@ -1,0 +1,16 @@
+header {
+  text-align: center;
+}
+
+body {
+  width: 99vw;
+  min-width: 400px;
+  height: 99vh;
+  min-height: 600px;
+}
+
+section {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
