@@ -1,0 +1,26 @@
+body {
+  background: black;
+}
+
+.brick {
+  height: 30px;
+  width: 30px;
+  background: blue;
+  display: inline-block;
+}
+
+.coin {
+  height: 30px;
+  width: 30px;
+  background: url('images/coin.gif');
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.empty {
+  height: 30px;
+  width: 30px;
+  background: blue;
+  display: inline-block;
+}

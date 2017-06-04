@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Accordion and Tab</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="ninja.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <header>
+      <h1>jQuery UI Experiment</h1>
+    </header>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#"></a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">First</a></li>
+            <li><a href="#"></a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Second</a></li>
+            <li><a href="#"></a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Third</a></li>
+            <li><a href="#"></a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Fourth</a></li>
+            <li><a href="#"></a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Fifth</a></li>
+            <li><a href="#"></a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Sixth</a></li>
+            <li><a href="#"></a></li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Seventh</a></li>
+            <li><a href="#"></a></li>
+          </ul>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"></a></li>
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div class="jumbotron">
+      <h1>Bootstrap Tutorial</h1>
+      <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
+    </div>
+    <div id="accordion">
+      <h3>The story told, the stranger Captain immediately went on.</h3>
+      <div>
+        <p>
+        The story told, the stranger Captain immediately went on to reveal his object in boarding the Pequod. He desired that ship to unite with his own in the search; by sailing over the sea some four or five miles apart, on parallel lines, and so sweeping a double horizon, as it were. "I will wager something now," whispered Stubb to Flask, "that some one in that missing boat wore off that Captain's best coat; mayhap, his watch—he's so cursed anxious to get it back.
+        </p>
+      </div>
+      <h3>Section 2</h3>
+      <div>
+        <p>
+        Nor does it unfrequently occur, that Nantucket captains will send a son of such tender age away from them, for a protracted three or four years' voyage in some other ship than their own; so that their first knowledge of a whaleman's career shall be unenervated by any chance display of a father's natural but untimely partiality, or undue apprehensiveness and concern.
+        </p>
+      </div>
+      <h3>Captain to Ahab</h3>
+      <div>
+        <p>
+        For YOU too have a boy, Captain Ahab—though but a child, and nestling safely at home now—a child of your old age too—Yes, yes, you relent; I see it—run, run, men, now, and stand by to square in the yards." "Avast," cried Ahab—"touch not a rope-yarn"; then in a voice that prolongingly moulded every word—"Captain Gardiner, I will not do it. Even now I lose time. Good-bye, good-bye. God bless ye, man, and may I forgive myself, but I must go.
+        </p>
+        <ul>
+          <li>List item one</li>
+          <li>List item two</li>
+          <li>List item three</li>
+        </ul>
+      </div>
+      <h3>Section 4</h3>
+      <div>
+        <p>
+        Cras dictum. Pellentesque habitant morbi tristique senectus et netus
+        et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
+        faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
+        mauris vel est.
+        </p>
+        <p>
+        Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
+        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+        inceptos himenaeos.
+        </p>
+      </div>
+    </div>
+    <div id="tabs">
+      <ul>
+        <li><a href="#tabs-1">That Guy</a></li>
+        <li><a href="#tabs-2">This Author</a></li>
+        <li><a href="#tabs-3">The Other Author</a></li>
+      </ul>
+      <div id="tabs-1">
+        <p>Perry and I were taken, with Ghak, to a large public building, where one of the Sagoths who had formed our guard explained to a Maharan official the circumstances surrounding our capture. The method of communication between these two was remarkable in that no spoken words were exchanged. They employed a species of sign language. As I was to learn later, the Mahars have no ears, not any spoken language. Among themselves they communicate by means of what Perry says must be a sixth sense which is cognizant of a fourth dimension. I never did quite</p>
+      </div>
+      <div id="tabs-2">
+        <p>He told Ghak that he had not seen Dian or the others after releasing them within the dark grotto. What had become of them he had not the faintest conception—they might be wandering yet, lost within the labyrinthine tunnel, if not dead from starvation. I was now still further apprehensive as to the fate of Dian, and at this time, I imagine, came the first realization that my affection for the girl might be prompted by more than friendship. During my waking hours she was constantly the subject of my thoughts, and when I slept her dear face haunted my dreams. More than ever was I determined to escape the Mahars.</p>
+      </div>
+      <div id="tabs-3">
+        <p>Next came shields; but these I found it easier to steal from the walls of the outer guardroom of the building. We had completed these arrangements for our protection after leaving Phutra when the Sagoths who had been sent to recapture the escaped prisoners returned with four of them, of whom Hooja was one. Dian and two others had eluded them.</p>
+        <p>Ghak, Perry, and I often talked together of possible escape, but the Sarian was so steeped in his lifelong belief that no one could escape from the Mahars except by a miracle, that he was not much aid to us—his attitude was of one who waits for the miracle to come to him. At my suggestion Perry and I fashioned some swords of scraps of iron which we discovered among some rubbish in the cells where we slept, for we were permitted almost unrestrained freedom of action within the limits of the building to which we had been assigned. So great were the number of slaves who waited upon the inhabitants of Phutra that none of us was apt to be overburdened with work, nor were our masters unkind to us. We hid our new weapons beneath the skins which formed our beds, and then Perry conceived the idea of making bows and arrows—weapons apparently unknown within Pellucidar.</p>
+      </div>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="ninja.js">
+
+
+    </script>
+  </body>
+
+</html>
