@@ -1,0 +1,14 @@
+Assignment: Practice your pip
+
+pip install Django - Installs Django
+pip list - Deprecated. Lists files.
+pip install Django - 
+// Requirement already satisfied: Django in /usr/local/lib/python2.7/site-packages
+// Requirement already satisfied: pytz in /usr/local/lib/python2.7/site-packages (from Django)
+pip freeze - Lists files, but not as many as ‘list’. No ‘deprecated’ message.
+First cd into your Desktop directory (cd ~/Desktop), then run this command: pip freeze > requirements.txt. What do you see when you ls? What's inside this file? - The below were in the contents, although the ‘>’ sign didn’t work for me. I just used ‘vi’ to view the contents of the file.
+// Django==1.11.2
+// pytz==2017.2
+pip uninstall Django - Uninstalls Django.
+pip show Django - Nothing shows up.
+pip search Flask - Looks like it shows a bunch of commands and options for flask. Maybe the contents as well.
