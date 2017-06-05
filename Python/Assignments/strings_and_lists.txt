@@ -1,0 +1,62 @@
+Strings and Lists Assignment
+
+>>> python hello_world.py
+  File "<stdin>", line 1
+    python hello_world.py
+                     ^
+SyntaxError: invalid syntax
+>>> words = "It's thanksgiving day. It's my birthday,too!"
+>>> words.find(day)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'day' is not defined
+>>> words.find('day')
+18
+>>> print words.find('day')
+18
+>>> words.replace('day','month')
+"It's thanksgiving month. It's my birthmonth,too!"
+>>> x = [2,54,-2,7,12,98]
+>>> min(x)
+-2
+>>> max(x)
+98
+>>> x = ["hello",2,54,-2,7,12,98,"world"]
+>>> x[0]
+'hello'
+>>> x[len(x)]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: list index out of range
+>>> x[len(x) - 1]
+'world'
+>>> new_list = x[0], x[len(x) - 1]
+>>> print new_list
+('hello', 'world')
+>>> x = [19,2,54,-2,7,12,98,32,10,-3,6]
+>>> print x.sorted()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'list' object has no attribute 'sorted'
+>>> print sorted(x)
+[-3, -2, 2, 6, 7, 10, 12, 19, 32, 54, 98]
+>>> x = sorted(x)
+>>> print x
+[-3, -2, 2, 6, 7, 10, 12, 19, 32, 54, 98]
+>>> x.split(0,len(x)/2)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'list' object has no attribute 'split'
+>>> first_half, second_half = x[:len(x)/2], x[len(x)/2:]
+>>> print first_half
+[-3, -2, 2, 6, 7]
+>>> print second_half
+[10, 12, 19, 32, 54, 98]
+>>> second_half.insert(first_half, 0)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: an integer is required
+>>> second_half.insert(0, first_half)
+>>> print second_half
+[[-3, -2, 2, 6, 7], 10, 12, 19, 32, 54, 98]
+>>>
