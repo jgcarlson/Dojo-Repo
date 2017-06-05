@@ -1,10 +1,38 @@
 body {
   background: black;
+  margin: 30px;
 }
 
 #pacman {
+  height: 30px;
+  width: 30px;
   position: absolute;
   background: url('images/pacman.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#ghost1 {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  background: url('images/ghost1.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#ghost2 {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  background: url('images/ghost2.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#ghost3 {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  background: url('images/ghost3.gif');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -36,6 +64,6 @@ body {
 .empty {
   height: 30px;
   width: 30px;
-  background: blue;
+  background: black;
   display: inline-block;
 }
