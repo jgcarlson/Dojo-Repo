@@ -65,6 +65,7 @@ document.onkeydown = function(e) {
     displayWorld();
   }
   displayPacman();
+  endgame();
 
 };
 
@@ -104,7 +105,30 @@ displayGhost1();
 displayGhost2();
 displayGhost3();
 
+function randomize() {
+  return Math.floor(Math.random() * 100);
+}
 
+function haunt() {
+
+  for (var i = 1; i < 14; i++) {
+
+    setTimeout(haunt, 500);
+  }
+}
+
+
+/* ----- END GAME ----- */
+
+function endgame() {
+  if (pacman.x == ghost1.x && pacman.y == ghost1.y) {
+    alert('You died.');
+  } else if (pacman.x == ghost2.x && pacman.y == ghost2.y) {
+    alert('You died.');
+  } else if (pacman.x == ghost3.x && pacman.y == ghost3.y) {
+    alert('You died.');
+  }
+}
 
 
 
