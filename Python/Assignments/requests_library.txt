@@ -1,0 +1,72 @@
+——The Request Library——
+
+(test_env) [~/Desktop/test_env] $ pip freeze > requirements.txt
+(test_env) [~/Desktop/test_env] $ nano requirements.txt
+(test_env) [~/Desktop/test_env] $ r = requests.get('http://anapioficeandfire.com/api/characters/583')
+-bash: syntax error near unexpected token `('
+(test_env) [~/Desktop/test_env] $ clear
+(test_env) [~/Desktop/test_env] $ r = requests.get('http://anapioficeandfire.com/api/characters/583')
+-bash: syntax error near unexpected token `('
+(test_env) [~/Desktop/test_env] $ nano requirements.txt
+(test_env) [~/Desktop/test_env] $ r = requests.get('http://anapioficeandfire.com/api/characters/583')
+-bash: syntax error near unexpected token `('
+(test_env) [~/Desktop/test_env] $ python
+Python 2.7.13 (default, Apr  4 2017, 08:47:57)
+[GCC 4.2.1 Compatible Apple LLVM 8.1.0 (clang-802.0.38)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import requests
+>>> r = requests.get('http://anapioficeandfire.com/api/characters/583')
+>>> print r
+<Response [200]>
+>>> print r.text
+{
+  "url": "https://anapioficeandfire.com/api/characters/583",
+  "name": "Jon Snow",
+  "gender": "Male",
+  "culture": "Northmen",
+  "born": "In 283 AC",
+  "died": "",
+  "titles": [
+    "Lord Commander of the Night's Watch"
+  ],
+  "aliases": [
+    "Lord Snow",
+    "Ned Stark's Bastard",
+    "The Snow of Winterfell",
+    "The Crow-Come-Over",
+    "The 998th Lord Commander of the Night's Watch",
+    "The Bastard of Winterfell",
+    "The Black Bastard of the Wall",
+    "Lord Crow"
+  ],
+  "father": "",
+  "mother": "",
+  "spouse": "",
+  "allegiances": [
+    "https://anapioficeandfire.com/api/houses/362"
+  ],
+  "books": [
+    "https://anapioficeandfire.com/api/books/5"
+  ],
+  "povBooks": [
+    "https://anapioficeandfire.com/api/books/1",
+    "https://anapioficeandfire.com/api/books/2",
+    "https://anapioficeandfire.com/api/books/3",
+    "https://anapioficeandfire.com/api/books/8"
+  ],
+  "tvSeries": [
+    "Season 1",
+    "Season 2",
+    "Season 3",
+    "Season 4",
+    "Season 5",
+    "Season 6"
+  ],
+  "playedBy": [
+    "Kit Harington"
+  ]
+}
+>>> r.json()
+{u'name': u'Jon Snow', u'culture': u'Northmen', u'url': u'https://anapioficeandfire.com/api/characters/583', u'gender': u'Male', u'father': u'', u'allegiances': [u'https://anapioficeandfire.com/api/houses/362'], u'povBooks': [u'https://anapioficeandfire.com/api/books/1', u'https://anapioficeandfire.com/api/books/2', u'https://anapioficeandfire.com/api/books/3', u'https://anapioficeandfire.com/api/books/8'], u'born': u'In 283 AC', u'playedBy': [u'Kit Harington'], u'titles': [u"Lord Commander of the Night's Watch"], u'books': [u'https://anapioficeandfire.com/api/books/5'], u'tvSeries': [u'Season 1', u'Season 2', u'Season 3', u'Season 4', u'Season 5', u'Season 6'], u'mother': u'', u'spouse': u'', u'died': u'', u'aliases': [u'Lord Snow', u"Ned Stark's Bastard", u'The Snow of Winterfell', u'The Crow-Come-Over', u"The 998th Lord Commander of the Night's Watch", u'The Bastard of Winterfell', u'The Black Bastard of the Wall', u'Lord Crow']}
+>>> r.headers
+{'Expires': 'Fri, 07 Jul 2017 20:21:57 GMT', 'X-AspNet-Version': '4.0.30319', 'Transfer-Encoding': 'chunked', 'Set-Cookie': '__cfduid=dc1f82ad91c662a366be34760a8b201211496780517; expires=Wed, 06-Jun-18 20:21:57 GMT; path=/; domain=.anapioficeandfire.com; HttpOnly', 'CF-Cache-Status': 'HIT', 'X-Powered-By': 'ASP.NET', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare-nginx', 'Last-Modified': 'Thu, 04 May 2017 06:34:17 GMT', 'Connection': 'keep-alive', 'ETag': 'W/"ee81ca70ec374dbfb3da57baf0d95c61"', 'Cache-Control': 'public, max-age=2678400', 'Date': 'Tue, 06 Jun 2017 20:21:57 GMT', 'CF-RAY': '36ae14bbace62828-SJC', 'Content-Type': 'application/json; charset=utf-8', 'Content-Encoding': 'gzip'}
