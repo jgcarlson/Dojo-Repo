@@ -62,12 +62,12 @@ document.onkeydown = function(e) {
   }
   if (world[pacman.y][pacman.x] == 1) {
     world[pacman.y][pacman.x] = 0;
-    displayWorld();
   }
   displayPacman();
   endgame();
-
 };
+
+document.addEventListener('keyup', displayWorld());
 
 /* ----- GHOSTS ----- */
 
@@ -119,7 +119,7 @@ function move() {
       displayGhost1();
       count--;
     }
-  }, 500)
+  }, 500);
 }
 
 function haunt1() {
