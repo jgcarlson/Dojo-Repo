@@ -8,3 +8,21 @@
 */
 
 // create string of numbers and use patterns to build roman numeral string
+
+function numerize(num) {
+  var numArr = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+  var rom = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
+  var str = '';
+  for (var i = 0; i < numArr.length; i++) {
+    while (num % numArr[i] < num) {
+      str += rom[i];
+      num -= numArr[i];
+    }
+  }
+  console.log(str);
+}
+numerize(1);
+numerize(99);
+numerize(289);
+numerize(1999);
+numerize(3999);

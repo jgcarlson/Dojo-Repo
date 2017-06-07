@@ -1,11 +1,7 @@
-class User(object):
-    name = 'Anna'
+from collections import OrderedDict
 
+numArr = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+rom = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
 
-anna = User()
-print 'anna\'s name:', anna.name
-
-User.name = "Bob"
-print 'anna\'s name after change:', anna.name
-bob = User()
-print "bob's name:", bob.name
+webster = zip(rom, numArr)
+print OrderedDict.fromkeys(rom, numArr)

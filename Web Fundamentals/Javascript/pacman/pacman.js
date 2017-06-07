@@ -106,17 +106,29 @@ displayGhost2();
 displayGhost3();
 
 function randomize() {
-  return Math.floor(Math.random() * 100);
+  return Math.floor(Math.random() * 4);
 }
 
-function haunt() {
-
-  for (var i = 1; i < 14; i++) {
-
-    setTimeout(haunt, 500);
-  }
+////// TO DO: MAKE DISPLAYGHOST CLASS FUNCTION
+function move() {
+  var count = 13;
+  var dir = randomize();
+  setInterval(function() {
+    while (count > 0) {
+      ghost1.x++;
+      displayGhost1();
+      count--;
+    }
+  }, 500)
 }
 
+function haunt1() {
+
+
+
+} //// NEED TO UPDATE GHOST POSITION
+
+haunt1(ghost1);
 
 /* ----- END GAME ----- */
 
