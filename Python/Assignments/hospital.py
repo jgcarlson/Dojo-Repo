@@ -23,35 +23,49 @@ class Hospital(object):
         self.patients = []
         self.name = name
         self.capacity = capacity
-        self.admit()
-        self.discharge()
 
-    def admit(self, Patient, bed_number):
-        if bed_number < self.capacity:
-            Patient.bed_number = bed_number
+    def admit(self, Patient):
+        if Hospital.bed_number < self.capacity:
+            Hospital.bed_number += 1
             self.patients.append(Patient.name)
-            print 'The patient has been admitted.'
-            bed_number += 1
+            print Patient.name, 'has been admitted to', self.name + '.'
         else:
             'Sorry, this hospital is full.'
         return self
 
-    def discharge(self, Patient, bed_number):
-        if Patient.name in self.patients == True:
-            Patient.bed_number = 'none'
+    def discharge(self, Patient):
+        if Patient.name in self.patients:
+            Hospital.bed_number -= 1
             self.patients.remove(Patient.name)
-            print 'The patient has been discharged.'
-            bed_numer -= 1
+            print Patient.name, 'has been discharged.'
         else:
-            print 'That person isn\'t registered at this hospital.'
+            print Patient.name, 'isn\'t registered at this hospital.'
         return self
 
     def summary(self):
-        print '{} has a capacity of {} beds and currently has {} patients.'.format(self.name, str(self.capacity), str(self.bed_number))
+        print '{} has a capacity of {} beds and currently has {} patients.'.format(self.name, str(self.capacity), self.bed_number)
 
 
-Person1 = Patient('A123', 'Bob Smith', 'bs')
-Person1.info()
+Bob_Smith = Patient('L952', 'Bob Smith', 'BS')
+Joe_Blogs = Patient('D492', 'Joe Blogs', 'penicillin')
+Jane_Doe = Patient('Unknown', 'Jane Doe', 'Unknown')
+John_Doe = Patient('Unknown', 'John Doe', 'Unknown')
+Tracy_Schmidt = Patient('P842', 'Tracy Schmidt', 'None')
+Morgan_Freeman = Patient('N502', 'Morgan Freeman', 'None')
+Morgan_Freeman.info()
+Bob_Smith.info()
 
-Huntington = Hospital('Huntington Hospital', 3)
+Huntington = Hospital('Huntington Hospital', 5)
 Huntington.summary()
+Huntington.admit(Bob_Smith)
+Huntington.admit(Joe_Blogs)
+Huntington.admit(Jane_Doe)
+Huntington.admit(John_Doe)
+Huntington.admit(Tracy_Schmidt)
+Huntington.summary()
+Huntington.admit(Morgan_Freeman)
+Huntington.discharge(John_Doe)
+Huntington.discharge(Joe_Blogs)
+Huntington.admit(Morgan_Freeman)
+Huntington.summary()
+print Huntington.patients
