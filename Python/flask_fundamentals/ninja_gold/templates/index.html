@@ -4,35 +4,35 @@ Ninja Money
 {% endblock %}
 {% block body %}
 <h1>Ninja Gold</h1>
-<h2>Your gold: <span style="color:yellow">{{ total }}</span></h2>
+<h2>Your gold: <span style="color:gold">{{ total }}</span></h2>
 <div class="container-fluid row">
   <div class="col-sm-2"></div>
   <div class="col-sm-2 boxes">
     <h3>Farm</h3>
     <p>earns 10-20 gold</p>
-    <form action="/process_money" method="post" name="farm">
-      <button type="submit" name="farm">Find gold!</button>
+    <form action="/process_money" method="post" name="action" value="farm">
+      <button type="submit" name="action" value="farm">Find gold!</button>
     </form>
   </div>
   <div class="col-sm-2 boxes">
     <h3>Cave</h3>
     <p>earns 5-10 gold</p>
-    <form action="/process_money" method="post" name="cave">
-      <button type="submit" name="cave">Find gold!</button>
+    <form action="/process_money" method="post" name="action" value="cave">
+      <button type="submit" name="action" value="cave">Find gold!</button>
     </form>
   </div>
   <div class="col-sm-2 boxes">
     <h3>House</h3>
     <p>earns 2-5 gold</p>
-    <form action="/process_money" method="post" name="house">
-      <button type="submit" name="house">Find gold!</button>
+    <form action="/process_money" method="post" name="action" value="house">
+      <button type="submit" name="action" value="house">Find gold!</button>
     </form>
   </div>
   <div class="col-sm-2 boxes">
     <h3>Casino</h3>
     <p>earns/takes 0-50 gold</p>
-    <form action="/process_money" method="post" name="casino">
-      <button type="submit" name="casino">Find gold!</button>
+    <form action="/process_money" method="post" name="action" value="casino">
+      <button type="submit" name="action" value="casino">Find gold!</button>
     </form>
   </div>
   <div class="col-sm-2"></div>
@@ -40,6 +40,11 @@ Ninja Money
 <section>
   <fieldset>
       <legend>Activities</legend>
+      <div class="activities">
+        {% for activity in activities %}
+          {{ activity | safe }}
+        {% endfor %}
+      </div>
   </fieldset>
 </section>
 {% endblock %}
