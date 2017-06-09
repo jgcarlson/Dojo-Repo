@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Color Picker</title>
+    <style>
+      body {
+        background: rgb({{ red }}, {{ green }}, {{ blue }});
+      }
+      h1 {
+        text-align: center;
+      }
+      form {
+        text-align: center;
+      }
+    </style>
+  <head>
+  <body>
+    <h1>Enter your color values below:</h1>
+    <form action="/process" name="form" method="post">
+      <input type="text" name="red" placeholder="Red">
+      <input type="text" name="green" placeholder="Green">
+      <input type="text" name="blue" placeholder="Blue">
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

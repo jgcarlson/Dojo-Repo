@@ -1,0 +1,5 @@
+{% extends "layout.html" %} {% block title %}Home Page{% endblock %} {% block body %}
+<h1>Hello.</h1>
+<h4>You have viewed this page {{ counter }} times.</h4>
+<h6>To add "2" to this counter, press this
+  <form method="post"><button type="submit" action="/process">button</button></form>.</h6> {% endblock %}
