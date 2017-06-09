@@ -1,0 +1,15 @@
+{% extends "layout.html" %} {% block title %} Number Game {% endblock %} {% block body %}
+<h1>Welcome to the Great Number Game!</h1>
+<h3>I am thinking of a number between 1 and 100.</h3>
+<h3>Take a guess!</h3>
+<form name="guess-form" action="/process" method="post">
+  <input type="text" name="guess" class="form-control">
+  <button type="submit" name="button" class="btn btn-primary btn-block">Guess!</button>
+</form>
+<h4>{{ guess }}</h4>
+<h2>{{ hint }}</h2>
+<h1>{{ statement }}</h1>
+<form action="/reset" method="post" style="visibility: {{ status }} ">
+  <button type="submit" name="button" class="btn btn-primary btn-block">Reset</button>
+</form>
+{% endblock %}

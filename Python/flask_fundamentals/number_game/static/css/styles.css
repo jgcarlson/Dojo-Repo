@@ -1,0 +1,17 @@
+body {
+  margin: 50px;
+  text-align: center;
+}
+h3 {
+  margin: 5px;
+}
+form {
+  width: 10vw;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input {
+  text-align: center;
+}
