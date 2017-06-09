@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Dojo Survey</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"
+  <head>
+  <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+  <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <!-- <strong>Title</strong> --> {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+    <div class="form-group">
+      <form action="/submitted" method="post"><br>
+        <fieldset>
+          <legend>Your Information</legend>
+          <input type="text" name="name" placeholder="Your name..."><br>
+          <input type="text" name="email" placeholder="Your email address..."><br>
+          <input type="radio" name="choice" value="yes">I like coding.<br>
+          <input type="radio" name="choice" value="no">I don't like coding.<br>
+          <select name="fav_language">
+            <option value="FavoriteLanguage">Favorite Language</option>
+            <option value="Python">Python</option>
+            <option value="Javascript">Javascript</option>
+            <option value="None">None</option>
+          </select>
+          <textarea name="text" rows="4" cols="80"></textarea>
+          <button type="submit" action="/submitted">Submit</button>
+        </fieldset>
+      </form>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <p>{{message}}</p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </div>
+  </body>
+</html>
