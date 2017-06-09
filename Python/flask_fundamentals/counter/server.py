@@ -12,10 +12,16 @@ def index():
     return render_template('index.html', counter=session['counter'])
 
 
-@app.route('/process', methods=['POST'])
-def process():
+@app.route('/plus', methods=['POST'])
+def plus():
     session['counter'] += 1
-    return redirect('index.html')
+    return redirect('/')
+
+
+@app.route('/reset', methods=['POST'])
+def reset():
+    session['counter'] = 0
+    return redirect('/')
 
 
 app.run(debug=True)

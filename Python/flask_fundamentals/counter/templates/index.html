@@ -2,4 +2,6 @@
 <h1>Hello.</h1>
 <h4>You have viewed this page {{ counter }} times.</h4>
 <h6>To add "2" to this counter, press this
-  <form method="post"><button type="submit" action="/process">button</button></form>.</h6> {% endblock %}
+  <form method="post" action="/plus"><button type="submit" name="plus">button</button></form>.</h6>
+<form method="post" action="/reset">
+  <button type="submit" class="btn btn-primary" name="reset">Reset</button></form> {% endblock %}
