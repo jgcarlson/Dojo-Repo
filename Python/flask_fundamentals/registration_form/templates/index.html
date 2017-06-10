@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block title %}
+  Registration Form with Validation
+{% endblock %}
+{% block body %}
+  <form action="/process" method="post">
+    <fieldset class="fieldset">
+      <legend><h1>Registration with Validation</h1></legend>
+      {% with messages = get_flashed_messages(category_filter=['email']) %}
+        {% if messages %}
+          {% for message in messages %}
+          <!-- alert-{{ category }} -->
+            <div class="alert alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <!-- <strong>Title</strong> --> {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      <input type="text" class="form-control" name="email" placeholder="Email Address">
+      {% with messages = get_flashed_messages(category_filter=['first']) %}
+        {% if messages %}
+          {% for message in messages %}
+          <!-- alert-{{ category }} -->
+            <div class="alert alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <!-- <strong>Title</strong> --> {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      <input type="text" class="form-control" name="first" placeholder="First Name">
+      {% with messages = get_flashed_messages(category_filter=['last']) %}
+        {% if messages %}
+          {% for message in messages %}
+          <!-- alert-{{ category }} -->
+            <div class="alert alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <!-- <strong>Title</strong> --> {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      <input type="text" class="form-control" name="last" placeholder="Last Name">
+      {% with messages = get_flashed_messages(category_filter=['password']) %}
+        {% if messages %}
+          {% for message in messages %}
+          <!-- alert-{{ category }} -->
+            <div class="alert alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <!-- <strong>Title</strong> --> {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      <input type="password" class="form-control" name="password" placeholder="Password">
+      {% with messages = get_flashed_messages(category_filter=['confirm']) %}
+        {% if messages %}
+          {% for message in messages %}
+          <!-- alert-{{ category }} -->
+            <div class="alert alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <!-- <strong>Title</strong> --> {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      <input type="password" class="form-control" name="confirm" placeholder="Confirm Password">
+      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </fieldset>
+  </form>
+{% endblock %}
