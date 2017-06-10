@@ -1,7 +1,40 @@
 {% extends "layout.html" %}
 {% block title %}
-
+  Dojo Survey with Validation
 {% endblock %}
 {% block body %}
-
+  <form action="/process" method="post">
+    <fieldset>
+      <legend><h1>Dojo Survey with Validation</h1></legend>
+      <input type="text" class="form-control" name="first" placeholder="First Name">
+      <input type="text" class="form-control" name="last" placeholder="Last Name">
+      <select name="language">
+          <option value="fav_language" selected disabled>Favorite Language</option>
+          <option value="Python">Python</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="Java">Java</option>
+          <option value="C++">C++</option>
+          <option value="Swift">Swift</option>
+      </select>
+      <select name="like">
+          <option value="like" selected disabled>Do you like to code?</option>
+          <option value="yes">Yes!</option>
+          <option value="no">No....</option>
+          <option value="sorta">Sorta.</option>
+          <option value="meh">Meh</option>
+      </select>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <!-- <strong>Title</strong> --> {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      <textarea class="form-control" name="comments" rows='4' placeholder="Tell me something."></textarea>
+      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </fieldset>
+  </form>
 {% endblock %}
