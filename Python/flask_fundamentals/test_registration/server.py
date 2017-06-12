@@ -14,12 +14,33 @@ def index():
 
 @app.route('/process', methods=['POST'])
 def process():
+    session['first'] = request.form['first']
+    session['last'] = request.form['last']
+    session['email'] = request.form['email']
+    session['dob'] = request.form['dob']
+    session['time'] = request.form['time']
+    session['password'] = request.form['password']
+    session['confirm'] = request.form['confirm']
     return redirect('/')
+
+
+@app.route('/info', methods=['POST'])
+def info():
+    first = session['first']
+    last = session['last']
+    email = session['email']
+    dob = session['dob']
+    time = session['time']
+    return render_template('info.html', first=first, last=last, email=email, dob=dob, time=time)
 
 
 @app.route('/drop', methods=['POST'])
 def drop():
     session.pop('first', None)
+    session.pop('last', None)
+    session.pop('email', None)
+    session.pop('dob', None)
+    session.pop('time', None)
     print 'dropped'
     return redirect('/')
 

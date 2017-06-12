@@ -6,15 +6,18 @@
   <h1>Registration Form</h1>
   <form action="/process" method="post">
     <fieldset class="form-group">
-        <input type="text" class="form-control form-control-lg" placeholder="First Name" value="{{ request.form['first'] }}">
-        <input type="text" class="form-control form-control-lg" placeholder="Last Name" value="{{ request.form['last'] }}">
-        <input type="text" class="form-control form-control-lg" placeholder="Email" value="{{ request.form['email'] }}">
-        <input type="password" class="form-control form-control-lg" placeholder="Password">
-        <input type="password" class="form-control form-control-lg" placeholder="Confirm Password">
-        <input type="date" class="form-control form-control-lg" name="dob">
-        <input type="time" class="form-control form-control-lg" name="time">
+        <input type="text" class="form-control form-control-lg" name="first" placeholder="First Name" value="{{ session['first'] }}">
+        <input type="text" class="form-control form-control-lg" name="last" placeholder="Last Name" value="{{ session['last'] }}">
+        <input type="text" name="email" class="form-control form-control-lg" placeholder="Email" value="{{ session['email'] }}">
+        <input type="date" name="dob" class="form-control form-control-lg" name="dob" value="{{ session['dob'] }}">
+        <input type="time" name="time" class="form-control form-control-lg" name="time" value="{{ session['time'] }}">
+        <input type="password" name="password" class="form-control form-control-lg" placeholder="Password">
+        <input type="password" name="confirm" class="form-control form-control-lg" placeholder="Confirm Password">
         <button type="submit" class="btn btn-primary btn-block" name="submit">Submit</button>
     </fieldset>
+  </form>
+  <form action="/info" method="post">
+    <button type="submit" class="btn btn-success btn-block" name="reset">See Info</button>
   </form>
   <form action="/drop" method="post">
     <button type="submit" class="btn btn-danger btn-block" name="reset">Reset</button>

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}
+  Your Information
+{% endblock %}
+{% block body %}
+  <h1>Your Information</h1>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Email</td>
+          <td>Birth Date</td>
+          <td>Timestamp</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ first }}</td>
+          <td>{{ last }}</td>
+          <td>{{ email }}</td>
+          <td>{{ dob }}</td>
+          <td>{{ time }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
