@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}
+  Registration Form
+{% endblock %}
+{% block body %}
+  <h1>Registration Form</h1>
+  <form action="/process" method="post">
+    <fieldset class="form-group">
+        <input type="text" class="form-control form-control-lg" placeholder="First Name" value="{{ request.form['first'] }}">
+        <input type="text" class="form-control form-control-lg" placeholder="Last Name" value="{{ request.form['last'] }}">
+        <input type="text" class="form-control form-control-lg" placeholder="Email" value="{{ request.form['email'] }}">
+        <input type="password" class="form-control form-control-lg" placeholder="Password">
+        <input type="password" class="form-control form-control-lg" placeholder="Confirm Password">
+        <input type="date" class="form-control form-control-lg" name="dob">
+        <input type="time" class="form-control form-control-lg" name="time">
+        <button type="submit" class="btn btn-primary btn-block" name="submit">Submit</button>
+    </fieldset>
+  </form>
+  <form action="/drop" method="post">
+    <button type="submit" class="btn btn-danger btn-block" name="reset">Reset</button>
+  </form>
+{% endblock %}
