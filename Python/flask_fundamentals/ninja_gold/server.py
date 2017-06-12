@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, session
 import random
 app = Flask(__name__)
-app.secret_key = 'KEEPiTSECRET.KEEPITSAFE.'
+app.secret_key = 'KEEPITSECRET.KEEPITSAFE.'
 
 
 @app.route('/')
@@ -22,7 +22,7 @@ def process():
     if request.form['action'] == 'farm':
         number = random.randint(10, 21)
         session['total'] += number
-        session['activities'].insert(0, '<p>Went to a farm. Got ' + str(
+        session['activities'].insert(0, '<p class="green">Went to a farm. Got ' + str(
             number) + ' gold.</p>')
     if request.form['action'] == 'cave':
         number = random.randint(5, 11)
