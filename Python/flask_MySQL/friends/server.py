@@ -13,7 +13,7 @@ def index():
     friends = mysql.query_db(query)   # run query with query_db()
     # pass data to our template
     return render_template('index.html', all_friends=friends)
-
+    
 
 def create_user():
     username = request.form['username']

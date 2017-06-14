@@ -8,13 +8,14 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-4">
-        <form action="" method="post">
+        <form action="/create" method="post">
           <div class="form-group">
             <h3>Add a Friend</h3>
             <input type="text" class="form-control" placeholder="First Name" name="fname">
             <input type="text" class="form-control" placeholder="Last Name" name="lname">
             <input type="text" class="form-control" placeholder="Age" name="age">
-            <input type="date" class="form-control" name="date">
+            <input type="date" class="form-control" name="since">
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
           </div>
         </form>
       </div>
@@ -32,7 +33,16 @@
               </tr>
             </thead>
             <tbody>
-
+              {% for friends in friends %}
+              <tr>
+                <td>{{ friends['id'] }}</td>
+                <td>{{ friends['fname'] }}</td>
+                <td>{{ friends['lname'] }}</td>
+                <td>{{ friends['age'] }}</td>
+                <td>{{ friends['since'] }}</td>
+                <td>{{ friends['created'] }}</td>
+              </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>
