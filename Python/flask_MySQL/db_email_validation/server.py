@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, flash
 # import the Connector function
 from mysqlconnection import MySQLConnector
 app = Flask(__name__)
@@ -24,7 +24,7 @@ def process():
     query2 = "INSERT INTO entries(id, email, time) VALUES (id, :email, NOW())"
     mysql.query_db(query2, data)
     if result == []:
-        print 'nope'
+        flash(u'We don\'t have that email in our database. Try again.', 'danger')
     else:
         return redirect('/success')
     print entries
@@ -33,6 +33,7 @@ def process():
 
 @app.route('/success')
 def success():
+    flash(u'That email is a match!', 'success')
     query = "SELECT * FROM entries"
     result = mysql.query_db(query)
     return render_template('success.html', result=result)
