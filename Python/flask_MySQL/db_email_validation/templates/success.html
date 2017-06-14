@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}
+  Friends
+{% endblock %}
+{% block body %}
+<div class="container-fluid">
+  <h3>Emails searched for....</h3>
+  <div class="table-responsive">
+    <table class="table table-hover table-striped table-bordered table-inverse">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for entries in result %}
+        <tr>
+          <td>{{ entries['id'] }}</td>
+          <td>{{ entries['email'] }}</td>
+          <td>{{ entries['time'] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}
