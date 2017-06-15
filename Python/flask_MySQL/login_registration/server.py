@@ -5,7 +5,7 @@ import binascii
 import re
 import md5
 app = Flask(__name__)
-app.secret_key = 'abcdefghijk'
+app.secret_key = 'abcdefghijklmnopqrs'
 mysql = MySQLConnector(app, 'userbase')
 
 
@@ -15,17 +15,10 @@ def index():
     for item in initialize:
         if item not in session:
             session[item] = ''
-        if session['username'] == session['username'] and session['username'] != '':
-            return redirect('/thesocialnetwork/<usr>')
-        # else:
-        #     session['username'] = request.form['username']
-        #     username = session['username']
-        #     query = "SELECT * FROM users WHERE username = :username"
-        #     data = {'username': username}
-        #     user = mysql.query_db(query, data)
-        #     if user != []:
-        #         return redirect('/thesocialnetwork/<usr>')
-        return render_template('index.html')
+            print session['username'] == ''
+            return render_template('index.html')
+    if session['username'] != '':
+        return redirect('/thesocialnetwork/<username>')
 
 
 @app.route('/login', methods=['POST'])
@@ -38,13 +31,18 @@ def login():
     if user != []:
         encrypted_password = md5.new(password + user[0]['salt']).hexdigest()
         if user[0]['password'] == encrypted_password:
-            session['username'] = request.form['username']
-            return redirect('/thesocialnetwork/<usr>')
+            session['id'] = user[0]['id']
+            session['username'] = user[0]['username']
+            session['fname'] = user[0]['fname']
+            session['lname'] = user[0]['lname']
+            session['email'] = user[0]['email']
+            return redirect('/thesocialnetwork/' + username)
         else:
             flash('Wrong password....', 'danger')
     else:
         flash('Username is not a match....', 'danger')
     return redirect('/')
+    # SET SESSION FOR NAMES, EMAIL, ETC - - >
 
 
 @app.route('/register')
@@ -53,31 +51,32 @@ def register():
     for item in initialize:
         if item not in session:
             session[item] = ''
+    print session['username']
     return render_template('register.html', username=session['username'], fname=session['fname'], lname=session['lname'], email=session['email'])
 
 
 @app.route('/process', methods=['POST'])
 def process():
     proceed = True
-    session['username'] = request.form['username']
-    session['fname'] = request.form['fname']
-    session['lname'] = request.form['lname']
-    session['email'] = request.form['email']
-    data = {'username': session['username'], 'fname': session['fname'],
-            'lname': session['lname'], 'email': session['email'], }
-    if len(session['username']) < 2:
+    session['xusername'] = request.form['username']
+    session['xfname'] = request.form['fname']
+    session['xlname'] = request.form['lname']
+    session['xemail'] = request.form['email']
+    data = {'username': session['xusername'], 'fname': session['xfname'],
+            'lname': session['xlname'], 'email': session['xemail'], }
+    if len(session['xusername']) < 2:
         flash('Please enter a username.', 'danger')
         proceed = False
-    if len(session['fname']) < 2:
+    if len(session['xfname']) < 2:
         flash('Please enter a first name.', 'danger')
         proceed = False
-    if len(session['lname']) < 2:
+    if len(session['xlname']) < 2:
         flash('Please enter a last name.', 'danger')
         proceed = False
-    if len(session['email']) < 2:
+    if len(session['xemail']) < 2:
         flash('Please enter a email address.', 'danger')
         proceed = False
-    elif not re.match(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$', session['email']):
+    elif not re.match(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$', session['xemail']):
         flash('That\'s not an email address.', 'danger')
         proceed = False
     query_username = "SELECT username FROM users WHERE username = :username"
@@ -101,30 +100,42 @@ def process():
         salt = binascii.b2a_hex(os.urandom(15))
         hashed_pw = md5.new(password + salt).hexdigest()
     if proceed == True:
-        register = {'username': session['username'], 'fname': session['fname'],
-                    'lname': session['lname'], 'email': session['email'], 'password': hashed_pw, 'salt': salt}
-        query = "INSERT INTO users(id, username, fname, lname, email, password, salt) VALUES (id, :username, :fname, :lname, :email, :password, :salt)"
-        mysql.query_db(query, register)
-        return redirect('/thesocialnetwork/<usr>')
+        register = {'username': session['xusername'], 'fname': session['xfname'],
+                    'lname': session['xlname'], 'email': session['xemail'], 'password': hashed_pw, 'salt': salt}
+        insert = "INSERT INTO users(id, username, fname, lname, email, password, salt) VALUES (id, :username, :fname, :lname, :email, :password, :salt)"
+        mysql.query_db(insert, register)
+        username = request.form['username']
+        query = "SELECT * FROM users WHERE username = :username"
+        data = {'username': username}
+        user = mysql.query_db(query, data)
+        session['id'] = user[0]['id']
+        session['username'] = user[0]['username']
+        session['fname'] = user[0]['fname']
+        session['lname'] = user[0]['lname']
+        session['email'] = user[0]['email']
+        return redirect('/thesocialnetwork/' + username)
     else:
         return redirect('/register')
 
 
-@app.route('/thesocialnetwork/<usr>', methods=['GET', 'POST'])
-def success(usr):
-    session['username'] = request.form['username']
-    usr = session['username']
-    username = session['username']
-    query = "SELECT fname FROM users WHERE username = :username"
-    data = {'username': session['username']}
-    name = mysql.query_db(query, data)
-    fname = name[0]['fname']
-    return render_template('success.html', fname=fname)
+@app.route('/thesocialnetwork/<username>', methods=['GET', 'POST'])
+def success(username):
+    if session['username'] != '':
+        fname = session['fname']
+        username = session['username']
+        return render_template('success.html', fname=fname)
+    else:
+        flash('Please sign up or log in to view that page.', 'danger')
+        return redirect('/')
 
 
 @app.route('/logout', methods=['POST', 'GET'])
 def logout():
+    session.pop('id', None)
     session.pop('username', None)
+    session.pop('fname', None)
+    session.pop('lname', None)
+    session.pop('email', None)
     flash('You successfully logged out.', 'success')
     return redirect('/')
 

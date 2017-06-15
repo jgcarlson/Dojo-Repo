@@ -25,3 +25,7 @@ h3 {
   float: right;
   margin-right: 0;
 }
+
+#nav-buttons > button {
+  width: 500px;
+}

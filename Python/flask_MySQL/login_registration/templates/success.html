@@ -26,5 +26,14 @@
 {% endwith %}
 <h1>Welcome, {{ fname }}!</h1>
 <h3>You are now logged in.</h3>
+<div class="form-group" id="nav-buttons">
+  <form action="/users" method="post">
+    <button type="submit" class="btn btn-info btn-block">List of all users.</button>
+  </form>
+  <form action="" method="post">
+    <button type="submit" class="btn btn-warning btn-block">Disappearing Ninja Game</button>
+  </form>
+  <!-- <p class="help-block">Help text here.</p> -->
+</div>
 
 {% endblock %}
