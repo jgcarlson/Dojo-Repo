@@ -1,0 +1,34 @@
+{% extends "layout.html" %} {% block title %} THE SOCIAL NETWORK {% endblock %} {% block body %}
+<header>
+  <div class="row">
+    <div class="header">
+      <a href="/"><img src="https://qph.ec.quoracdn.net/main-qimg-0102f6e770d2ce1f45bd7066524b8f70" alt="social_network"></a>
+      <h1>THE SOCIAL NETWORK</h1>
+      <form action="/logout" method="post">
+        <button type="submit" class="btn btn-primary" id="logout">Logout</button>
+      </form>
+    </div>
+  </div>
+</header>
+<h1>THE WALL</h1>
+<div class="container-fluid wall-container">
+  <form action="/submit" method="post">
+    <input type="text" style="font-weight:bold" name="title" class="form-control" rows="1" placeholder="Title" maxlength="30"></input>
+    <textarea name="post" class="form-control" rows="4" placeholder="What do you have to say?" maxlength="250"></textarea>
+    <button type="submit" name="post-comment" class="btn btn-primary btn-block">Submit</button>
+  </form>
+</div>
+<div class="container-fluid section-container">
+  {% for post in posts %}
+  <section>
+    <h2>{{ post['m_title'] }}</h2>
+    <h4>Posted by {{ post['poster'] }} at {{ post['post_time'] }}</h4>
+    <p>{{ post['m_text'] }}</p>
+    <form class="comment-form" action="/comment" method="post">
+      <textarea name="comment" class="form-control comment" rows="4" placeholder="What do you have to say?" maxlength="250"></textarea>
+      <button type="submit" class="btn btn-info btn-block" value="{{ post_id }}">Comment</button>
+    </form>
+  </section>
+  {% endfor %}
+</div>
+{% endblock %}

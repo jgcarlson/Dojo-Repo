@@ -17,6 +17,10 @@ img#front {
   margin: 25px 20px;
 }
 
+body h1 {
+  margin: 30px;
+}
+
 h3 {
   margin: 20px;
 }
@@ -37,4 +41,27 @@ h3 {
   width: 500px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.wall-container {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-container {
+  width: 60vw;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.6em;
+}
+section {
+  margin: 30px;
+  border: 2px solid black;
+  padding: 15px;
+  padding-top: 3px;
+}
+
+section > h1 {
+  margin-top: 0;
 }

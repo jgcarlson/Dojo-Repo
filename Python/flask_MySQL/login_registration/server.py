@@ -172,8 +172,36 @@ def myfriends():
         friendid = users[i]['friend']
         container.append(friendid)
         i = i + 1
-    print container
     return render_template('myfriends.html', users=users)
+
+
+@app.route('/wall', methods=['POST', 'GET'])
+def wall():
+    query = "SELECT * FROM messages; SELECT * FROM comments"
+    posts = mysql.query_db(query)
+    print posts
+    return render_template('wall.html', posts=posts)
+
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    poster = session['username']
+    m_title = request.form['title']
+    m_text = request.form['post']
+    data = {'poster': poster, 'm_title': m_title, 'm_text': m_text}
+    query = "INSERT INTO messages(post_id, poster, m_title, m_text, post_time) VALUES (post_id, :poster, :m_title, :m_text, NOW())"
+    mysql.query_db(query, data)
+    return redirect('/wall')
+
+
+@app.route('/comment', methods=['POST'])
+def comment():
+    commenter = session['username']
+    c_text = request.form['comment']
+    data = {'commenter': commenter, 'c_text': c_text}
+    query = "INSERT INTO comments(comment_id, commenter, c_text, comment_time) VALUES (comment_id, :commenter, :c_text, NOW())"
+    mysql.query_db(query, data)
+    return redirect('/wall')
 
 
 app.run(debug=True)
