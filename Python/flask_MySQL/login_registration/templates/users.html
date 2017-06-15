@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title %}
+  THE SOCIAL NETWORK
+{% endblock %}
+{% block body %}
+<header>
+  <div class="row">
+    <div class="header">
+      <a href="/"><img src="https://qph.ec.quoracdn.net/main-qimg-0102f6e770d2ce1f45bd7066524b8f70" alt="social_network"></a>
+      <h1>THE SOCIAL NETWORK</h1>
+      <form action="/logout" method="post">
+        <button type="submit" class="btn btn-primary" id="logout">Logout</button>
+      </form>
+    </div>
+  </div>
+</header>
+<h1>These wonderful people are using this wonderful site:</h1>
+<div class="container-fluid table-container">
+  <table class="table table-striped table-condensed table-responsive table-hover">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+          <td>
+            {{ user['fname'] }}
+          </td>
+          <td>
+            {{ user['lname'] }}
+          </td>
+          <td>
+            <form action="/add" method="post">
+              <button type="submit" class="btn btn-danger" name="add" value="{{ user['id'] }}">Add Friend</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+
+{% endblock %}

@@ -5,7 +5,7 @@ import binascii
 import re
 import md5
 app = Flask(__name__)
-app.secret_key = 'abcdefghijklmnopqrs'
+app.secret_key = 'abcdefghijklmnopqrstu'
 mysql = MySQLConnector(app, 'userbase')
 
 
@@ -138,6 +138,42 @@ def logout():
     session.pop('email', None)
     flash('You successfully logged out.', 'success')
     return redirect('/')
+
+
+@app.route('/users', methods=['POST', 'GET'])
+def users():
+    query = "SELECT * FROM users"
+    users = mysql.query_db(query)
+    return render_template('users.html', users=users)
+
+
+@app.route('/add', methods=['POST', 'GET'])
+def add():
+    id = session['id']
+    friend = request.form['add']
+    query0 = "INSERT INTO friends(id, friend) VALUES (:id, :friend)"
+    data0 = {'id': id, 'friend': friend}
+    mysql.query_db(query0, data0)
+    query1 = "INSERT INTO friends(id, friend) VALUES (:friend, :id)"
+    data1 = {'id': id, 'friend': friend}
+    mysql.query_db(query1, data1)
+    return redirect('/users')
+
+
+@app.route('/myfriends', methods=['POST', 'GET'])
+def myfriends():
+    id = session['id']
+    data = {'id': id}
+    query = "SELECT * FROM users JOIN friends ON users.id = friends.id WHERE friends.friend = :id"
+    users = mysql.query_db(query, data)
+    container = []
+    i = 1
+    while i < len(users):
+        friendid = users[i]['friend']
+        container.append(friendid)
+        i = i + 1
+    print container
+    return render_template('myfriends.html', users=users)
 
 
 app.run(debug=True)
