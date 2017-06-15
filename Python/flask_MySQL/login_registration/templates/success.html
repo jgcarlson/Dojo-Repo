@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}
+  THE SOCIAL NETWORK
+{% endblock %}
+{% block body %}
+<header>
+  <div class="row">
+    <div class="header">
+      <a href="/"><img src="https://qph.ec.quoracdn.net/main-qimg-0102f6e770d2ce1f45bd7066524b8f70" alt="social_network"></a>
+      <h1>THE SOCIAL NETWORK</h1>
+      <form action="/logout" method="post">
+        <button type="submit" class="btn btn-primary" id="logout">Logout</button>
+      </form>
+    </div>
+  </div>
+</header>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<h1>Welcome, {{ fname }}!</h1>
+<h3>You are now logged in.</h3>
+
+{% endblock %}

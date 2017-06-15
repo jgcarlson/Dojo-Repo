@@ -1,0 +1,27 @@
+body {
+  margin: 50px;
+  text-align: center;
+}
+img#front {
+  margin-top: 20px;
+}
+
+.header img {
+  float: left;
+  width: auto;
+  height: 100px;
+}
+
+.header h1 {
+  float:left;
+  margin: 25px 20px;
+}
+
+h3 {
+  margin: 20px;
+}
+
+#logout {
+  float: right;
+  margin-right: 0;
+}

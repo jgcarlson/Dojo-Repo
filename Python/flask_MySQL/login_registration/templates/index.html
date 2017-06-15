@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block title %}
+  THE SOCIAL NETWORK
+{% endblock %}
+{% block body %}
+<header>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-7"></div>
+      <div class="col-sm-5">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <form class="form-inline" action="/login" method="post">
+          <input type="text" name="username" value="{{ username }}" class="form-control" placeholder="Username">
+          <input type="password" name="password" class="form-control" placeholder="Password">
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8"></div>
+      <div class="col-sm-4">
+        <p style="text-align:left">Not signed up yet? Register <a href="/register">here</a>!</p>
+      </div>
+    </div>
+  </div>
+
+</header>
+<h1>THE SOCIAL NETWORK</h1>
+<img id="front" src="https://qph.ec.quoracdn.net/main-qimg-0102f6e770d2ce1f45bd7066524b8f70" alt="social_network">
+
+{% endblock %}
