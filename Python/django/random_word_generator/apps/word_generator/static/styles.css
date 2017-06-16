@@ -1,0 +1,13 @@
+body {
+  text-align: center;
+}
+.container-fluid {
+  width: 23vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p {
+  font-size: 2em;
+  border: 2px solid black;
+}
