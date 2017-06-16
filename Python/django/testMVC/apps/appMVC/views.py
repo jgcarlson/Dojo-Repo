@@ -7,5 +7,8 @@ from django.shortcuts import render
 
 
 def index(request):
-    print "*" * 50
-    return render(request, 'first_app/index.html')
+    return render(request, 'appMVC/index.html')
+
+
+def show(request):
+    return render(request, 'appMVC/showusers.html')
