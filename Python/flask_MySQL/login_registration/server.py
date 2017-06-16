@@ -15,7 +15,6 @@ def index():
     for item in initialize:
         if item not in session:
             session[item] = ''
-            print session['username'] == ''
             return render_template('index.html')
     if session['username'] != '':
         return redirect('/thesocialnetwork/<username>')
@@ -51,7 +50,6 @@ def register():
     for item in initialize:
         if item not in session:
             session[item] = ''
-    print session['username']
     return render_template('register.html', username=session['username'], fname=session['fname'], lname=session['lname'], email=session['email'])
 
 
@@ -177,13 +175,14 @@ def myfriends():
 
 @app.route('/wall', methods=['POST', 'GET'])
 def wall():
-    query = "SELECT * FROM messages; SELECT * FROM comments"
-    posts = mysql.query_db(query)
-    print posts
-    return render_template('wall.html', posts=posts)
+    pquery = "SELECT * FROM messages"
+    posts = mysql.query_db(pquery)
+    cquery = "SELECT * FROM comments"
+    comments = mysql.query_db(cquery)
+    return render_template('wall.html', posts=posts, comments=comments)
 
 
-@app.route('/submit', methods=['POST'])
+@app.route('/submit', methods=['POST', 'GET'])
 def submit():
     poster = session['username']
     m_title = request.form['title']
@@ -197,9 +196,11 @@ def submit():
 @app.route('/comment', methods=['POST'])
 def comment():
     commenter = session['username']
+    post_id = request.form['submit-comment']
+    print post_id
     c_text = request.form['comment']
-    data = {'commenter': commenter, 'c_text': c_text}
-    query = "INSERT INTO comments(comment_id, commenter, c_text, comment_time) VALUES (comment_id, :commenter, :c_text, NOW())"
+    data = {'commenter': commenter, 'c_text': c_text, 'post_id': post_id}
+    query = "INSERT INTO comments(comment_id, post_id, commenter, c_text, comment_time) VALUES (comment_id, :post_id, :commenter, :c_text, NOW())"
     mysql.query_db(query, data)
     return redirect('/wall')
 

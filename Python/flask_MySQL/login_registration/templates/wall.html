@@ -24,9 +24,15 @@
     <h2>{{ post['m_title'] }}</h2>
     <h4>Posted by {{ post['poster'] }} at {{ post['post_time'] }}</h4>
     <p>{{ post['m_text'] }}</p>
+    <div class="container-fluid comment-container">
+      {% for comment in comments %} {% if comment['post_id'] == post['post_id'] %}
+      <hr>
+      <p>{{ comment['c_text'] }}</p>
+      <h5>Comment from {{ comment['commenter'] }} at {{ comment['comment_time'] }}</h5> {% endif %} {% endfor %}
+    </div>
     <form class="comment-form" action="/comment" method="post">
       <textarea name="comment" class="form-control comment" rows="4" placeholder="What do you have to say?" maxlength="250"></textarea>
-      <button type="submit" class="btn btn-info btn-block" value="{{ post_id }}">Comment</button>
+      <button type="submit" class="btn btn-info btn-block" name="submit-comment" value="{{ post['post_id'] }}">Comment</button>
     </form>
   </section>
   {% endfor %}
