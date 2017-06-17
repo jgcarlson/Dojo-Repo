@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ninja Gold - Django Edition</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body style="text-align:center">
+    <h1>Ninja Gold - Django Edition</h1>
+    <h3>Gold: <span style="color:gold">{{ request.session.gold }}</span></h3>
+    <div class="container-fluid" id="buttons">
+      <div class="row">
+        <div class="col-sm-3">
+          <h4>Farm</h4>
+          <p>Earns 10 to 20 gold</p>
+          <form action="/process_money" method="post">
+            {% csrf_token %}
+            <button type="submit" name="farm" value="farm" class="btn btn-primary">Go to Farm</button>
+          </form>
+        </div>
+        <div class="col-sm-3">
+          <h4>Cave</h4>
+          <p>Earns 5 to 10 gold</p>
+          <form action="/process_money" method="post">
+            {% csrf_token %}
+            <button type="submit" name="cave" value="cave" class="btn btn-primary">Go to Cave</button>
+          </form>
+        </div>
+        <div class="col-sm-3">
+          <h4>House</h4>
+          <p>Earns 2 to 5 gold</p>
+          <form action="/process_money" method="post">
+            {% csrf_token %}
+            <button type="submit" name="house" value="house" class="btn btn-primary">Go to House</button>
+          </form>
+        </div>
+        <div class="col-sm-3">
+          <h4>Casino</h4>
+          <p>Earns/takes 0 to 50 gold</p>
+          <form action="/process_money" method="post">
+            {% csrf_token %}
+            <button type="submit" name="casino" value="casino" class="btn btn-primary">Go to Casino</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid" id="actions">
+      <h4>Activities:</h4>
+        {% for x in actions %}
+          {{ x | safe }}
+        {% endfor %}
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>

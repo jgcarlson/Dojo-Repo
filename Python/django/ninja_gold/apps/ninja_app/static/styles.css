@@ -1,0 +1,20 @@
+#actions {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#buttons {
+  margin-top: 50px;
+}
+
+#actions > h4 {
+  text-decoration: underline;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
