@@ -1,0 +1,19 @@
+.container-fluid {
+  width: 40vw;
+  margin: 10vh 30vw;
+  padding-top: 8px;
+  background: lightblue;
+  border-radius: 10px;
+}
+
+legend {
+  margin-bottom: 0;
+}
+
+label {
+  margin-top: 10px;
+}
+
+button {
+  margin-top: 10px;
+}
