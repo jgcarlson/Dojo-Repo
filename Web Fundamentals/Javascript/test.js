@@ -1,24 +1,3 @@
-// bubble sort random array
+var strng = "Thestral dirigible plums, Viktor Krum hexed memory charm Animagus Invisibility Cloak three-headed Dog. Half-Blood Prince Invisibility Cloak cauldron cakes, hiya Harry! Basilisk venom Umbridge swiveling blue eye Levicorpus, nitwit blubber oddment tweak. Chasers Winky quills The Boy Who Lived bat spleens cupboard under the stairs flying motorcycle. Sirius Black Holyhead Harpies, you’ve got dirt on your nose. Floating candles Sir Cadogan The Sight three hoops disciplinary hearing. Grindlewald pig’s tail Sorcerer's Stone biting teacup. Side-along dragon-scale suits Filch 20 points, Mr. Potter.";
 
-var testArr = [];
-for (var i = 1; i < 101; i++) {
-  testArr.push(Math.floor(Math.random() * 100));
-}
-
-function bubble(arr) {
-  var sorted;
-  do {
-    sorted = false;
-    for (var i = 0; i < arr.length - 1; i++) {
-      if (arr[i] > arr[i + 1]) {
-        var temp = arr[i];
-        arr[i] = arr[i + 1];
-        arr[i + 1] = temp;
-        sorted = true;
-      }
-    }
-  } while (sorted);
-  console.log(arr);
-}
-
-bubble(testArr);
+console.log(strng.split(' '));
