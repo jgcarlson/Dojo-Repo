@@ -1,0 +1,19 @@
+body {
+  text-align: center;
+}
+
+h2 {
+  background: red;
+  color: white;
+  border-radius: 10px;
+}
+
+#welcome {
+  width: 50vw;
+  margin-top: 20vh;
+}
+
+img {
+  width: 100vw;
+  height: auto;
+}
