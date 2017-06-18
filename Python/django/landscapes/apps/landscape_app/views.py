@@ -14,15 +14,15 @@ def index(request):
 def landscapes(request, id):
     id = int(id)
     if 1 <= id <= 10:
-        img = "{ % static 'landscape_app/images/felds.jpg' % }"
+        img = '<img src="{% static \'landscape_app/images/fields.jpg\' %}" alt="fields">'
     elif 11 <= id <= 20:
-        img = "{ % static 'landscape_app/images/lake.jpg' % }"
+        img = '<img src="{% static \'landscape_app/images/fields.jpg\' %}" alt="lake">'
     elif 21 <= id <= 30:
-        img = "{ % static 'landscape_app/images/mountains.jpg' % }"
+        img = '<img src="{% static "landscape_app/images/fields.jpg" %}" alt="fields">'
     elif 31 <= id <= 40:
-        img = "{ % static 'landscape_app/images/ocean.jpg' % }"
+        img = '<img src="{% static "landscape_app/images/fields.jpg" %}" alt="fields">'
     elif 41 <= id <= 50:
-        img = "{ % static 'landscape_app/images/pyramids.jpg' % }"
+        img = '<img src="{% static "landscape_app/images/fields.jpg" %}" alt="fields">'
     else:
         messages.error(request, 'Number must be between 1 and 50.')
         return redirect('/')
