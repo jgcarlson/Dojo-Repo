@@ -17,11 +17,9 @@
     <![endif]-->
   </head>
   <body>
-    <form action="/process" method="post" id="user-form">
-      {% csrf_token %}
-      <input type="text" class="form-control" placeholder="SENTENCE TO ANALYZE">
-      <button type="submit" name="user-submit" name="user-input" class="btn btn-primary btn-block">Submit</button>
-    </form>
+    <div class="container-fluid" id="results">
+      
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
