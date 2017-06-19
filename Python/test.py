@@ -1,3 +1,25 @@
-string = "Toad-like smile Flourish Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights Petrificus Totalus. So thirsty, deluminator firs’ years follow me inches of parchment. Head Boy start-of-term banquet Cleansweep Seven roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match."
+# All words that contain a "v"
+# All words that contain a double "s"
+# All words that end with an "e"
+# All words that contain an "b", any character, then another "b"
+# All words that contain an "b", at least one character, then another "b"
+# All words that contain an "b", any number of characters (including zero), then another "b"
+# All words that include all five vowels in order
+# All words that only use the letters in "regular expression" (each letter can appear any number of times)
+# All words that contain a double letter
 
-string.split(' ')
+import re
+
+words = ["aimlessness", "assassin", "baby", "beekeeper", "belladonna", "cannonball", "crybaby", "denver", "embraceable", "facetious", "flashbulb", "gaslight", "hobgoblin", "iconoclast", "issue", "kebab",
+         "kilo", "laundered", "mattress", "millennia", "natural", "obsessive", "paranoia", "queen", "rabble", "reabsorb", "sacrilegious", "schoolroom", "tabby", "tabloid", "unbearable", "union", "videotape"]
+
+
+def words_regex(regex):
+    matches = []
+    for word in words:
+        if re.search(regex, word):
+            matches.append(word)
+    return matches
+
+
+print words_regex(r'\w')
