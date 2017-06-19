@@ -4,5 +4,5 @@ from __future__ import unicode_literals
 from django.apps import AppConfig
 
 
-class NlAppConfig(AppConfig):
-    name = 'nl_app'
+class NltkAppConfig(AppConfig):
+    name = 'nltk_app'
