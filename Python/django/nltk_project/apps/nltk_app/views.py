@@ -5,29 +5,36 @@ from django.shortcuts import render, HttpResponse, redirect
 import nltk
 from . import definitions
 # import nlp
-
 # Create your views here.
 
 
 def index(request):
-    # sentence = "The quick brown fox"
-    # tokens = nltk.word_tokenize(sentence)
-    # tagged = nltk.pos_tag(tokens)
-    # print tokens
-    # print tagged
-    # print definitions.pos('NN')
-    # for item in tagged:
-    #     print item[0] + ' / ' + definitions.pos(item[1])
+    if not 'context' in request.session:
+        request.session['context'] = []
+    else:
+        request.session['context'] = []
+    print request.session['context']
     return render(request, 'nltk_app/index.html')
 
 
 def process(request):
-    sentence = 'THE QUICK BROWN FOX'
-    print ('*') * 50
-    print sentence
-    print ('*') * 50
-    return redirect('/')
+    user_input = request.POST['user-form']
+    tokens = nltk.word_tokenize(user_input)
+    tagged = nltk.pos_tag(tokens)
+    print tagged
+    for item in tagged:
+        print item
+        request.session['context'] += [item[0] +
+                                       ' = ' + definitions.pos(item[1])]
+    print 'something'
+    print request.session['context']
+    return redirect('/results')
 
 
 def results(request):
-    return render(request, 'nltk_app/results.html')
+    print 'something else'
+    print request.session['context']
+    context = {
+        'results': request.session['context']
+    }
+    return render(request, 'nltk_app/results.html', context)

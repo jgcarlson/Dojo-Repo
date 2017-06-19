@@ -18,7 +18,10 @@
   </head>
   <body>
     <div class="container-fluid" id="results">
-      
+      <h1>Results:</h1>
+        {% for item in results %}
+          <p>{{ item }}</p>
+        {% endfor %}
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

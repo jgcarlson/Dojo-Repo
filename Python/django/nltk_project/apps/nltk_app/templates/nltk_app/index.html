@@ -19,8 +19,8 @@
   <body>
     <form action="/process" method="post" id="user-form">
       {% csrf_token %}
-      <input type="text" class="form-control" placeholder="SENTENCE TO ANALYZE">
-      <button type="submit" name="user-submit" name="user-input" class="btn btn-primary btn-block">Submit</button>
+      <input type="text" class="form-control" name="user-form" placeholder="SENTENCE TO ANALYZE">
+      <button type="submit" class="btn btn-primary btn-block">Submit</button>
     </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
