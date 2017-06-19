@@ -14,19 +14,19 @@ def index(request):
 def landscapes(request, id):
     id = int(id)
     if 1 <= id <= 10:
-        img = '<img src="{% static \'landscape_app/images/fields.jpg\' %}" alt="fields">'
+        img = 'fields'
     elif 11 <= id <= 20:
-        img = '<img src="{% static \'landscape_app/images/fields.jpg\' %}" alt="lake">'
+        img = 'lake'
     elif 21 <= id <= 30:
-        img = '<img src="{% static "landscape_app/images/fields.jpg" %}" alt="fields">'
+        img = 'mountains'
     elif 31 <= id <= 40:
-        img = '<img src="{% static "landscape_app/images/fields.jpg" %}" alt="fields">'
+        img = 'ocean'
     elif 41 <= id <= 50:
-        img = '<img src="{% static "landscape_app/images/fields.jpg" %}" alt="fields">'
+        img = 'pyramids'
     else:
         messages.error(request, 'Number must be between 1 and 50.')
         return redirect('/')
-    gallery = {'img': img}
+    gallery = {'image': img}
     print img
-    print gallery['img']
+    print gallery['image']
     return render(request, 'landscape_app/landscapes.html', gallery)
