@@ -1,0 +1,8 @@
+body {
+  text-align: center;
+}
+
+.container-fluid {
+  width : 30vw;
+  margin: 5vh auto;
+}
