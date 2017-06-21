@@ -7,14 +7,11 @@ from django.shortcuts import render
 
 
 def index(request):
-    pnp = Book.objects.create(title='Pride and Prejudice', author='Jane Austen',
-                              published='1813-01-28')
-    pnpnz = Book.objects.create(title='Pride and Prejudice and Zombies',
-                                author='Seth Grahame-Smith', published='2009-04-01')
-    ak = Book.objects.create(title='Anna Karenina', author='Leo Tolstoy',
-                             published='1870-01-01')
-    anka = Book.objects.create(title='Android Karenina', author='Seth Grahame-Smith',
-                               published='2010-08-08')
-    ss = Book.objects.create(title='Crime and Punishment', author='Fyodor Dostoyevsky',
-                             published='1866-01-01')
+    leo = Author.objects.create(first_name='Leo', last_name='Tolstoy')
+    fyodor = Author.objects.create(
+        first_name='Fyodor', last_name='Dostoyevsky')
+    alex = Author.objects.create(first_name='Alexander', last_name='Pushkin')
+    anton = Author.objects.create(first_name='Anton', last_name='Chekhov')
+    aleks = Author.objects.create(
+        first_name='Aleksander', last_name='Solzhenitsyn')
     return render(request, 'book_app/index.html')
