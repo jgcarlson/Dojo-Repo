@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+{% block body %}
+  <h1>Books App</h1>
+  <div class="container-fluid" id="table-container">
+    <table class='table table-striped table-responsive table-hover'>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for book in books %}
+        <tr>
+          <td>{{ book.id }}</td>
+          <td>{{ book.title }}</td>
+          <td>{{ book.author }}</td>
+          <td>{{ book.category }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="container-fluid" id="form-container">
+    <form action="/process" method="post">
+      {% csrf_token %}
+      <fieldset>
+        <legend>Add a Book</legend>
+        <div class="input-group">
+          <span class="input-group-addon">Title</span>
+          <input type="text" class="form-control" name="title">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">Author</span>
+          <input type="text" class="form-control" name="author">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">Category</span>
+          <input type="text" class="form-control" name="category">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" name="button">Submit</button>
+      </fieldset>
+    </form>
+  </div>
+
+{% endblock %}
