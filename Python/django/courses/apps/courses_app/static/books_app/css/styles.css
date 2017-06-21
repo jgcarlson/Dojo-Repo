@@ -1,0 +1,19 @@
+body {
+  text-align: center;
+}
+#table-container {
+  width: 60vw;
+  margin: 30px auto;
+  border: 1px solid black;
+}
+th {
+  text-align: center;
+}
+#form-container {
+  width: 40vw;
+  margin:10px auto;
+}
+.input-group-addon {
+    min-width: 120px;
+    text-align: center;
+}

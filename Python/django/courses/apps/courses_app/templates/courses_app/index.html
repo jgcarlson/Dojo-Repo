@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Courses{% endblock %}
+{% block body %}
+  <h1>Courses App</h1>
+  <div class="container-fluid" id="form-container">
+    <form action="/process" method="post">
+      {% csrf_token %}
+      <fieldset>
+        <legend>Add a Course</legend>
+        <div class="input-group">
+          <span class="input-group-addon">Course Name</span>
+          <input type="text" class="form-control" name="name">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">Description</span>
+          <textarea class="form-control" name="description"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" name="button">Submit</button>
+      </fieldset>
+    </form>
+  </div>
+  <div class="container-fluid" id="table-container">
+    <table class='table table-striped table-responsive table-hover'>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Course</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for course in courses %}
+        <tr>
+          <td>{{ course.id }}</td>
+          <td>{{ course.name }}</td>
+          <td>{{ course.description }}</td>
+          <form class="" action="/delete" method="post">
+            {% csrf_token %}
+            <td><button type="submit" class="btn btn-block btn-danger" name="delete" value="{{ course.id }}">Delete</button></td>
+          </form>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
