@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Success{% endblock %}
+{% block body %}
+  <h1>Success!</h1>
+  {% for message in messages %}
+    <h3>{{ message }}</h3>
+  {% endfor %}
+  <hr>
+  <h2>Successful Usernames:</h2>
+  {% for username in usernames %}
+    <h5>{{ username.username }}</h5>
+  {% endfor %}
+{% endblock %}

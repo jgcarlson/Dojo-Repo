@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Validation{% endblock %}
+{% block body %}
+  <h1>Validation</h1>
+  {% for message in messages %}
+    <h3>{{ message }}</h3>
+  {% endfor %}
+  <div class="container-fluid form-container">
+    <form class="form" action="/process" method="post">
+      {% csrf_token %}
+      <input type="text" name="username" class="form-control">
+      <button type="submit" name="button" class="btn btn-block btn-primary btn-default">Submit</button>
+    </form>
+  </div>
+{% endblock %}

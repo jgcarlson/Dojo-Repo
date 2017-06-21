@@ -1,0 +1,13 @@
+body {
+  text-align: center;
+}
+.container-fluid {
+  width:40vw;
+  margin: 50px auto;
+}
+
+h3 {
+  background: red;
+  color: white;
+  border-radius: 10px;
+}
