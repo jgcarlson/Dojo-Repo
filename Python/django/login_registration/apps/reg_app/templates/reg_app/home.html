@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block body %}
+  <h1>Home</h1>
+  <div id="messages">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{ message | safe }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+  <div class="container-fluid">
+    <h3>Registered Users:</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>DOB</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.first_name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.dob }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+{% endblock %}

@@ -2,5 +2,46 @@
 {% block title %}Login and Registration{% endblock %}
 {% block body %}
   <h1>Login and Registration</h1>
-
+  <hr>
+  <div class="container-fluid">
+    <h3>Login here!</h3>
+    <form class="form form-inline" action="/login" method="post">
+      {% csrf_token %}
+      <input type="text" name="login-email" class="form-control" placeholder="Email">
+      <input type="password" name="login-password" class="form-control" placeholder="Password">
+      <button type="submit" name="login-button" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+  <hr>
+  <div id="messages">
+      {% if messages %}
+          {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  {{ message | safe }}
+              </div>
+          {% endfor %}
+      {% endif %}
+    </div>
+  <div class="container-fluid" id="form-container">
+    <form class="form" action="/register" method="post">
+      {% csrf_token %}
+      <fieldset>
+        <span><legend>+ + + Register + + +</legend></span>
+        <label for="first_name">First name:</label>
+        <input type="text" name="first_name" class="form-control">
+        <label for="last_name">Last name:</label>
+        <input type="text" name="last_name" class="form-control">
+        <label for="email">Email:</label>
+        <input type="text" name="email" class="form-control">
+        <label for="dob">Birthday:</label>
+        <input type="date" name="dob" class="form-control">
+        <label for="password">Password:</label>
+        <input type="password" name="password" class="form-control">
+        <label for="confirm">Confirm password:</label>
+        <input type="password" name="confirm" class="form-control">
+        <button type="submit" name="button" class="btn btn-primary btn-block">Register</button>
+      </fieldset>
+    </form>
+  </div>
 {% endblock %}

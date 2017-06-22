@@ -12,8 +12,33 @@ th {
 #form-container {
   width: 40vw;
   margin:10px auto;
+  text-align: left;
 }
 .input-group-addon {
     min-width: 120px;
     text-align: center;
+}
+
+.form-inline {
+  margin-bottom: 45px;
+}
+
+span {
+  text-align: center;
+  line-height: 1.5em;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+label {
+  margin-top: 10px;
+}
+
+fieldset > button {
+  margin-top: 12px;
+}
+
+#messages {
+  width: 50vw;
+  margin: 30px auto;
 }
