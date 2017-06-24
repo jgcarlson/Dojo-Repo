@@ -110,10 +110,9 @@ class Secret(models.Model):
 class LikeManager(models.Manager):
     def validate_like(self, data):
         errors = []
-        # print User.objects.get(liked_by=data['user'])
-        variable = Like.objects.filter(liked=data['like-button'])
+        variable = Like.objects.all()
         for each in variable:
-            print each
+            print each.liked.id
         if User.objects.get(id=data['user']) == Secret.objects.get(id=data['like-button']).author:
             errors.append('You can\'t like your own post, bro.')
         try:
