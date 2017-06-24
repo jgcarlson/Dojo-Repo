@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block title %}Dojo Secrets{% endblock %}
+{% block body %}
+
+  <h1>Dojo Secrets</h1>
+
+  <!-- MESSAGES WITH BOOTSTRAP-->
+  <div class="container-fluid">
+    {% if messages %}
+      {% if 'main' in message.tags %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h3>{{ message | safe }}</h3>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+  </div>
+  <hr>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-md-3">
+        <h2>Login here!</h2>
+        {% if messages %}
+          {% for message in messages %}
+            {% if 'login' in message.tags %}
+              <div class="alert alert-{{ message.tags }}">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ message | safe }}
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        <form action="/login" method="post">
+          {% csrf_token %}
+          <label for="email">Email:</label>
+          <input type="text" name="email" class="form-control">
+          <label for="password">Password:</label>
+          <input type="password" name="password" class="form-control">
+          <button type="submit" name="button-login" class="btn btn-primary btn-block">Login</button>
+        </form>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-md-4">
+        <form action="/register" method="post">
+          <h2>Register here!</h2>
+          {% csrf_token %}
+          {% if messages %}
+            {% for message in messages %}
+              {% if 'registration' in message.tags %}
+                <div class="alert alert-{{ message.tags }}">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  {{ message | safe }}
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+          <label for="username">Desired username:</label>
+          <input type="text" name="username" class="form-control">
+          <label for="first_name">First name:</label>
+          <input type="text" name="first_name" class="form-control">
+          <label for="last_name">Last name:</label>
+          <input type="text" name="last_name" class="form-control">
+          <label for="email">Email:</label>
+          <input type="text" name="email" class="form-control">
+          <label for="dob">Birthday:</label>
+          <input type="date" name="dob" class="form-control" value="1900-01-01">
+          <label for="password">Password:</label>
+          <input type="password" name="password" class="form-control">
+          <label for="confirm">Confirm password:</label>
+          <input type="password" name="confirm" class="form-control">
+          <button type="submit" name="button-register" class="btn btn-primary btn-block">Register</button>
+        </form>
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
+  </div>
+{% endblock %}

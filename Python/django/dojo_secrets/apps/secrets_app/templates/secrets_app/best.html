@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Dojo Secrets{% endblock %}
+{% block body %}
+<header>
+  <div class="container-fluid">
+    <h1>Secrets Hall of Fame</h1>
+    <form class="form" action="logout" method="post">
+      {% csrf_token %}
+      <button type="submit" name="logout-button" class="btn btn-info">Logout</button>
+    </form>
+  </div>
+  <div id="buttons">
+    <form class="form" action="/secrets/other_secrets">
+      <button type="submit" name="other-secrets" class="btn btn-block btn-warning">Other Secrets</button>
+    </form>
+    <form class="form" action="/secrets/my_secrets">
+      <button type="submit" name="my-secrets" class="btn btn-block btn-success">My Secrets</button>
+    </form>
+    <form class="form" action="/secrets">
+      <button type="submit" name="home-button" class="btn btn-block btn-primary">Home</button>
+    </form>
+  </div>
+</header>
+<hr>
+<div class="container-fluid" id="secret-container">
+
+<ol>
+  {% for secret in filter %}
+  <li><h3>{{ secret.message }}</h3></li>
+  <p>Posted {{ secret.created_at }}</p>
+  {% endfor %}
+</ol>
+
+
+</div>
+{% endblock %}
