@@ -4,6 +4,9 @@ from django.db import models
 from django.core.exceptions import MultipleObjectsReturned
 import re
 from datetime import date
+import dateutil
+from dateutil.parser import parse
+import when
 import bcrypt
 
 # Create your models here.
@@ -31,12 +34,9 @@ class UserManager(models.Manager):
         if not re.match(r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)', data['email']):
             errors.append(
                 'Your email address appears to be formatted incorrectly.')
-        # if date >= datetime.today().date().strftime('%Y-%m-%d'):
-        #     errors.append(
-        #         'Um no.')
-        # elif date > (datetime.now() - monthdelta(36)):
-        #     errors.append(
-        #         'You must be at least 13 years old to use this site.')
+        if parse(data['dob']) > when.past(years=13):
+            errors.append(
+                'You must be at least 13 years old to use this site.')
         if data['password'] != data['confirm']:
             errors.append(
                 'The passwords you entered did not match.')
@@ -64,7 +64,7 @@ class UserManager(models.Manager):
                     return user.id
                 else:
                     errors.append(
-                        'Um no. Try again.')
+                        'Um, no. Try again.')
             except:
                 errors.append(
                     'Um no. Try again.')
@@ -110,24 +110,18 @@ class Secret(models.Model):
 class LikeManager(models.Manager):
     def validate_like(self, data):
         errors = []
-        variable = Like.objects.all()
-        for each in variable:
-            print each.liked.id
-        if User.objects.get(id=data['user']) == Secret.objects.get(id=data['like-button']).author:
+        user = data['user']
+        secret_author = Secret.objects.get(id=data['like-button']).author_id
+        if secret_author == user:
             errors.append('You can\'t like your own post, bro.')
         try:
-            if User.objects.get(liked_by=data['user']) == Like.objects.get(id=data['user']).liker:
-                errors.append(
-                    'Looks like you already liked this post. You must really like it.')
-            print 'try'
-        except MultipleObjectsReturned:
+            Like.objects.filter(liker=User.objects.get(
+                id=data['user'])).get(liked=Secret.objects.get(id=data['like-button']))
             errors.append(
                 'Looks like you already liked this post. You must really like it.')
-            print 'mult'
         except:
             Like.objects.create(liker=User.objects.get(
                 id=data['user']), liked=Secret.objects.get(id=data['like-button']))
-            print 'error'
         if len(errors) == 0:
             return 'success'
         else:
@@ -140,3 +134,6 @@ class Like(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = LikeManager()
+
+    def __str__(self):
+        return str(self.id)

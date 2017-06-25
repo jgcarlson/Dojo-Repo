@@ -1,10 +1,8 @@
-{% extends 'base.html' %}
-{% block title %}Dojo Secrets{% endblock %}
-{% block body %}
+{% extends 'base.html' %} {% block title %}Dojo Secrets{% endblock %} {% block body %}
 <header>
   <div class="container-fluid">
     <h1>Secrets Hall of Fame</h1>
-    <form class="form" action="logout" method="post">
+    <form class="form" action="{% url 'logout' %}" method="post">
       {% csrf_token %}
       <button type="submit" name="logout-button" class="btn btn-info">Logout</button>
     </form>
@@ -24,12 +22,13 @@
 <hr>
 <div class="container-fluid" id="secret-container">
 
-<ol>
-  {% for secret in filter %}
-  <li><h3>{{ secret.message }}</h3></li>
-  <p>Posted {{ secret.created_at }}</p>
-  {% endfor %}
-</ol>
+  <ol>
+    {% for secret in filter %}
+    <li>
+      <h3>{{ secret.message }}</h3></li>
+    <p>Posted {{ secret.created_at }}</p>
+    {% endfor %}
+  </ol>
 
 
 </div>

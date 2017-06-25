@@ -72,7 +72,7 @@ def like(request):
         for errors in like:
             messages.add_message(request, messages.WARNING,
                                  errors, extra_tags='warning')
-            return redirect('/secrets')
+        return redirect('/secrets')
 
 
 def my_secrets(request):
