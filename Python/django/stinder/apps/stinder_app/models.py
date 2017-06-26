@@ -104,8 +104,11 @@ class ProfileManager(models.Manager):
 
 
 class Profile(models.Model):
-    location = models.IntegerField(max_length=5)
     user = models.OneToOneField(User, related_name='profile')
+    gender = models.BooleanField(default=True)
+    location = models.IntegerField(max_length=5)
+    talkativity = models.IntegerField(max_length=2)
+    interests = models.TextField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = ProfileManager()
