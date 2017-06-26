@@ -1,5 +1,71 @@
 {% extends 'base.html' %}
 {% block head %}Stinder{% endblock %}
 {% block body %}
-
+  <header>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-7">
+          {% load static %}
+          <img src="{% static 'stinder_app/images/logo.png' %}" alt="logo">
+        </div>
+        <div class="col-sm-5">
+          <div class="container-fluid" id="login-container">
+            <form class="form-inline" action="/login" method="post">
+              {% csrf_token %}
+              <input type="text" name="login-username" class="form-control" placeholder="Username">
+              <input type="password" name="login-password" class="form-control" placeholder="Password">
+              <button type="submit" name="login-button" class="btn btn-primary">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4">
+          <!-- <img src="{% static 'stinder_app/images/globe.png' %}" alt="world"> -->
+        </div>
+        <div class="col-sm-4">
+          <form action="/register" method="post">
+            <h2>Register here!</h2>
+            {% csrf_token %}
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  {{ message | safe }}
+                </div>
+              {% endfor %}
+            {% endif %}
+            <label for="username">Desired username:</label>
+            <input type="text" name="username" class="form-control">
+            <label for="first_name">First name:</label>
+            <input type="text" name="first_name" class="form-control">
+            <label for="last_name">Last name:</label>
+            <input type="text" name="last_name" class="form-control">
+            <label for="email">Email:</label>
+            <input type="email" name="email" class="form-control">
+            <label for="dob">Birthday:</label>
+            <input type="date" name="dob" class="form-control" value="1900-01-01">
+            <label for="password">Password:</label>
+            <input type="password" name="password" class="form-control">
+            <label for="confirm">Confirm password:</label>
+            <input type="password" name="confirm" class="form-control">
+            <button type="submit" name="button-register" class="btn btn-primary btn-block">Register</button>
+          </form>
+        </div>
+        <div class="col-sm-4">
+          <!-- <img src="{% static 'stinder_app/images/globe.png' %}" alt="world"> -->
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <details>
+      <summary>Copyright 1843.</summary>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </details>
+  </footer>
 {% endblock %}

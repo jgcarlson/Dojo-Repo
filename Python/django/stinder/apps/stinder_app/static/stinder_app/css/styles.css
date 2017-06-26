@@ -1,0 +1,48 @@
+body {
+  background: #FDF7EB;
+  text-align: center;
+}
+
+.btn-primary {
+  background: linear-gradient(to bottom, #db4c2c 0%,#da644a 100%);
+  border: #CECAC1;
+}
+
+header {
+  height: 15vh;
+  padding-top: 2vw;
+  margin-bottom: 3vh;
+  text-align: left;
+}
+
+img[alt="logo"] {
+  max-height: 100%;
+  max-width: auto;
+  height: 12vh;
+}
+
+#login-container {
+  margin-top: 20px;
+  text-align: right;
+}
+
+label {
+  margin-bottom: 0;
+  margin-top: 5px;
+}
+
+img[alt="world"] {
+    max-width: 100%;
+    max-height: auto;
+}
+
+button[name="button-register"] {
+  margin-top: 14px;
+}
+
+footer {
+  text-align: center;
+  height: 15vh;
+  padding: 2vh 2vw;
+  margin-top: 3vh;
+}
