@@ -2,7 +2,44 @@
 {% block title %}{% endblock %}
 {% block body %}
 <header>
-  <h1>Hello, {{ User.objects.alias }}!</h1>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <h1>Hello, {{ user }}!</h1>
+      </div>
+      <div class="col-sm-3"></div>
+      <div class="col-md-5">
+        <div id="button-container">
+          <form class="form-inline" action="{% url 'add_book' %}">
+            <button type="submit" class="btn btn-primary">Add and Review Book</button>
+          </form>
+          <form class="form-inline" action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Logout</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-8">
+        <h3>Recent Book Reviews:</h3>
+        <div class="container-fluid">
+          {% for book in books %}
+            <h5>{{ book.title }}</h5>
+            <h5>{{ book.author }}</h5>
+            <h5>{{ book.rating }}</h5>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h3>Other Books with Reviews:</h3>
+      </div>
+    </div>
+  </div>
+</main>
 
 {% endblock %}

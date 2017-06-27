@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block body %}
+<header>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <h1>Hello, {{ user }}!</h1>
+      </div>
+      <div class="col-sm-3"></div>
+      <div class="col-md-5">
+        <div id="button-container">
+          <form class="form-inline" action="{% url 'home' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Home</button>
+          </form>
+          <form class="form-inline" action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Logout</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <h3>Add a book:</h3>
+        <form class="form" action="{% url 'validate_book' %}" method="post">
+          {% csrf_token %}
+          <input type="text" name="title" class="form-control" placeholder="Book Title">
+          <br>
+          <div class="form-group">
+            <select class="form-control" name="author">
+              <option value="default" default disabled selected>Choose author from the list:</option>
+              {% for author in authors %}
+              <option value="{{ author.id }}">{{ author.name }}</option>
+              {% endfor %}
+            </select>
+            <input type="text" name="author" class="form-control" placeholder="... or add a new author.">
+          </div>
+          <textarea name="review" rows="4" maxlength="999" class="form-control" placeholder="Tell us what you thought about this book!"></textarea>
+          <br>
+          <div class="radio-container">
+            <label>Rating:</label>
+            <label class="radio-inline"><input type="radio" name="rating" value="1"><i class="fa fa-star" aria-hidden="true"></i>   </label>
+            <label class="radio-inline"><input type="radio" name="rating" value="2"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>   </label>
+            <label class="radio-inline"><input type="radio" name="rating" value="3"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>   </label>
+            <label class="radio-inline"><input type="radio" name="rating" value="4"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>   </label>
+            <label class="radio-inline"><input type="radio" name="rating" value="5"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i>   </label>
+          </div>
+          <button type="submit" class="btn btn-block btn-primary">Submit Review</button>
+        </form>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

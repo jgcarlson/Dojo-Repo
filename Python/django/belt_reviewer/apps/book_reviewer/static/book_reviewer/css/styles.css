@@ -6,3 +6,22 @@ header {
   text-align: center;
   padding: 3vh 3vw;
 }
+
+
+#button-container {
+  display: inline;
+  text-align: right;
+  margin-top: 20px;
+}
+
+.form-inline {
+  display: inline;
+}
+
+.col-sm-4, .col-sm-8 {
+  padding: 3vh 3vw;
+}
+
+.radio-container {
+  text-align: center;
+}
