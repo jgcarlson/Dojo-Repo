@@ -5,6 +5,7 @@ from django.db import models
 import when
 from dateutil.parser import parse
 import re
+import bcrypt
 # Create your models here.
 
 
@@ -17,16 +18,17 @@ class UserManager(models.Manager):
         elif User.objects.filter(username=data['username']).exists():
             errors.append('That username is taken.')
         if len(data['first_name']) < 3:
-            errors.append('Please enter a longer username.')
+            errors.append('Please enter a longer first name.')
         if len(data['last_name']) < 3:
-            errors.append('Please enter a longer username.')
+            errors.append('Please enter a longer last name.')
         # DOB
         if parse(data['dob']) > when.past(years=13):
             errors.append('You must be at least 13 to sign up.')
         # EMAIL
         if not re.match(r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)', data['email']):
             errors.append('Your email address is formatted incorrectly.')
-        # CHECK IF EMAIL IS IN USE
+        elif User.objects.filter(email=data['email']).exists():
+            errors.append('That email is already in use.')
         # PASSWORD
         if data['password'] != data['confirm']:
             errors.append('Your passwords did not match.')
@@ -40,6 +42,25 @@ class UserManager(models.Manager):
                                        last_name=data['last_name'], dob=data['dob'], email=data['email'], password=hashed)
             return user.id
         else:
+            return errors
+
+    def login(self, data):
+        errors = []
+        if User.objects.filter(username=data['username']).exists():
+            user = User.objects.get(username=data['username'])
+        else:
+            errors.append('Um, no. Try again.')
+            return errors
+        if len(errors) == 0:
+            password = data['password'].encode()
+            unhashed = bcrypt.hashpw(password.encode(), user.password.encode())
+            if user.password == unhashed:
+                return user.id
+            else:
+                errors.append('Um, no. Try again.')
+                return errors
+        else:
+            errors.append('Um, no. Try again.')
             return errors
 
 
