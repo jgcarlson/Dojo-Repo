@@ -22,7 +22,10 @@ class UserManager(models.Manager):
         if len(data['last_name']) < 3:
             errors.append('Please enter a longer last name.')
         # DOB
-        if parse(data['dob']) > when.past(years=13):
+        if data['dob'] == '':
+            print (data['dob'] == '')
+            errors.append('Please add your date of birth.')
+        elif parse(data['dob']) > when.past(years=13):
             errors.append('You must be at least 13 to sign up.')
         # EMAIL
         if not re.match(r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)', data['email']):

@@ -2,18 +2,8 @@
 {% block body %}
 
 <header>
-  <h1>Welcome</h1>
-  {% if messages %}
-    {% if 'login' in message.tags %}
-      {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <h3>{{ message | safe }}</h3>
-        </div>
-      {% endfor %}
-    {% endif %}
-  {% endif %}
-  <form class="form-inline" action="{% url 'login' %}" method="post">
+  <h1>Welcome!</h1>
+  <form class="form-inline justify-content-center" action="{% url 'login' %}" id="login-form" method="post">
     {% csrf_token %}
     <input type="text" name="username" class="form-control form-control-lg" placeholder="Username">
     <input type="password" name="password" class="form-control form-control-lg" placeholder="Password">
