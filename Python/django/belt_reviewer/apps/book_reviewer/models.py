@@ -37,10 +37,8 @@ class UserManager(models.Manager):
             password = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
             user = User.objects.create(
                 name=data['name'], alias=data['alias'], email=data['email'], password=password)
-            print user.id
             return user.id
         else:
-            print errors
             return errors
 
     def login(self, data):
@@ -56,7 +54,7 @@ class UserManager(models.Manager):
         if len(data['password']) == 0:
             errors.append('Please enter an password.')
         elif user.password == bcrypt.hashpw(data['password'].encode(), user.password.encode()):
-            print 'MATCH'
+            pass
         else:
             errors.append('Try again.')
         if len(errors) == 0:
@@ -94,15 +92,13 @@ class BookManager(models.Manager):
                 data['rating']), added_by=User.objects.get(id=data['user']))
             Review.objects.create(
                 review_of=book, text=data['review'], created_by=User.objects.get(id=data['user']))
-            try:
-                if Author.objects.get(name=data['author']).name == data['author']:
-                    author = Author.objects.get(name=data['author'])
-                    author.book.add(book)
-            except:
-                Author.objects.create(name=data['author'])
-                author = Author.objects.create(name=data['author'])
-                author.book.add(Book.objects.get(id=book.id))
-                print Author.objects.all().prefetch_related('Jane Austen')
+            if Author.objects.filter(name=data['author']).exists():
+                author_exists = Author.objects.get(name=data['author'])
+                author_exists.book.add(book)
+                author_exists.save()
+            else:
+                book.auth.create(name=data['author'])
+                author = Author.objects.get(name=data['author'])
             return book.id
         else:
             return errors
@@ -121,12 +117,15 @@ class Book(models.Model):
 
 
 class AuthorManager(models.Manager):
-    pass
+    def write_book(self, book):
+        self.add(book)
+        self.save()
+        print 'success'
 
 
 class Author(models.Model):
     name = models.CharField(max_length=45)
-    book = models.ManyToManyField(Book, related_name='author')
+    book = models.ManyToManyField(Book, related_name='auth')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = AuthorManager()

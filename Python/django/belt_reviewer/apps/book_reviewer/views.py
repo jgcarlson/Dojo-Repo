@@ -45,7 +45,8 @@ def logout(request):
 def home(request):
     context = {
         'user': User.objects.get(id=request.session['user']).alias,
-        'books': Book.objects.all()
+        'authors': Author.objects.all(),
+        'books': Book.objects.all().order_by('-created_at')
     }
     return render(request, 'book_reviewer/home.html', context)
 
@@ -70,3 +71,11 @@ def validate_book(request):
             messages.add_message(request, messages.SUCCESS,
                                  error, extra_tags='danger')
         return redirect('/add_book')
+
+
+def book(request, id):
+    context = {
+        'user': User.objects.get(id=request.session['user']).alias,
+        'book': Book.objects.get(id=id)
+    }
+    return render(request, 'book_reviewer/book.html', context)

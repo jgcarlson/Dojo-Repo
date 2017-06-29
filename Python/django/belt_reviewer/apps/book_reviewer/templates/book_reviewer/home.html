@@ -26,13 +26,19 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-8">
-        <h3>Recent Book Reviews:</h3>
+        <h2>Recent Book Reviews:</h2>
         <div class="container-fluid">
-          {% for book in books %}
-            <h5>{{ book.title }}</h5>
-            <h5>{{ book.author }}</h5>
-            <h5>{{ book.rating }}</h5>
-          {% endfor %}
+          <div class="review">
+            {% for book in books %}
+            {% for author in book.auth.all %}
+              <h3><a href="/book/{{ book.id }}">{{ book }}</a> by {{ author }}</h3>
+              {% endfor %}
+              {% for text in book.review.all %}
+                <h4>"{{ text.text }}"</h4>
+                <h6>Posted by {{ text.created_by }} on {{ text.created_at }}</h6>
+              {% endfor %}
+            {% endfor %}
+          </div>
         </div>
       </div>
       <div class="col-sm-4">

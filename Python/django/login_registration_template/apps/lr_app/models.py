@@ -19,8 +19,12 @@ class UserManager(models.Manager):
             errors.append('That username is taken.')
         if len(data['first_name']) < 3:
             errors.append('Please enter a longer first name.')
+        elif not data['first_name'].isalpha():
+            errors.append('Please enter a valid first name.')
         if len(data['last_name']) < 3:
             errors.append('Please enter a longer last name.')
+        elif not data['last_name'].isalpha():
+            errors.append('Please enter a valid last name.')
         # DOB
         if data['dob'] == '':
             print (data['dob'] == '')

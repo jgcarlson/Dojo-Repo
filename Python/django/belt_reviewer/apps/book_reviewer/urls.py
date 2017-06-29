@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^logout$', views.logout, name='logout'),
     url(r'^add_book$', views.add_book, name='add_book'),
     url(r'^validate_book$', views.validate_book, name='validate_book'),
+    url(r'^book/(?P<id>\d+)$', views.book, name='book')
 ]

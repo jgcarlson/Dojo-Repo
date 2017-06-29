@@ -1,3 +1,7 @@
+body {
+  text-align: center;
+}
+
 .col {
   padding: 10vh 10vw;
 }
@@ -24,4 +28,9 @@ header {
 
 .radio-container {
   text-align: center;
+}
+
+.review {
+  text-align: center;
+  margin: 30px;
 }
