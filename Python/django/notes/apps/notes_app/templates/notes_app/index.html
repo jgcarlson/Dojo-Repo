@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<head>
+  <h1>Notes App</h1>
+</head>
+<div class="container-fluid add-container">
+  <div class="container-fluid">
+    <form class="form" action="/post/" method="post">
+      {% csrf_token %}
+      <input type="text" name="note_title" class="form-control" placeholder="Title" id="note_title">
+      <textarea name="note_text" rows="4" maxlength="100" class="form-control" id="note_text"></textarea>
+      <button type="submit" class="btn btn-primary btn-block">Submit Note</button>
+    </form>
+  </div>
+</div>
+<div class="container-fluid note-container">
+  {% for post in posts %}
+  <div class="d-inline-flex justify-content-center flex-wrap note">
+    <h5>{{ post.title }}</h5>
+    <p>{{ post.text }} </p>
+  </div>
+  {% endfor %}
+  <div class="d-inline-flex justify-content-center flex-wrap note">Stuff2</div>
+  <div class="d-inline-flex justify-content-center flex-wrap note">Stuff3</div>
+  <div class="d-inline-flex justify-content-center flex-wrap note">Stuff4</div>
+  <div class="d-inline-flex justify-content-center flex-wrap note">Stuff5</div>
+  <div class="d-inline-flex justify-content-center flex-wrap note">Stuff6</div>
+  <div class="d-inline-flex justify-content-center flex-wrap note">Stuff7</div>
+  <div class="d-inline-flex justify-content-center flex-wrap note">Stuff8</div>
+</div>
+{% endblock %}

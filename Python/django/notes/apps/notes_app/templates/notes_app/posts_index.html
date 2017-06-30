@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block body %}
+<head>
+  <h1>Notes App</h1>
+
+<div class="container-fluid note-container">
+  {% for post in posts %}
+  <div class="d-inline-flex justify-content-center flex-wrap note">
+    <h5>{{ post.post_title }}</h5>
+    <p>{{ post.post_text }} </p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

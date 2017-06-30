@@ -1,0 +1,16 @@
+body {
+  text-align: center;
+}
+
+.note {
+  width: 200px;
+  height: 200px;
+  margin: 2vw;
+  padding: 1vw;
+  border: 2px solid black;
+}
+
+.add-container {
+  width: 40vw;
+  margin: 30px auto;
+}
