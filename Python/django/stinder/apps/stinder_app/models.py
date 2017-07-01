@@ -6,7 +6,6 @@ import when
 from dateutil.parser import parse
 import bcrypt
 from django.core.exceptions import ObjectDoesNotExist
-from pyzipcode import ZipCodeDatabase
 # Create your models here.
 
 
