@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/eb9e507ca2.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        // this triggers the connection event in our server!
+        var socket = io.connect();
+        // we'll write all the socket stuff after the above line!
+        $('form').submit((e) => {
+          socket.emit("posting_form", {
+            name: $('#name').val(),
+            location: $('#location').val(),
+            language: $('#language').val(),
+            comment: $('#comment').val()
+          });
+          console.log('working');
+          return false;
+        });
+        socket.on('updated_message', (data) => {
+          var t1 = '<h4>You emitted the following information to the server:</h4>';
+          var t2 = '<h6>Your name: ' + data.name + '</h6>';
+          var t3 = '<h6>Your dojo location: ' + data.location + '</h6>';
+          var t4 = '<h6>Your favorite language: ' + data.language + '</h6>';
+          var t5 = '<h6>Your comment: ' + data.comment + '</h6>';
+          var t6 = '<h6>Your Lucky number: ' + data.number + '</h6>';
+          $('#new').append(t1, t2, t3, t4, t5)
+        });
+      });
+
+    </script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container-fluid" id="new">
+
+    </div>
+    <div class="container-fluid">
+      <form class="form" action="/results" method="post">
+        <fieldset class="fieldset">
+          <legend>Your Information</legend>
+          <input type="text" name="name" class="form-control" id="name" placeholder="Name">
+          <select class="form-control" id="location" name="location">
+            <option selected disabled>Select Location</option>
+            <option name="burbank">Burbank</option>
+            <option name="sanfrancisco">San Francisco</option>
+            <option name="washingtondc">Washington DC</option>
+            <option name="dallas">Dallas</option>
+          </select>
+          <select class="form-control" id="language" name="language">
+            <option selected disabled>Select Favorite Language</option>
+            <option name="python">Python</option>
+            <option name="javascript">JavaScript</option>
+            <option name="swift">Swift</option>
+            <option name="none">I don't like coding.</option>
+          </select>
+          <textarea id="comment" name="comment" rows="4" class="form-control" placeholder="Please leave a comment."></textarea>
+        </fieldset>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      </form>
+    </div>
+
+  </body>
+
+</html>

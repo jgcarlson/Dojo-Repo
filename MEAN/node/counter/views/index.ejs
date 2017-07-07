@@ -15,7 +15,15 @@
   </head>
 
   <body>
-    <h1>Hello World</h1>
+    <h1>Counter</h1>
+    <h2>Clicked <%= counter %> times.</h2>
+    <form action="/add" method="post">
+      <button type="submit" class="btn btn-primary">+2</button>
+    </form>
+    <form action="/reset" method="post">
+      <button type="submit" class="btn btn-danger">Reset</button>
+    </form>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
