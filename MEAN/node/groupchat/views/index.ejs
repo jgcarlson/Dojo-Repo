@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://use.fontawesome.com/eb9e507ca2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+      var user;
+      window.onload = () => {
+        user = prompt('What\'s your name?');
+      }
+      $(document).ready(function() {
+        // this triggers the connection event in our server!
+        var socket = io.connect();
+        // we'll write all the socket stuff after the above line!
+        socket.emit("enter_user", {
+          user: user
+        })
+        socket.emit('setup');
+
+        $('button').on('click', () => {
+          if ($('#message').val().length != 0) {
+            var message = $('#message').val()
+          }
+          socket.emit('new_message', {
+            message: message,
+          })
+          $('#board').append('<h6 class="user">You said: ' + $('#message').val() + '</h6>');
+          $('textarea').val('');
+          return false;
+        })
+
+        $(window).on('beforeunload', () => {
+          socket.emit('exit_user', {
+            user: user
+          });
+        });
+
+        socket.on('announce_enter', (data) => {
+          $('#board').append('<h6>' + data.announce + '</h6>');
+        })
+
+        socket.on('setup_info', (data) => {
+          for (var i = 0; i < data.messages.length; i++) {
+            $('#board').append('<h6>' + data.messages[i] + '</h6>')
+          }
+        })
+
+        socket.on('announce_message', (data) => {
+          $('#board').append('<h6 class="other">' + data.announce + '</h6>');
+        });
+
+        socket.on('announce_exit', (data) => {
+          $('#board').append('<h6>' + data.announce + '</h6>')
+        });
+
+        socket.on('current_users', (data) => {
+          $('#current_users').text('Currently online: ' + data.users.join(', '));
+        });
+
+      });
+
+    </script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <h1>Chat Room</h1>
+    <div class="container-fluid" id="current_users"></div>
+    <div class="container-fluid message-box">
+      <form name="chat" method="post">
+        <textarea name="chat-box" rows="4" class="form-control" id="message"></textarea>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      </form>
+    </div>
+    <div class="container-fluid" id="board">
+      <h3>Message Board</h3>
+    </div>
+
+  </body>
+
+</html>
