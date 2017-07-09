@@ -25,7 +25,11 @@ io.sockets.on('connection', function (socket) {
 })
 app.use(bodyParser.urlencoded({ extended: true }));
 // sessions
-app.use(session({secret: 'codingdojorocks'}));  // string for encryption
+app.use(session({
+  secret: 'codingdojorocks', // string for encryption
+  resave: true,
+  saveUninitialized: true
+}));
 // static content
 app.use(express.static(path.join(__dirname, "./static")));
 // setting up ejs and our views folder

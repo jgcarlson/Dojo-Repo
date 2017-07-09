@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/eb9e507ca2.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <form class="form" action="/results" method="post">
+        <fieldset class="fieldset">
+          <legend>Your Information</legend>
+          <input type="text" name="name" class="form-control" placeholder="Name">
+          <select class="form-control" name="location">
+            <option selected disabled>Select Location</option>
+            <option value="burbank">Burbank</option>
+            <option value="sanfrancisco">San Francisco</option>
+            <option value="washingtondc">Washington DC</option>
+            <option value="dallas">Dallas</option>
+          </select>
+          <select class="form-control" name="language">
+            <option selected disabled>Select Favorite Language</option>
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript</option>
+            <option value="swift">Swift</option>
+            <option value="none">I don't like coding.</option>
+          </select>
+          <textarea name="comment" rows="4" class="form-control" placeholder="Please leave a comment."></textarea>
+        </fieldset>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
+
+</html>

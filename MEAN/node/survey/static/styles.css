@@ -2,6 +2,6 @@ body {
   text-align: center;
 }
 
-.container-fluid {
-  width: 50vw;
+#form-container {
+  width: 40vw;
 }
