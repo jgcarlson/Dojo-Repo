@@ -1,0 +1,15 @@
+body {
+  text-align: center;
+}
+
+#form {
+  width: 40vw;
+}
+
+input {
+  text-align: center;
+}
+
+h3 {
+  text-decoration: underline;
+}

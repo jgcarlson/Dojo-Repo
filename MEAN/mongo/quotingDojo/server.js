@@ -9,12 +9,12 @@ mongoose.connect('mongodb://localhost/my_first_db'); // localhost/ + database_na
 // Use native promises
 mongoose.Promise = global.Promise;
 // Create Schema
-var UserSchema = new mongoose.Schema({
+var QuoteSchema = new mongoose.Schema({
   name: String,
-  age: Number
+  quote: String
 }, { timestamps: true })
-mongoose.model('User', UserSchema); // We are setting this Schema in our Models as 'User'
-var User = mongoose.model('User') // We are retrieving this Schema from our Models, named 'User'
+mongoose.model('Quote', QuoteSchema); // We are setting this Schema in our Models as 'User'
+var Quote = mongoose.model('Quote') // We are retrieving this Schema from our Models, named 'User'
 // Require body-parser (to receive post data from clients)
 var bodyParser = require('body-parser');
 // Integrate body-parser with our App
@@ -55,26 +55,25 @@ var server = app.listen(5000, function() {
 app.get('/', function(req, res) {
   res.render('index');
 })
-app.post('/quotes', function(req, res) {
-  console.log("POST DATA", req.body);
-  // create a new User with the name and age corresponding to those from req.body
-  var quote = new Quote({name: req.body.name, quote: req.body.quote});
-  // Try to save that new user to the database (this is the method that actually inserts into the db) and run a callback function with an error (if any) from the operation.
+app.post('/process', (req, res) => {
+  var quote = new Quote({name: req.body.name, quote: req.body.q});
   quote.save(function(err) {
-    if (err) { // if there is an error console.log that something went wrong!
-      console.log('something went wrong');
-    } else { // else console.log that we did well and then redirect to the root route
-      console.log('successfully added a user!');
-      res.redirect('/quotes');
+    if (err) {
+      console.log('Something went wrong...');
+      res.redirect('/');
+    } else {
+      console.log('All good.');
+      res.redirect(307, '/quotes')
     }
   });
 });
-app.get('/quotes', function(req, res) {
+
+app.post('/quotes', (req, res) => {
   Quote.find({}, function(err, quotes) {
     if (err) {
-      console.log('Some kind of error.');
       res.render('index', {data: 'Some kind of error.'})
     } else {
+      console.log(quotes);
       res.render('quotes', {data: quotes})
     }
   })
