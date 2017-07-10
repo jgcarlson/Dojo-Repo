@@ -26,16 +26,19 @@
   </head>
 
   <body>
-    <h1>Register</h1>
-    <div class="container-fluid" id="form">
+    <div class="container-fluid" id="section">
       <form class="form" action="/users" method="post">
+        <h1>Register</h1>
         <input type="text" name="name" class="form-control" placeholder="Name">
         <input type="text" name="age" class="form-control" placeholder="Age">
         <button type="submit" class="btn btn-primary btn-block">Submit</button>
       </form>
     </div>
-    <div class="container-fluid">
-      <%= %>
+    <div class="container-fluid" id="section">
+      <h3>Registrants:</h3>
+      <% for (var i = 0; i < users.length; i++) {%>
+        <h5>Name: <%= users[i].name %>, Age: <%= users[i].age %></h5>
+        <% } %>
     </div>
   </body>
 

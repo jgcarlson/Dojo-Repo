@@ -12,7 +12,7 @@ mongoose.Promise = global.Promise;
 var UserSchema = new mongoose.Schema({
   name: String,
   age: Number
-}, { timestamps: {} })
+}, { timestamps: true })
 mongoose.model('User', UserSchema); // We are setting this Schema in our Models as 'User'
 var User = mongoose.model('User') // We are retrieving this Schema from our Models, named 'User'
 // Require body-parser (to receive post data from clients)
