@@ -46,6 +46,7 @@ io.sockets.on('connection', function(socket) {
     socket.emit('server_response', {response: "sockets are the best!"});
   });
 });
+var validator = require('validator'); // validator.isEmail('foo@bar.com'); //=> true 
 // Setting our Server to Listen on Port: 8000
 var server = app.listen(5000, function() {
   console.log("listening on port 5000");
