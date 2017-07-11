@@ -3,15 +3,12 @@
 // From routes.js we require the controller file (or files).
 
 const mongoose = require('mongoose');
-const quotes = require('../controllers/controller.js');
+const users = require('../controllers/users.js');
 module.exports = function(app) {
   app.get('/', (req, res) => {
     res.render('index')
   })
-  app.post('/quotes', (req,res) => {
-    quotes.create(req, res)
-  })
-  app.get('/main', (req, res) => {
-    quotes.show(req, res)
+  app.post('/register', (req,res) => {
+    users.register(req, res)
   })
 }

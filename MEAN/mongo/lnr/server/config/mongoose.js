@@ -10,7 +10,7 @@ const fs = require('fs');
 // require path for getting the models path
 const path = require('path');
 // connect to mongoose!
-mongoose.connect('mongodb://localhost/quotes_db');
+mongoose.connect('mongodb://localhost/lnr_db');
 // create a variable that points to the path where all of the models live
 const models_path = path.join(__dirname, './../models');
 // read all of the files in the models_path and require (run) each of the javascript files
