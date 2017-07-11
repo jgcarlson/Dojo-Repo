@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://use.fontawesome.com/eb9e507ca2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        // Socket logic
+      });
+
+    </script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <h1>Message Board</h1>
+    <div class="container-fluid" id="form">
+      <form action="/processPost" method="post">
+        <textarea name="post" rows="4" class="form-control" placeholder="Post a Message"></textarea>
+        <input type="text" name="name" class="form-control" placeholder="Name">
+        <button type="submit" class="btn btn-primary btn-block">Submit Message</button>
+      </form>
+    </div>
+    <% for (var i = 0; i < posts.length; i++) { %>
+      <div class="form-control post-container">
+        <h4>"<%= posts[i].post %>"</h4>
+        <h5><%= posts[i].name %> - <%= posts[i].createdAt %></h5>
+        <hr>
+
+        <% for (var j = 0; j < posts[i].comments.length; j++) { %>
+          <div class="container-fluid comments">
+            <h5>"<%= posts[i].comments[j].comment %>"</h5>
+            <h6><%= posts[i].comments[j].name %> - <%= posts[i].comments[j].createdAt %></h6>
+          </div>
+          <% } %>
+            <form action="/processComment" method="post">
+              <textarea name="comm" rows="2" class="form-control" placeholder="Comment"></textarea>
+              <div class="input-group">
+                <input type="text" name="uname" class="form-control" placeholder="Name">
+                <button type="submit" class="btn btn-primary" name="bcomment" value="<%= posts[i].id %>">Submit</button>
+              </div>
+            </form>
+      </div>
+      <% } %>
+  </body>
+
+</html>

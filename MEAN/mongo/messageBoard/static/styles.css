@@ -1,0 +1,12 @@
+body {
+  text-align: center;
+}
+
+#form {
+  width: 40vw;
+}
+
+.post-container {
+  max-width: 60vw;
+  margin: 20px auto;
+}
