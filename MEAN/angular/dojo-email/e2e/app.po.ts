@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class TestAppPage {
+export class DojoEmailPage {
   navigateTo() {
     return browser.get('/');
   }
