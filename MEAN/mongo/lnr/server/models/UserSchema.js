@@ -6,6 +6,7 @@
 
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+SALT_WORK_FACTOR = 10;
 let UserSchema = new mongoose.Schema({
   first_name: {
     type: String,
@@ -61,6 +62,19 @@ UserSchema.pre('save',  function(next) {
     this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8));
     next();
 })
+
+UserSchema.methods.check = function(lpassword) {
+  console.log(this.password);
+  bcrypt.compare(lpassword, this.password, function(err, success) {
+    if (err) {
+      console.log('Unhash error');
+    } else {
+      console.log('success');
+      console.log(success);
+    }
+    return success
+  })
+}
 
 // register the schema as a model
 let User = mongoose.model('User', UserSchema);

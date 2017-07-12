@@ -39,11 +39,10 @@ module.exports = {
         }
         req.session.errors = errors;
         res.redirect('/');
-      } else if (user == null) {
-        req.session.errors = {invalid_login: 'Try again.'}
-        res.redirect('/');
-      } else {
-        if (bcrypt.compareSync(req.body.password, user.password)) {
+        } else if (user == null) {
+          req.session.errors = {invalid_login: 'Try again.'}
+          res.redirect('/');
+        } else if (user.check(req.session.lpassword)) {
           console.log('Error 2');
           req.session.user = user;
           console.log(user);
@@ -52,7 +51,6 @@ module.exports = {
           req.session.errors = {invalid_login: 'Try again.'}
           res.redirect('/');
         }
-      }
     })
   }
 }
