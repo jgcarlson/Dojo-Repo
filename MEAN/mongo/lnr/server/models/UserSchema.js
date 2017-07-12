@@ -21,8 +21,8 @@ let UserSchema = new mongoose.Schema({
   phone: {
     type: String,
     validate: [{
-      validator: function( number ) {
-        return /\d{3}-\d{3}-\d{4}/.test( number );
+      validator: function(number) {
+        return /\d{3}-\d{3}-\d{4}/.test(number);
       },
       message: "This is not a valid phone number"
     }],
@@ -55,25 +55,21 @@ let UserSchema = new mongoose.Schema({
       message: "Password must be at least 8 characters."
     }
   }
-},
-{timestamps: true});
+}, {
+  timestamps: true
+});
 
-UserSchema.pre('save',  function(next) {
-    this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8));
-    next();
-})
-
-UserSchema.methods.check = function(lpassword) {
+UserSchema.pre('save', function(next) {
+  console.log(bcrypt.genSaltSync(10));
+  this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(10));
   console.log(this.password);
-  bcrypt.compare(lpassword, this.password, function(err, success) {
-    if (err) {
-      console.log('Unhash error');
-    } else {
-      console.log('success');
-      console.log(success);
-    }
-    return success
-  })
+  console.log(bcrypt.compare(this.password, this.password));
+  next();
+});
+
+UserSchema.methods.checkPassword = function(lpassword) {
+  console.log(bcrypt.compareSync(lpassword, this.password));
+  return bcrypt.compareSync(lpassword, this.password);
 }
 
 // register the schema as a model
