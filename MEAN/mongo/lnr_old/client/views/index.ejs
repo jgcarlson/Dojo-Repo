@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://use.fontawesome.com/eb9e507ca2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        // Socket logic
+      });
+
+    </script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <h1>Register</h1>
+    <div class="container-fluid" id="form">
+      <form action="/register" method="post">
+        <input type="text" name="fname" class="form-control" placeholder="First Name">
+        <input type="text" name="lname" class="form-control" placeholder="Last Name">
+        <input type="email" name="email" class="form-control" placeholder="Email">
+        <input type="tel" name="phone" class="form-control" placeholder="Telephone Number">
+        <input type="text" name="dob" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Birth Date">
+        <input type="password" name="password" class="form-control" placeholder="Password">
+        <input type="password" name="confirm" class="form-control" placeholder="Confirm Password">
+        <button type="submit" class="btn btn-primary btn-block">Register!</button>
+      </form>
+    </div>
+
+</html>

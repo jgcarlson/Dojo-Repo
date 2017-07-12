@@ -26,18 +26,80 @@
   </head>
 
   <body>
-    <h1>Register</h1>
-    <div class="container-fluid" id="form">
-      <form action="/register" method="post">
-        <input type="text" name="fname" class="form-control" placeholder="First Name">
-        <input type="text" name="lname" class="form-control" placeholder="Last Name">
-        <input type="email" name="email" class="form-control" placeholder="Email">
-        <input type="tel" name="phone" class="form-control" placeholder="Telephone Number">
-        <input type="text" name="dob" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Birth Date">
-        <input type="password" name="password" class="form-control" placeholder="Password">
-        <input type="password" name="confirm" class="form-control" placeholder="Confirm Password">
-        <button type="submit" class="btn btn-primary btn-block">Register!</button>
-      </form>
+    <div class="container-fluid" id="content-container">
+      <div class="row">
+        <div class="col-1-sm"></div>
+        <div class="col-5-sm">
+          <div class="container-fluid">
+            <h1>Register</h1>
+            <div class="container-fluid" id="reg">
+              <form action="/register" method="post">
+                <% if (errors.first_name) { %>
+                  <div class="alert alert-danger alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong><%= errors.first_name %></strong>
+                  </div>
+                  <% } %>
+                    <input type="text" name="fname" class="form-control" placeholder="First Name">
+                    <% if (errors.first_name) { %>
+                      <div class="alert alert-danger alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong><%= errors.last_name %></strong>
+                      </div>
+                      <% } %>
+                        <input type="text" name="lname" class="form-control" placeholder="Last Name">
+                        <% if (errors.email) { %>
+                          <div class="alert alert-danger alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong><%= errors.email%></strong>
+                          </div>
+                          <% } %>
+                            <input type="email" name="email" class="form-control" placeholder="Email">
+                            <% if (errors.phone) { %>
+                              <div class="alert alert-danger alert-dismissable">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong><%= errors.phone %></strong>
+                              </div>
+                              <% } %>
+                                <input type="tel" name="phone" class="form-control" placeholder="Telephone Number">
+                                <% if (errors.dob) { %>
+                                  <div class="alert alert-danger alert-dismissable">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong><%= errors.dob %></strong>
+                                  </div>
+                                  <% } %>
+                                  <input type="text" name="dob" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Birth Date">
+                                  <% if (errors.password) { %>
+                                    <div class="alert alert-danger alert-dismissable">
+                                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                      <strong><%= errors.password %></strong>
+                                    </div>
+                                    <% } %>
+                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                    <input type="password" name="confirm" class="form-control" placeholder="Confirm Password">
+                                    <button type="submit" class="btn btn-primary btn-block">Register!</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-1-sm"></div>
+        <div class="col-4-sm">
+          <div class="container-fluid" id="log">
+            <h1>Login</h1>
+            <% if (errors.invalid_login) { %>
+              <div class="alert alert-danger alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong><%= errors.invalid_login %></strong>
+              </div>
+              <% } %>
+            <form action="/login" method="post">
+              <input type="text" name="lemail" class="form-control" placeholder="Email">
+              <input type="password" name="lpassword" class="form-control" placeholder="Password">
+              <button type="submit" class="btn btn-primary btn-block">Login!</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-1-sm"></div>
+      </div>
     </div>
-
 </html>

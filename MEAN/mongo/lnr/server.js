@@ -5,7 +5,6 @@ const path = require("path");
 const app = express();
 // require bodyParser since we need to handle post data for adding a user
 const bodyParser = require("body-parser");
-const validator = require('express-validator');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 app.use(session({
@@ -14,7 +13,6 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(validator());
 // static content
 app.use(express.static(path.join(__dirname, './client/static')));
 // setting up ejs and our views folder
@@ -26,7 +24,7 @@ require('./server/config/mongoose.js');
 const routes_setter = require('./server/config/routes.js');
 // invoke the function stored in routes_setter and pass it the "app" variable
 routes_setter(app)
-// tell the express app to listen on port 8000
+// tell the express app to listen on port 5000
 var server = app.listen(5000, () => {
   console.log("listening on port 5000");
 })

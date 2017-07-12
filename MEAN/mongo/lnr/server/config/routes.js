@@ -6,9 +6,14 @@ const mongoose = require('mongoose');
 const users = require('../controllers/users.js');
 module.exports = function(app) {
   app.get('/', (req, res) => {
-    res.render('index')
-  })
-  app.post('/register', (req,res) => {
-    users.register(req, res)
-  })
+    let errors = req.session.errors;
+    req.session.errors = '';
+    res.render('index', {errors: errors});
+  });
+  app.post('/register', (req, res) => {
+    users.register(req, res);
+  });
+  app.post('/login', (req, res) => {
+    users.login(req, res);
+  });
 }
