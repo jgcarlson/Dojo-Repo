@@ -1,7 +1,24 @@
 <h1>Switchboard</h1>
 
-<div class="container-fluid">
-  <input type="submit" name="" class="btn btn-info" [(ngModel)]="buttons.b0">
+<div *ngFor="let button of buttons; i as index" class="d-inline-flex">
+  <input type="submit" name="{{ button.name }}" class="d-inline-flex box" [ngModel]="sel(button.name).text" (click)="sel(button.name).status = switch(button.name)" [ngClass]="{'on': button.status, 'off': !button.status}" [value]="nothing">
 </div>
 
-{{ buttons | json}}
+<!-- <div class="container-fluid">
+    <input type="submit" name="box0" class="d-inline-flex box" [ngModel]="sel('b0').status" (click)="sel('b0').status = switch('b0')" [ngClass]="{'on': (sel(b0).status), 'off': !sel('b0').status}" [innerHTML]="">
+    <input type="submit" name="box1" class="d-inline-flex box" [ngModel]="sel('b1').status" (click)="sel('b1').status = switch('b1')" [ngClass]="{'on': (sel(b1).status), 'off': !sel('b1').status}">
+    <input type="submit" name="box2" class="d-inline-flex box" [ngModel]="sel('b2').status" (click)="sel('b2').status = switch('b2')" [ngClass]="{'on': (sel(b2).status), 'off': !sel('b2').status}">
+    <input type="submit" name="box3" class="d-inline-flex box" [ngModel]="sel('b3').status" (click)="sel('b3').status = switch('b3')" [ngClass]="{'on': (sel(b3).status), 'off': !sel('b3').status}">
+    <input type="submit" name="box4" class="d-inline-flex box" [ngModel]="sel('b4').status" (click)="sel('b4').status = switch('b4')" [ngClass]="{'on': (sel(b4).status), 'off': !sel('b4').status}">
+    <input type="submit" name="box5" class="d-inline-flex box" [ngModel]="sel('b5').status" (click)="sel('b5').status = switch('b5')" [ngClass]="{'on': (sel(b5).status), 'off': !sel('b5').status}">
+    <input type="submit" name="box6" class="d-inline-flex box" [ngModel]="sel('b6').status" (click)="sel('b6').status = switch('b6')" [ngClass]="{'on': (sel(b6).status), 'off': !sel('b6').status}">
+    <input type="submit" name="box7" class="d-inline-flex box" [ngModel]="sel('b7').status" (click)="sel('b7').status = switch('b7')" [ngClass]="{'on': (sel(b7).status), 'off': !sel('b7').status}">
+    <input type="submit" name="box8" class="d-inline-flex box" [ngModel]="sel('b8').status" (click)="sel('b8').status = switch('b8')" [ngClass]="{'on': (sel(b8).status), 'off': !sel('b8').status}">
+    <input type="submit" name="box9" class="d-inline-flex box" [ngModel]="sel('b9').status" (click)="sel('b9').status = switch('b9')" [ngClass]="{'on': (sel(b9).status), 'off': !sel('b9').status}">
+</div>
+<br>
+Name = {{ sel('b3').status }}
+<br>
+{{ sel('b3') | json}} -->
+
+<!-- <input type="submit" [innerHTML]="{}" name="box0" class="box" [ngClass]="{'on': (sel(b{{i}}).status), 'off': !sel('b3').status}"> -->

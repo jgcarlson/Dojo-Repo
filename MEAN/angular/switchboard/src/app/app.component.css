@@ -1,0 +1,17 @@
+.box {
+  height: 8vw;
+  width: 8vw;
+}
+
+.on {
+  background: crimson;
+}
+
+.off {
+  background: darkgreen;
+}
+
+input {
+  text-align: center;
+  color: white;
+}

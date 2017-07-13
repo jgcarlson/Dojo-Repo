@@ -7,23 +7,31 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  variable = true;
+
   buttons = [
-    {b0: true},
-    {b1: true},
-    {b2: true},
-    {b3: true},
-    {b4: true},
-    {b5: true},
-    {b6: true},
-    {b7: true},
-    {b8: true},
-    {b9: true}
+    {name: 'b0', status: true, text: 'ON'},
+    {name: 'b1', status: true, text: 'ON'},
+    {name: 'b2', status: true, text: 'ON'},
+    {name: 'b3', status: true, text: 'ON'},
+    {name: 'b4', status: true, text: 'ON'},
+    {name: 'b5', status: true, text: 'ON'},
+    {name: 'b6', status: true, text: 'ON'},
+    {name: 'b7', status: true, text: 'ON'},
+    {name: 'b8', status: true, text: 'ON'},
+    {name: 'b9', status: true, text: 'ON'}
   ];
+  sel(query) {
+    return this.buttons.filter(b => b.name == query)[0]
+  }
   switch(thing) {
-    if (thing == true) {
-      thing = false;
+    let obj = this.sel(thing);
+    if (obj.status == true) {
+      obj.text = 'OFF';
+      return obj.status = false;
     } else {
-      thing = true;
+      obj.text = 'ON'
+      return obj.status = true;
     }
   }
 }
