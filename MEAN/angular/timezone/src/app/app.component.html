@@ -1,0 +1,25 @@
+<h1>US Time Zone Display</h1>
+<br>
+<hr>
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col"><button type="button" name="pst" (click)="tellTime('pst')" class="btn btn-primary btn-block">PST</button></div>
+    <div class="col"></div>
+    <div class="col"><button type="button" name="mst" (click)="tellTime('mst')" class="btn btn-primary btn-block">MST</button></div>
+    <div class="col"></div>
+    <div class="col"><button type="button" name="cst" (click)="tellTime('cst')" class="btn btn-primary btn-block">CST</button></div>
+    <div class="col"></div>
+    <div class="col"><button type="button" name="est" (click)="tellTime('est')" class="btn btn-primary btn-block">EST</button></div>
+    <div class="col"></div>
+    <div class="col"><button type="button" name="clear" (click)="tellTime('clear')" class="btn btn-primary btn-block">Clear</button></div>
+    <div class="col"></div>
+  </div>
+</div>
+<br>
+<hr>
+<br>
+<div class="container-fluid">
+  <h2>{{ time }}</h2>
+</div>
