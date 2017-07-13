@@ -1,0 +1,104 @@
+<ngb-alert *ngIf="!closed" (close)="closed=true" type="success"><h1>You registered successfully!</h1></ngb-alert>
+<div class="container-fluid" id="content-container">
+  <form (submit)="register()" name="reg" #reg="ngForm">
+    <fieldset>
+      <legend><strong>Register</strong></legend>
+      <input type="text" name="fname" class="form-control" placeholder="First Name" [(ngModel)]="user.fname" #fname="ngModel" required minlength='3' maxlength='25'>
+      <input type="text" name="lname" class="form-control" placeholder="Last Name" [(ngModel)]="user.lname" #lname="ngModel" required minlength='3' maxlength='25'>
+      <input type="text" name="email" class="form-control" placeholder="Email" [(ngModel)]="user.email" #email="ngModel" required minlength='6' maxlength='25'>
+      <input type="password" name="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" #password="ngModel" required minlength='8' maxlength='200'>
+      <input type="password" name="confirm" class="form-control" placeholder="Confirm Password" [(ngModel)]="user.confirm" #confirm="ngModel" required minlength='8' maxlength='200'>
+      <input type="text" name="address" class="form-control" placeholder="Address" [(ngModel)]="user.address" #address="ngModel" required minlength='6' maxlength='45'>
+      <div class="form-inline">
+        <input type="text" name="city" class="form-control form-group" placeholder="City" [(ngModel)]="user.city" #city="ngModel" required minlength='3' maxlength='25'>
+        <select class="form-control form-group" name="state" [(ngModel)]="user.state" #state="ngModel" title="State" required>
+          <option selected disabled>State</option>
+          <option value="AL">AL</option>
+          <option value="AK">AK</option>
+          <option value="AR">AR</option>
+          <option value="AZ">AZ</option>
+          <option value="CA">CA</option>
+          <option value="CO">CO</option>
+          <option value="CT">CT</option>
+          <option value="DC">DC</option>
+          <option value="DE">DE</option>
+          <option value="FL">FL</option>
+          <option value="GA">GA</option>
+          <option value="HI">HI</option>
+          <option value="IA">IA</option>
+          <option value="ID">ID</option>
+          <option value="IL">IL</option>
+          <option value="IN">IN</option>
+          <option value="KS">KS</option>
+          <option value="KY">KY</option>
+          <option value="LA">LA</option>
+          <option value="MA">MA</option>
+          <option value="MD">MD</option>
+          <option value="ME">ME</option>
+          <option value="MI">MI</option>
+          <option value="MN">MN</option>
+          <option value="MO">MO</option>
+          <option value="MS">MS</option>
+          <option value="MT">MT</option>
+          <option value="NC">NC</option>
+          <option value="NE">NE</option>
+          <option value="NH">NH</option>
+          <option value="NJ">NJ</option>
+          <option value="NM">NM</option>
+          <option value="NV">NV</option>
+          <option value="NY">NY</option>
+          <option value="ND">ND</option>
+          <option value="OH">OH</option>
+          <option value="OK">OK</option>
+          <option value="OR">OR</option>
+          <option value="PA">PA</option>
+          <option value="RI">RI</option>
+          <option value="SC">SC</option>
+          <option value="SD">SD</option>
+          <option value="TN">TN</option>
+          <option value="TX">TX</option>
+          <option value="UT">UT</option>
+          <option value="VT">VT</option>
+          <option value="VA">VA</option>
+          <option value="WA">WA</option>
+          <option value="WI">WI</option>
+          <option value="WV">WV</option>
+          <option value="WY">WY</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="radio-inline">Feeling lucky?<span *ngIf="lucky.errors != null">*</span> </label>
+        <label class="radio-inline"><input type="radio" name="lucky" [(ngModel)]="user.lucky" #lucky="ngModel" value="true" required> Yes!</label>
+        <label class="radio-inline"><input type="radio" name="lucky" [(ngModel)]="user.lucky" #lucky="ngModel" value="false" required> No...</label>
+      </div>
+      <i class="fa fa-smile-o fa-3x" *ngIf="user.lucky == 'true'"></i>
+      <i class="fa fa-meh-o fa-3x" *ngIf="user.lucky == 'false'"></i>
+      <button type="submit" class="btn btn-primary btn-block" [disabled]="!reg.valid">Submit</button>
+    </fieldset>
+  </form>
+
+</div>
+<br>
+First Name: {{ fname.errors | json }}
+<br>
+Last Name: {{ lname.errors | json }}
+<br>
+Email: {{ email.errors | json }}
+<br>
+Password: {{ password.errors | json }}
+<br>
+Confirm: {{ confirm.errors | json }}
+<br>
+Address: {{ address.errors | json }}
+<br>
+City: {{ city.errors | json }}
+<br>
+State: {{ state.errors | json }}
+<br>
+Lucky: {{ lucky.errors | json }}
+<br>
+<h1>{{ user | json }}</h1>
+<br>
+<hr>
+<p *ngFor="let user of users">{{ user.fname }}</p>
+<hr>
