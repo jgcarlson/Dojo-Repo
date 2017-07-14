@@ -1,0 +1,15 @@
+<form name="addQuoteForm" #addQuoteForm="ngForm" (submit)="add($event)">
+  <div class="card">
+    <div class="card-block">
+      <h3>Add a Quote</h3>
+      <textarea name="quote" class="form-control" [(ngModel)]="quote.quote" #validquote="ngModel" rows="4" minlength="4" maxlength="500" required></textarea>
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label"><h4>Author:</h4></label>
+        <div class="col-md-10">
+          <input type="text" name="author" class="form-control" [(ngModel)]="quote.author"  #validauthor="ngModel" minlength="1" maxlength="25" required>
+        </div>
+      </div>
+      <button [disabled]="!addQuoteForm.valid" type="submit" class="btn btn-info btn-block">Submit Quote</button>
+    </div>
+  </div>
+</form>

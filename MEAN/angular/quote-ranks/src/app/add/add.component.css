@@ -1,0 +1,20 @@
+form {
+  width: 50vw;
+  margin: 5px auto;
+}
+
+textarea.ng-invalid {
+  border-left: 5px solid crimson;
+}
+
+input.ng-invalid {
+  border-left: 5px solid crimson;
+}
+
+textarea.ng-valid {
+  border-left: 5px solid darkgreen;
+}
+
+input.ng-valid {
+  border-left: 5px solid darkgreen;
+}
