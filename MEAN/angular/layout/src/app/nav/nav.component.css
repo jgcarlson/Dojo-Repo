@@ -1,0 +1,13 @@
+#nav {
+  padding-top: 2vw;
+  width: 20vw;
+  height: 60vh;
+  margin: 3vw;
+  background: lightblue;
+  display: inline;
+}
+
+button {
+  width: 15vw;
+  margin: 1vw;
+}
