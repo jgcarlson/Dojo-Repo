@@ -1,0 +1,23 @@
+<div class="box" id="power">
+  <h5>PowerComponent</h5>
+  <form class="form-inline">
+    <label><h3>Initial Power Level:</h3></label>
+    <select class="form-control" name="plevel" [(ngModel)]="plevel">
+      <option value="0" selected>0</option>
+      <option *ngFor="let num of arr" value="{{ num }}">{{ num }}</option>
+    </select>
+  </form>
+  <br>
+  <h3>Power Level: {{ plevel }}</h3>
+  <br>
+  <div class="d-flex no-wrap align-self-stretch align-content-end box-row">
+    <app-human [data]="plevel"></app-human>
+    <app-saiyan [data]="plevel"></app-saiyan>
+    <app-super-saiyan [data]="plevel"></app-super-saiyan>
+  </div>
+  <div class="d-flex no-wrap align-self-stretch align-content-end box-row">
+    <app-super-saiyan-two [data]="plevel"></app-super-saiyan-two>
+    <app-super-saiyan-three [data]="plevel"></app-super-saiyan-three>
+    <app-super-saiyan-four [data]="plevel"></app-super-saiyan-four>
+  </div>
+</div>

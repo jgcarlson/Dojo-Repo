@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  text-align: center;
+}
+
+#content-container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.box {
+  border: 2px groove threedface;
+  height: 20vh;
+  width: 26vw;
+  padding: 2vw;
+  margin: 2vw;
+}
+
+#power {
+  height: auto;
+  width: 95vw;
+}
+
+.d-flex {
+  flex-grow: 1;
+}
