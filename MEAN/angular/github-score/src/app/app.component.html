@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-4">
+      <h1>GitHub Score</h1>
+      <br>
+        <input type="text" name="query" #query="ngModel" class="form-control form-inline" [(ngModel)]="username" placeholder="GitHub Username">
+        <button type="submit" (click)="getTasks()" class="btn btn-primary btn-block">GET</button>
+    </div>
+    <div class="col-6">
+      <div *ngIf="data.status == null">
+        <h2 *ngIf="name != ''">{{ name }}</h2>
+        <h3 *ngIf="name != ''">{{ username }}</h3>
+        <h4 *ngIf="name != ''">Score: {{ pr + fs }}</h4>
+        <div *ngIf="name != ''">
+          <h3 *ngIf="pr + fs < 20" class="red">"Needs Work!"</h3>
+          <h3 *ngIf="pr + fs < 50 && pr + fs > 19" class="orange">"A decent start!"</h3>
+          <h3 *ngIf="pr + fs < 100 && pr + fs > 49">"Doing good!"</h3>
+          <h3 *ngIf="pr + fs < 200 && pr + fs > 199" class="green">"Great job!!"</h3>
+          <h3 *ngIf="pr + fs > 200" class="blue">"GitHub Elite!!"</h3>
+        </div>
+      </div>
+      <h3 class="red" *ngIf="data.status == 404">That user doesn't exist. Try a different username.</h3>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
