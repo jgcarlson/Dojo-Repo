@@ -1,13 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ObsService } from './../obs.service';
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  subscription: Subscription
+
+  products = [];
+
+  constructor(private _obsService: ObsService) {
+    this.subscription = _obsService.createdProducts.subscribe(
+      (newProducts) => {this.products = newProducts, console.log(this.products)},
+      (err) => { console.log(err) },
+      () => {}
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
   ngOnInit() {
   }

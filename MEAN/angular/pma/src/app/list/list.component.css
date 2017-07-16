@@ -1,0 +1,13 @@
+.card {
+  width: 20vw;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+#name {
+  margin-top: 10px;
+  text-decoration: underline;
+}

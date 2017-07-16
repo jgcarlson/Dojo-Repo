@@ -1,5 +1,34 @@
 <div class="container-fluid page">
-  <p>
-    create works!
-  </p>
+  <h1>Create a Product</h1>
+  <form (submit)="createProduct()" name="regform" #regform="ngForm">
+    <label>Product Name:</label>
+    <input type="text" name="name" [(ngModel)]="p.name" class="form-control" placeholder="ex, Awesome Elephant Lamp" minlength="5" maxlength="45" required>
+    <label>Product Price:</label>
+    <input type="text" name="price" [(ngModel)]="p.price" class="form-control" placeholder="ex, 250" minlength="1"  required>
+    <label>Product Image:</label>
+    <select class="form-control" name="image" [(ngModel)]="p.image" required>
+      <option disabled selected>Select an Image:</option>
+      <optgroup label="Lamps">
+        <option value="lamp1.jpeg">Lamp, Option 1</option>
+        <option value="lamp2.jpeg">Lamp, Option 2</option>
+        <option value="lamp3.jpg">Lamp, Option 3</option>
+        <option value="lamp4.jpg">Lamp, Option 4</option>
+      </optgroup>
+      <optgroup label="Ninjas">
+        <option value="ninjas.jpg">Ninjas</option>
+      </optgroup>
+      <optgroup label="Cars">
+        <option value="car1.png">This Car</option>
+        <option value="car2.jpg">That Car</option>
+      </optgroup>
+      <optgroup label="Phones">
+        <option value="iphone.jpg">iPhone</option>
+        <option value="androidphone.jpg">Android</option>
+        <option value="ancientphone.jpg">Retro Phone</option>
+        <option value="otherphone.jpg">Other Phone</option>
+      </optgroup>
+    </select>
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="regform.invalid">Create Product</button>
+  </form>
 </div>
+<br>
