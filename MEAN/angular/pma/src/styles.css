@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  text-align: center;
+}
+
+.page {
+  margin-top: 10px;
+  max-width: 80%;
+  background: lightgrey;
+  border-radius: 8px;
+  padding: 10px;
+}
