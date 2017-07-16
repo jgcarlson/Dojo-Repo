@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+}
+
+#content {
+  width: 90vw;
+  margin: 10px auto;
+  font-family: 'Cinzel', serif;
+}
+
+#weather {
+  text-align: left;
+  font-size: 1.3em;
+}
+
+img {
+  width: 100%;
+  border: 5px solid black;
+}

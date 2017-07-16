@@ -1,0 +1,31 @@
+<br>
+<div class="container-fluid">
+  <h3>MafraqComponent</h3>
+  <br>
+  <div class="container-fluid" *ngIf="weather == ''">
+    <button (click)="getWeather(locations.mafraq)" class="btn btn-danger">Get Weather</button>
+  </div>
+  <div class="container-fluid" *ngIf="weather != ''">
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-md-5">
+        <div class="container-fluid" id="weather">
+          <h3>{{ weather.weather[0].description }}</h3>
+          Current: {{ weather.main.temp }}°F
+          <br>
+          High: {{ weather.main.temp_max  }}°F
+          <br>
+          Low: {{ weather.main.temp_min }}°F
+          <br>
+          Humidity: {{ weather.main.humidity }}%
+          <br>
+        </div>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-md-4">
+        <img src="./../../assets/images/mafraq.jpg" alt="mafraq" class="img-responsive img-rounded">
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
+  </div>
+</div>
