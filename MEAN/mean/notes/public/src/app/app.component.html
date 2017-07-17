@@ -1,0 +1,13 @@
+<div class="container-fluid" id="content">
+  <h1>Anonymous Notes</h1>
+  <hr>
+  <div class="container-fluid" id="add-form">
+    <form>
+      <textarea name="comment" [(ngModel)]="post.post" #comment="ngModel" rows="2" class="form-control" placeholder="What would you like to say?"></textarea>
+      <button class="btn btn-primary btn-block" (click)="dothething()">Submit</button>
+      <button class="btn btn-primary btn-block" (click)="retrievePosts()">Get stuff</button>
+    </form>
+  </div>
+  <hr>
+  {{ post | json }}
+</div>
