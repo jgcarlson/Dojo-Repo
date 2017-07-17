@@ -25,6 +25,14 @@ export class ListComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  del(index) {
+    this.products.splice(index, 1);
+  }
+
+  delete() {
+
+  }
+
   ngOnInit() {
   }
 

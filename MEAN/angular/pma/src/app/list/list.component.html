@@ -10,6 +10,8 @@
             <img src="./../../assets/images/{{ product.image }}" alt="product_image">
             <h4 id="name">{{ product.name }}</h4>
             <h4>Price: {{ product.price | currency }}</h4>
+            <button class="btn btn-primary btn-warning" [routerLink]="['/edit', product.id]">Edit</button>
+            <button class="btn btn-primary btn-danger" (click)="del(i)">Delete</button>
           </div>
         </div>
       </div>
