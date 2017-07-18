@@ -5,10 +5,18 @@
 const mongoose = require('mongoose');
 const controller = require('./../controllers/controller.js');
 module.exports = app => {
-  // code here
+  app.post('/api/posts', controller.add);
+
+  app.get('/api/posts', controller.retrieveComments);
+
+  // app.all("*", (req,res,next) => {
+  //   res.sendfile(path.resolve("./../../public/dist/index.html"));
+  // });
 }
 
-
+// ../../public/dist/index.html
+// /Users/JC/Workshop/Dojo-Repo/MEAN/mean/notes/server/config/routes.js
+// /Users/JC/Workshop/Dojo-Repo/MEAN/mean/notes/public/dist/index.html
 
 // Example:
 // // module.exports = app => {

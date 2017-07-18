@@ -7,9 +7,9 @@
 const mongoose = require('mongoose');
 
 // create the schema
-const ObjSchema = new mongoose.Schema({
-  name: {type:String}
+const PostSchema = new mongoose.Schema({
+  comment: {type:String}
 }, {timestamps: true});
 
 // register the schema as a model
-mongoose.model('Obj', ObjSchema);
+mongoose.model('Post', PostSchema);

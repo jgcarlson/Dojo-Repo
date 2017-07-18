@@ -5,9 +5,32 @@
 // There can be many controllers in the server/controllers folder.
 
 const mongoose = require('mongoose');
-const Obj = mongoose.model('Obj');
+const Post = mongoose.model('Post');
 module.exports = {
-  // code here
+  add: (req, res) => {
+    console.log('req.body in add:', req.body)
+    let post = new Post({ comment: req.body.comment })
+    post.save( (err, post) => {
+      if (err) {
+        console.log('Error in controller:', err);
+        // res.status(400).send({error: "alsjdf;lkajsdlf"})
+        res.json(err)
+      } else {
+        return res.json(post);
+      }
+    })
+  },
+  retrieveComments: (req, res) => {
+    Post.find({}, (err, posts) => {
+      if (err) {
+        console.log('Error in controller:', err);
+        // res.status(400).send({error: "alsjdf;lkajsdlf"})
+        res.json(err)
+      } else {
+        return res.json(posts);
+      }
+    })
+  }
 }
 
 // Example:
