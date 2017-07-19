@@ -1,0 +1,10 @@
+<div class="card">
+  <div class="card-block">
+    <h3>Add Player</h3>
+    <form (submit)="addplayer()" #addform="ngForm">
+      <input type="text" name="name" [(ngModel)]="player.name" class="form-control" placeholder="Player Name" minlength="2" required>
+      <input type="text" name="position" [(ngModel)]="player.position" class="form-control" placeholder="Preffered Position">
+      <button type="submit" class="btn btn-primary btn-block" [disabled]="false">Add</button>
+    </form>
+  </div>
+</div>

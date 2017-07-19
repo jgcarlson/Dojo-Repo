@@ -1,0 +1,21 @@
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Actions</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of players; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ player.name }}</td>
+        <td><button type="submit" class="btn btn-default btn-block" [ngClass]="{'btn-success': player.status[0].game1 == 'Playing'}" (click)="p(player._id)">Playing</button></td>
+        <td><button type="submit" class="btn btn-default btn-block" [ngClass]="{'btn-danger': player.status[0].game1 == 'Not Playing'}" (click)="n(player._id)">Not Playing</button></td>
+        <td><button type="submit" class="btn btn-default btn-block" [ngClass]="{'btn-warning': player.status[0].game1 == 'Undecided'}" (click)="u(player._id)">Undecided</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

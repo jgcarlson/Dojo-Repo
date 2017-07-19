@@ -1,0 +1,11 @@
+<div class="container-fluid content">
+  <div class="card">
+    <div class="card-block">
+      <div class="d-inline-flex">
+        <h3><a [routerLink]="['/players', 'list']">Manage Players</a> |
+        <a [routerLink]="['/status/game', '1']"> Manage Player Status</a></h3>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
