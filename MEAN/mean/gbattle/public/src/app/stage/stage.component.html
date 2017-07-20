@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div *ngIf="check1 == false || check2 == false">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-block">
+            <form #f1="ngForm">
+              <h3>Player 1</h3>
+              <input type="text" name="player1" class="form-control" placeholder="GitHub Username" minlength="3" required>
+              <button class="btn btn-primary btn-block" [disabled]="f1.valid">Get User</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-block">
+            <form #f2="ngForm">
+              <h3>Player 2</h3>
+              <input type="text" name="player2" class="form-control" placeholder="GitHub Username" minlength="3" required>
+              <button class="btn btn-primary btn-block" [disabled]="f2.valid">Get User</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="check1 == true && check2 == true">
+
+  </div>
+</div>
