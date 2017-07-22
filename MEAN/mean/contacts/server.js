@@ -1,0 +1,22 @@
+// set up ========================
+const express = require('express');
+const app = express();
+const path = require('path');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const token = jwt.sign({ foo: 'bar' }, 'shhhhh');
+
+// configuration =================
+app.use(express.static(path.join(__dirname, 'public', 'dist')))
+app.use(bodyParser.urlencoded({'extended':'true'}));
+app.use(bodyParser.json());
+require('./server/config/mongoose.js');
+require('./server/config/routes.js')(app);
+app.all("*", (req,res,next) => {
+    res.sendFile(path.resolve("./public/dist/index.html"))
+});
+
+// listen (start app with node server.js) ======================================
+var server = app.listen(5000, ()=> {console.log('Listening on 5000')});
