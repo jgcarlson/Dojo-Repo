@@ -5,7 +5,11 @@
 const mongoose = require('mongoose');
 const controller = require('./../controllers/controller.js');
 module.exports = app => {
-  
+  app.post('/api/register', controller.register);
+  app.post('/api/login', controller.login);
+  app.get('/api/read', controller.read);
+  app.get('/api/logged', controller.logged);
+  app.get('/api/logout', controller.logout)
 }
 
 

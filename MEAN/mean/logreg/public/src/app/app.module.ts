@@ -3,15 +3,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { FxService } from './fx.service';
-import { Angular2TokenService } from 'angular2-token';
-import { AuthService } from './auth.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
-import { DateTimePickerModule } from 'ng-pick-datetime';
 
 @NgModule({
   declarations: [
@@ -25,14 +22,10 @@ import { DateTimePickerModule } from 'ng-pick-datetime';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    DateTimePickerModule
+    NgbModule.forRoot()
 
   ],
-  providers: [
-    FxService,
-    Angular2TokenService,
-    AuthService
-  ],
+  providers: [FxService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

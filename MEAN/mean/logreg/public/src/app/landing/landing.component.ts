@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FxService } from './../fx.service';
 import { User } from './../user';
 import { Router } from '@angular/router';
-import { AuthService } from './../auth.service';
 
 @Component({
   selector: 'app-landing',
@@ -11,7 +10,7 @@ import { AuthService } from './../auth.service';
 })
 export class LandingComponent implements OnInit {
 
-  constructor(private _fxService:FxService, private router:Router, public authService:AuthService) { }
+  constructor(private _fxService:FxService, private router:Router) { }
 
   ngOnInit() {
     this.logCheck();
@@ -23,6 +22,8 @@ export class LandingComponent implements OnInit {
   users:any = [];
 
   user:any = new User;
+
+  closed = true;
 
   quser = {
     username: '',
@@ -44,28 +45,17 @@ export class LandingComponent implements OnInit {
   };
 
   login() {
-    this.authService.logInUser(this.quser).subscribe(
-        res => {
-          if(res.status == 200){
-            this.onFormResult.emit({signedIn: true, res});
-          }
-        },
-        err => {
-          console.log('err:', err);
-          this.onFormResult.emit({signedIn: false, err});
-        }
-    );
-    // this._fxService.login(this.quser)
-    // .then(data => {
-    //   if (data._id != 'error') {
-    //     this.c = data._id;
-    //     this.router.navigateByUrl("/dashboard", { skipLocationChange: true });
-    //   } else {
-    //     console.log('Logged did not work.')
-    //   }
-    // })
-    // .catch(data => console.log('Login-catch data:', data))
-    // this.quser = { username: '', password: '' };
+    this._fxService.login(this.quser)
+    .then(data => {
+      if (data._id != 'error') {
+        this.c = data._id;
+        this.router.navigateByUrl("/dashboard", { skipLocationChange: true });
+      } else {
+        console.log('Logged did not work.')
+      }
+    })
+    .catch(data => console.log('Login-catch data:', data))
+    this.quser = { username: '', password: '' };
   };
 
   read() {

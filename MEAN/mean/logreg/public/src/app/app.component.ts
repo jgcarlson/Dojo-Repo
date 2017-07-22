@@ -7,12 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-
-  momentValue:string;
-
-  public setMoment(moment: any): any {
-    this.momentValue = moment;
-    // Do whatever you want to the return object 'moment'
-}
-
 }

@@ -5,6 +5,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const bcrypt = require('bcrypt');
 
 // configuration =================
 app.use(express.static(path.join(__dirname, 'public', 'dist')))
@@ -12,7 +13,7 @@ app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use(session({
   secret: 'wrjovUHWr8w4ghOUHG$Whwuheiuhaifhua',
-  resave: true,
+  resave: false,
   saveUninitialized: true
 }));
 require('./server/config/mongoose.js');

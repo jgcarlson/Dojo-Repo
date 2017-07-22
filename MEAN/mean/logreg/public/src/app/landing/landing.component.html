@@ -1,5 +1,4 @@
 <hr>
-{{ users | json }}
 <hr>
 <div class="container-fluid">
   <div class="row">
@@ -8,17 +7,23 @@
       <div class="card">
         <div class="card-block">
           <h3>Register</h3>
+          <!-- <p *ngFor="let alert of alerts">
+            <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+          </p>
+          <p>
+            <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
+          </p> -->
+          <ngb-alert *ngIf="!closed" (close)="closed=true" type="success"><h1>You registered successfully!</h1></ngb-alert>
           <form #reg="ngForm" (submit)="registerUser()">
             <input type="text" name="username" [(ngModel)]="user.username" class="form-control" placeholder="Username" minlength="3" required>
             <input type="text" name="firstname" [(ngModel)]="user.firstname" class="form-control" placeholder="First Name" minlength="2" required>
             <input type="text" name="lastname" [(ngModel)]="user.lastname" class="form-control" placeholder="Last Name" minlength="2" required>
-            <input type="text" name="email" [(ngModel)]="user.email" class="form-control" placeholder="Email" minlength="6" required>
+            <input type="text" name="email" [(ngModel)]="user.email" class="form-control" placeholder="Email" pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*" minlength="6" required>
             <input type="text" name="dob" [(ngModel)]="user.dob" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Birth Date" required>
             <input type="password" name="password" [(ngModel)]="user.password" class="form-control" placeholder="Password" minlength="7" required>
             <input type="password" name="confirm" [(ngModel)]="user.confirm" class="form-control" placeholder="Confirm Password" required>
-            <button type="submit" class="btn btn-primary btn-block" [disabled]="user.password != user.confirm || !reg.valid" [routerLink]="['/dashboard']">Register!</button>
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="user.password != user.confirm || !reg.valid" >Register!</button>
           </form>
-          {{ user | json }}
         </div>
       </div>
     </div>
@@ -27,11 +32,10 @@
         <div class="card-block">
           <h3>Login</h3>
           <form #log="ngForm" (submit)="login()">
-            <input type="text" name="username" [(ngModel)]="quser.username" class="form-control" placeholder="Username">
-            <input type="password" name="password" [(ngModel)]="quser.password" class="form-control" placeholder="Password">
-            <button type="submit" class="btn btn-primary btn-block">Login!</button>
+            <input type="text" name="username" [(ngModel)]="quser.username" class="form-control" placeholder="Username" minlength="3" required>
+            <input type="password" name="password" [(ngModel)]="quser.password" class="form-control" placeholder="Password" minlength="7" required>
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="!log.valid">Login!</button>
           </form>
-          {{ quser | json }}
         </div>
       </div>
     </div>
