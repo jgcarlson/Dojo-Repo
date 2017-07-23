@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { FxService } from './fx.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { UserService } from './services/user.service';
+import { RouterService } from './services/user.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,7 +29,10 @@ import { NavComponent } from './nav/nav.component';
     NgbModule.forRoot()
 
   ],
-  providers: [FxService],
+  providers: [
+    UserService,
+    RouterService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

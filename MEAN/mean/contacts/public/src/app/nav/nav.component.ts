@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FxService } from './../services/fx.service';
+import { UserService } from './../services/user.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,13 +8,13 @@ import { FxService } from './../services/fx.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private _fxService:FxService) { }
+  constructor(private _userService:UserService) { }
 
   ngOnInit() {
   }
 
   logout() {
-    this._fxService.logout()
+    this._userService.logout()
     .then(data => console.log(data))
     .catch(data => console.log('Logout-catch data:', data))
   }

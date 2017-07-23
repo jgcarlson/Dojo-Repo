@@ -3,7 +3,8 @@ import { Http } from '@angular/http';
 import 'rxjs';
 
 @Injectable()
-export class FxService {
+
+export class UserService {
 
   constructor(private _http:Http) { }
 
@@ -69,4 +70,10 @@ export class FxService {
     .toPromise();
   }
 
+}
+
+export class RouterService {
+  isLoggedIn(): boolean {
+    return false; // Switch to `false` to make OnlyLoggedInUsersGuard work
+  }
 }

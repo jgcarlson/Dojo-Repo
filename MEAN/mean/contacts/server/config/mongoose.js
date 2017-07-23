@@ -10,7 +10,9 @@ const path = require('path');
 // require the fs module for loading model files
 const fs = require('fs');
 // connect to mongoose!
-mongoose.connect('mongodb://localhost/default');  // add db after 'localhost/'
+mongoose.connect('mongodb://localhost/default', {  // add db after 'localhost/'
+  useMongoClient: true
+});
 // create a variable that points to the path where all of the models live
 const models_path = path.join(__dirname, './../models');
 // read all of the files in the models_path and require (run) each of the javascript files

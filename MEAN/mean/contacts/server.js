@@ -19,4 +19,4 @@ app.all("*", (req,res,next) => {
 });
 
 // listen (start app with node server.js) ======================================
-var server = app.listen(5000, ()=> {console.log('Listening on 5000')});
+var server = app.listen(5000, () => {console.log('------------------------------- Server up and running on port 5000 -------------------------------')});

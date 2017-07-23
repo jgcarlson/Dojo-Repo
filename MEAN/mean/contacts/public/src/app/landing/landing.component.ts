@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FxService } from './../services/fx.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { UserService } from './../services/user.service';
 import { User } from './../models/user';
 import { Router } from '@angular/router';
 
@@ -10,12 +10,14 @@ import { Router } from '@angular/router';
 })
 export class LandingComponent implements OnInit {
 
-  constructor(private _fxService:FxService, private router:Router) { }
+  constructor(private _userService:UserService, private router:Router) { }
 
   ngOnInit() {
     this.logCheck();
     this.read();
   }
+
+  @Output() addQuote = new EventEmitter();
 
   c:string = '';
 
@@ -36,10 +38,10 @@ export class LandingComponent implements OnInit {
 
   registerUser() {
     this.regerrors = [];
-    this._fxService.register(this.user)
+    this._userService.register(this.user)
     .then(data => {
       if (data._id != 'error') {
-        this._fxService.user = data._id;
+        this._userService.user = data._id;
         this.router.navigate(['/dashboard']);
       } else {
         console.log('Logged did not work.');
@@ -53,13 +55,10 @@ export class LandingComponent implements OnInit {
 
   login() {
     this.logerrors = [];
-    this.logerrors.push('Nope. Try again.');
-    this.closed = false;
-    this._fxService.login(this.quser)
+    this._userService.login(this.quser)
     .then(data => {
-      this._fxService.user = data._id;
-      if (data._id != 'error') {
-        this.c = data._id;
+      if (data.success) {
+        this.c = data.user;
         this.router.navigate(['/dashboard']);
       }
     })
@@ -68,13 +67,13 @@ export class LandingComponent implements OnInit {
   };
 
   read() {
-    this._fxService.read()
+    this._userService.read()
     .then(data => this.users = data)
     .catch(data => console.log('Register-catch data:', data));
   };
 
   logged() {
-    this._fxService.logged()
+    this._userService.logged()
     .then(data => {console.log('Bool:', data.b)
       return data.b
     })
@@ -82,7 +81,7 @@ export class LandingComponent implements OnInit {
   }
 
   logCheck() {
-    this._fxService.logged()
+    this._userService.logged()
     .then(data => {
       if (data._id !== 'error' && data._id !== undefined) {
         console.log('Data ID', data._id)

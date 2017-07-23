@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FxService } from './../services/fx.service';
+import { UserService } from './../services/user.service';
 import { User } from './../models/user';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private _fxService:FxService, private router:Router) { }
+  constructor(private _userService:UserService, private router:Router) { }
 
   ngOnInit() {
     this.logged();
@@ -19,13 +19,13 @@ export class DashboardComponent implements OnInit {
   c:string = '';
 
   logout() {
-    this._fxService.logout()
+    this._userService.logout()
     .then(data => console.log(data))
     .catch(data => console.log('Logout-catch data:', data))
   }
 
   logged() {
-    this._fxService.logged()
+    this._userService.logged()
     .then(data => {
       if (data._id != 'error') {
         this.c = data._id;

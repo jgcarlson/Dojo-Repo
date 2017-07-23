@@ -3,10 +3,11 @@
 // The controller interacts with preloaded models to run database commands.
 // The controller sends the response to the client.
 // There can be many controllers in the server/controllers folder.
-
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const cert = 'KEEP_IT_SECRET.KEEP_IT_SAFE.'
 module.exports = {
   register: (req, res) => {
     User.findOne({username: req.body.username}, (err, u) => {
@@ -24,30 +25,36 @@ module.exports = {
             console.log('Error in controller-register:', err)
           } else {
             req.session.uid = user._id
-            return res.json(user)
+            res.json(user)
           }
         })
       } else {
-        return res.json({_id: 'error'})
+        res.json({_id: 'error'})
       }
     })
   },
   login: (req, res) => {
-    User.findOne({username: req.body.username}, (err, u) => {
+    User.findOne({username: req.body.username}, (err, user) => {
       if (err) {
-        console.log('Error in controller-login:', err)
-        return res.json(err)
-      } else if (u == null) {
-        console.log('User not found.')
-      } else {
-        if (bcrypt.compareSync(req.body.password, u.password)) {
-          req.session.name = u.firstname
-          req.session.uid = u._id
-          return res.json(u);
+        console.log('Error in controller-login-findUser:', err)
+      }
+      if (!user) {
+        res.json({success: false, message: 'User not found.'})
+      } else if (user) {
+        if (bcrypt.compareSync(req.body.password, user.password)) {
+          let token = jwt.sign(user, cert, {
+            expiresIn: 60*60*24 // expires in 24 hours
+          });
+          res.json({
+            success: true,
+            message: 'Logged in successfully.',
+            token: token
+          });
         } else {
-          console.log('Passwords do not match.')
-          return res.json({_id: 'error', error: 'Password does not match.'})
+          res.json({success: false, message: 'User not found.'})
         }
+      } else {
+        console.log('Error in controller-login-else.')
       }
     })
   },
