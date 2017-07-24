@@ -5,12 +5,13 @@
 // There can be many models in the server/models folder.
 
 const mongoose = require('mongoose');
+const passportLocalMongoose = require('passport-local-mongoose');
 
 // TODO: Add password confirm?
 // TODO: Use 'pre' in user model instead of logic in controller?
 
 // create the schema
-const ProtoSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   firstname: { type: String, trim: true, required: [ true, 'First name is required.'] },
   lastname: { type: String, trim: true, required: [ true, 'Last name is required.'] },
   username: { type: String, trim: true, unique: true, required: [ true, 'Username is required.'] },
@@ -20,5 +21,7 @@ const ProtoSchema = new mongoose.Schema({
   admin: { type:Boolean, default: false }
 }, {timestamps: true});
 
+UserSchema.plugin(passportLocalMongoose);
+
 // register the schema as a model
-mongoose.model('Proto', ProtoSchema);
+mongoose.model('User', UserSchema);

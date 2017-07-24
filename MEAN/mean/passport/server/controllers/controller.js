@@ -5,37 +5,9 @@
 // There can be many controllers in the server/controllers folder.
 const mongoose = require('mongoose');
 const passport = require('passport');
-require('./../config/passport')(passport);
 const User = mongoose.model('User');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const cert = 'KEEP_IT_SECRET.KEEP_IT_SAFE.'
-
-getToken = (headers) => {
-  if (headers && headers.authorization) {
-    let parted = headers.authorization.split(' ');
-    if (parted.length === 2) {
-      return parted[1];
-    } else {
-      return null;
-    }
-  } else {
-    return null;
-  }
-},
 
 module.exports = {
-
-  authenticate: (req, res) => {
-    console.log(req.headers)
-    let token = getToken(req.headers);
-    if (!token) {
-      return res.status(403).json({success: false});
-    } else {
-      return res.status(400).json({success: true})
-    }
-  },
-  // passport.authenticate('jwt', { session: false }),
 
   register: (req, res) => {
     User.findOne({username: req.body.username}, (err, u) => {
