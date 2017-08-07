@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.web.models.Team;
 
@@ -30,6 +31,10 @@ public class TeamController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		
+		request.setAttribute("teamId", session.getAttribute("teamId"));
+		
 		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/Team.jsp");
         view.forward(request, response);
 	}
@@ -38,13 +43,13 @@ public class TeamController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String team_name = request.getParameter("team_name");
 		
 		if (team_name != "") {
 			Team t = new Team(team_name);
 			Team.setTeam_list(t);
 			System.out.println(t);
+			System.out.print(t.getId());
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/Team.jsp");

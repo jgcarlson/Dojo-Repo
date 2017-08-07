@@ -11,7 +11,7 @@
 <body>
 <%@ 
 	page import="com.web.models.Team" 
-%> 
+%>
 	<div class="container-fluid" style="text-align:right">
 		<a href="/TeamRoster/team"><h2>New Team</h2></a>
 	</div>
@@ -35,10 +35,10 @@
 						<td><h4>${fn:length(team.getPlayers())}</h4></td>
 						<td>
 							<form action="/TeamRoster/teams">
-								<button class="btn btn-primary btn-block" name="display" value="${ team.id }">Details</button>
+								<button class="btn btn-primary btn-block" name="display" value="${ team.getId() }">Details</button>
 							</form>
 							<form action="/TeamRoster/teams">
-								<button class="btn btn-danger btn-block" name="delete" value="${ team.id }">Delete</button>
+								<button class="btn btn-danger btn-block" name="delete" value="${ team.getId() }">Delete</button>
 							</form>
 						</td>
 					</tr>

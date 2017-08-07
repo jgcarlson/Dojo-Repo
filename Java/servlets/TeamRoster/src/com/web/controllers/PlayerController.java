@@ -11,19 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.web.models.Player;
 import com.web.models.Team;
 
 /**
- * Servlet implementation class Home
+ * Servlet implementation class Player
  */
-@WebServlet("/")
-public class HomeController extends HttpServlet {
+@WebServlet("/addplayer")
+public class PlayerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HomeController() {
+    public PlayerController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,21 +33,7 @@ public class HomeController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		session.setAttribute("teamId", null);
-		
-		ArrayList<Team> tlist = Team.getTeam_list();
-		Team[] team_list = tlist.toArray(new Team[tlist.size()]);
-		System.out.println(team_list.getClass());
-		System.out.println(tlist.getClass());
-		if (team_list.length > 1) {
-			System.out.println("Team " + team_list[0].getPlayers());
-			System.out.println("Team id " + team_list[0].getId());
-		}
-		
-		request.setAttribute("team_list", team_list);
-		
-		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/Home.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/Player.jsp");
         view.forward(request, response);
 	}
 
@@ -54,7 +41,27 @@ public class HomeController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/Home.jsp");
+		HttpSession session = request.getSession();
+		
+		String first_name = request.getParameter("first_name");
+		String last_name = request.getParameter("last_name");
+		Integer age = Integer.parseInt(request.getParameter("age"));
+		Integer teamId = (int) session.getAttribute("teamId");
+		
+		if (first_name != "" && last_name != "" && age != null) {
+			Player p = new Player();
+			p.setFirst_name(first_name);
+			p.setLast_name(last_name);
+			p.setAge(age);
+			Player.setPlayer_list(p);
+			ArrayList<Team> tlist = Team.getTeam_list();
+			Team[] team_list = tlist.toArray(new Team[tlist.size()]);
+			System.out.println("P1 " + team_list[teamId - 1]);
+			team_list[teamId - 1].setPlayers(p);
+			System.out.println();
+		}
+		
+		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/Player.jsp");
         view.forward(request, response);
 	}
 
