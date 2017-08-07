@@ -8,7 +8,7 @@
 <title>Hello</title>
 </head>
 <body style="text-align:center">
-	<h1>Hello, ${ data }.</h1>
+	<h1>Hello, ${ name }.</h1>
 	<h4>Welcome to SpringBoot!</h4>
 </body>
 </html>
