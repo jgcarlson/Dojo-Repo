@@ -36,4 +36,10 @@ public class LanguageService {
 			languages.set(id, l);
 		}
 	}
+	
+	public void delete(int index) {
+		if (index < languages.size()) {
+			languages.remove(index);
+		}
+	}
 }

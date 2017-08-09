@@ -49,15 +49,15 @@
 			<tbody>
 				<c:forEach items="${ languages }" var="language" varStatus="loop">
 				<tr>
-					<td>${ language.name }</td>
+					<td><a href="/languages/${ loop.index }">${ language.name }</a></td>
 					<td>${ language.creator }</td>
 					<td>${ language.version }</td>
 					<td>
 						<div class="d-inline-flex">
-							<form action="/languages/update/${ loop.index }">
+							<form action="/languages/update/${ loop.index }" method="POST">
 								<button type="submit" class="btn btn-info">Update</button>
 							</form>
-							<form action="/languages/delete/${ loop.index }">
+							<form action="/languages/delete/${ loop.index }" method="POST">
 								<button type="submit" class="btn btn-danger">Delete</button>
 							</form>
 						</div>
