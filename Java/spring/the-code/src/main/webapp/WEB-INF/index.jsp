@@ -13,7 +13,7 @@
 <body style="text-align:center">
 	<h1>The Code</h1>
 	<h2 style="color:red">${ error }</h2>
-	<form action="/" method="POST">
+	<form action="/" method="POST" style="width:20vw;margin:5vh auto;">
 		<label>What is the code?</label>
 		<input type="text" class="form-control" name="code">
 		<button type="submit" class="btn btn-primary btn-block">Attempt</button>
