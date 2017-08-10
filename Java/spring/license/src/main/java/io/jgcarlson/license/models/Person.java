@@ -10,6 +10,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Person {
 
@@ -18,7 +20,10 @@ public class Person {
 	private Long id;
 	private String first_name;
 	private String last_name;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date created_at;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updated_at;
 	@OneToOne(mappedBy="person", fetch=FetchType.LAZY)
 	private License license;

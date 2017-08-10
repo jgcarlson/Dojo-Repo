@@ -1,5 +1,7 @@
 package io.jgcarlson.license.controllers;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -48,12 +50,12 @@ public class AddCtrlr {
 	}
 	
 	@PostMapping("/license/new")
-	public String addLicense(@Valid @ModelAttribute("license") License license, BindingResult result) {
+	public String addLicense(@Valid @ModelAttribute("license") License license, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			return "licenseView.jsp";
 		} else {
 			licenseService.addLicense(license);
-			return "redirect:/person/{license.number}";
+			return "redirect:/person/view";
 		}
 	}
 }

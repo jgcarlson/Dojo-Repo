@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
 		<form:select path="person" class="form-control">
 			<option disabled selected value="null">Please select a person....</option>
 			<c:forEach items="${ people }" var="person">
-				<option>${ person.first_name  } ${ person.last_name }</option>
+				<option value="${ person.id }">${ person.first_name  } ${ person.last_name }</option>
 			</c:forEach>
 		</form:select>
 		
@@ -84,6 +85,7 @@
 		<label>Expiration date:</label>
 		<form:errors path="expiration_date" />
 		<form:input path="expiration_date" type="date" class="form-control" />
+		
 
 		<button type="submit" class="btn btn-primary btn-block">Add Person</button>
 		

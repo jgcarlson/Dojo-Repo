@@ -1,6 +1,7 @@
 package io.jgcarlson.license.models;
 
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -12,6 +13,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class License {
 	
@@ -19,9 +22,11 @@ public class License {
 	@GeneratedValue
 	private Long id;
 	private String number;
-	private Date expiration_date;
+	private String expiration_date;
 	private String state;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date created_at;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updated_at;
 	
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
@@ -30,7 +35,7 @@ public class License {
 	
 	public License() {}
 	
-	public License(Date d, String s, Person p) {
+	public License(String d, String s, Person p) {
 		expiration_date = d;
 		state = s;
 		person = p;
@@ -52,20 +57,20 @@ public class License {
 		this.number = number;
 	}
 
-	public Date getExpiration_date() {
-		return expiration_date;
-	}
-
-	public void setExpiration_date(Date expiration_date) {
-		this.expiration_date = expiration_date;
-	}
-
 	public String getState() {
 		return state;
 	}
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public String getExpiration_date() {
+		return expiration_date;
+	}
+
+	public void setExpiration_date(String expiration_date) {
+		this.expiration_date = expiration_date;
 	}
 
 	public Date getCreated_at() {
