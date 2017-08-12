@@ -13,6 +13,31 @@
 <body style="text-align:center">
 	<h1>Questions Dashboard</h1>
 	<h6><a href="/questions/new">New Question</a></h6>
+	
+	<hr>
+	
+	<div class="table-responsive" style="width:60vw;margin:2vh auto;">
+		<table class="table table-hover table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Question</th>
+					<th>Tags</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${ questions }" var="question">
+				<tr>
+					<td>${ question.id }</td>
+					<td><a href="/questions/${question.id}">${ question.question }</a></td>
+					<td><c:forEach items="${ question.getTags() }" var="tag">
+					<span style="border:1px solid black;border-radius:8px;padding:2px">${ tag.subject }</span>
+					</c:forEach></td>
+				</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

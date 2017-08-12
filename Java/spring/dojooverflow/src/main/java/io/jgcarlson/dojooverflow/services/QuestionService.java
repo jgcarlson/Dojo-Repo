@@ -22,10 +22,14 @@ public class QuestionService {
 		questionRepository.save(question);
 	}
 	
-	public void saveQuestion(String question) {
+	public Question saveQuestion(String question) {
 		Question q = new Question();
 		q.setQuestion(question);
-		questionRepository.save(q);
+		return questionRepository.save(q);
+	}
+	
+	public Question findById(Long id) {
+		return questionRepository.findOne(id);
 	}
 
 }

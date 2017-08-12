@@ -80,7 +80,7 @@ public class Tag {
 
 	@PrePersist
     protected void onCreate(){
-	this.updated_at = new Date();
+		this.updated_at = new Date();
         this.created_at = new Date();
     }
 

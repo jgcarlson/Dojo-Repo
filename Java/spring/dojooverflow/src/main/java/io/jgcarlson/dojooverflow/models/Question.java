@@ -73,6 +73,22 @@ public class Question {
 		this.updated_at = updated_at;
 	}
 
+	public List<Answer> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
+	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+
 	@PrePersist
     protected void onCreate(){
 	this.updated_at = new Date();
