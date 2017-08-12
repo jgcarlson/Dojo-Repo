@@ -71,7 +71,9 @@ public class QuestionController {
 	public String questionView(@PathVariable("id") Long id, @RequestParam("answer") String answer) {
 		Answer a = answerService.addAnswer(answer);
 		Question q = questionService.findById(id);
+		System.out.println(q);
 		a.setQuestion(q);
+		answerService.saveAnswer(a);
 		return "redirect:/questions/" + id;
 	}
 

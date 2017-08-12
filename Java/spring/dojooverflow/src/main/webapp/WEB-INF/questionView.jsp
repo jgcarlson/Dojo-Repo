@@ -26,6 +26,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-6">
+			<label>Answers:</label>
 				<div class="card">
 					<div class="card-block">
 						<c:forEach items="${ answers }" var="answer">

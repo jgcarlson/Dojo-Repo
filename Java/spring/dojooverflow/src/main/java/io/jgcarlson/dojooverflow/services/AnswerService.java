@@ -26,5 +26,9 @@ public class AnswerService {
 		Answer a = new Answer(answer);
 		return answerRepository.save(a);
 	}
+	
+	public void saveAnswer(Answer answer) {
+		answerRepository.save(answer);
+	}
 
 }
