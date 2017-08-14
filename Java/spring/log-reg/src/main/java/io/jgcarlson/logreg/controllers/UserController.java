@@ -15,14 +15,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import io.jgcarlson.logreg.models.User;
 import io.jgcarlson.logreg.services.UserService;
+import io.jgcarlson.logreg.validator.UserValidator;
 
 @Controller
 public class UserController {
 	
 	private UserService userService;
+	private UserValidator userValidator;
 	
-	public UserController(UserService userService) {
+	public UserController(UserService userService, UserValidator userValidator) {
 		this.userService = userService;
+		this.userValidator = userValidator;
 	}
 	
 	@RequestMapping("/registration")
@@ -32,17 +35,13 @@ public class UserController {
 	
 	@PostMapping("/registration")
     public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
+		userValidator.validate(user, result);
 		if (result.hasErrors()) {
 			return "registrationPage.jsp";
 		}
 		userService.saveWithUserRole(user);
 		return "redirect:/login";
     }
-	
-	@RequestMapping("/login")
-	public String login() {
-		return "loginPage.jsp";
-	}
 	
 	@RequestMapping(value = {"/", "/home"})
     public String home(Principal principal, Model model) {
@@ -57,9 +56,16 @@ public class UserController {
             model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
         }
         if(logout != null) {
-            model.addAttribute("logoutMessage", "Logout Successfull!");
+            model.addAttribute("logoutMessage", "Logout Successful!");
         }
         return "loginPage.jsp";
+    }
+	
+	@RequestMapping("/admin")
+    public String adminPage(Principal principal, Model model) {
+        String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
+        return "adminPage.jsp";
     }
 
 }
