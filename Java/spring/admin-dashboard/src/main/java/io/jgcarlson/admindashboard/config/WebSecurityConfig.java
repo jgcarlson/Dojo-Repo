@@ -1,4 +1,4 @@
-package io.jgcarlson.logreg.config;
+package io.jgcarlson.admindashboard.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -29,13 +29,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.
             authorizeRequests()
-                .antMatchers("/static/**", "/").permitAll()
+                .antMatchers("/static/**", "/login", "/register").permitAll()
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
-                .loginPage("/")
+                .loginPage("/login")
                 .permitAll()
+                .defaultSuccessUrl("/dashboard", true) 
                 .and()
             .logout()
                 .permitAll();
@@ -45,5 +46,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
     } 
+
 
 }

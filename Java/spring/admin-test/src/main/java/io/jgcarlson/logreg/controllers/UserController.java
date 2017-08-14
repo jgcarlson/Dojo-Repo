@@ -28,21 +28,6 @@ public class UserController {
 		this.userValidator = userValidator;
 	}
 	
-	@RequestMapping("/registration")
-	public String registerForm(@Valid @ModelAttribute("user") User user) {
-		return "registrationPage.jsp";
-	}
-	
-	@PostMapping("/registration")
-    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
-		userValidator.validate(user, result);
-		if (result.hasErrors()) {
-			return "registrationPage.jsp";
-		}
-		userService.saveWithUserRole(user);
-		return "redirect:/login";
-    }
-	
 	@RequestMapping(value = {"/", "/home"})
     public String home(Principal principal, Model model) {
         String username = principal.getName();
@@ -51,7 +36,7 @@ public class UserController {
     }
 	
 	@RequestMapping("/login")
-    public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model) {
+    public String login(@ModelAttribute("user") User user, @RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model) {
         if(error != null) {
             model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
         }
@@ -61,17 +46,21 @@ public class UserController {
         return "loginPage.jsp";
     }
 	
+	@PostMapping("/login")
+    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
+		userValidator.validate(user, result);
+		if (result.hasErrors()) {
+			return "loginPage.jsp";
+		}
+		userService.saveWithUserRole(user);
+		return "redirect:/login";
+    }
+	
 	@RequestMapping("/admin")
     public String adminPage(Principal principal, Model model) {
         String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
         return "adminPage.jsp";
     }
-	
-	@RequestMapping("/error")
-	public String error() {
-		System.out.println("Redirecting after error");
-		return "redirect:/";
-	}
 
 }
