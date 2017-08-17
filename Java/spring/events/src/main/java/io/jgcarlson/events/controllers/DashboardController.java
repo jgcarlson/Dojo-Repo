@@ -28,11 +28,16 @@ public class DashboardController {
 		this.eventService = eventService;
 	}
 	
+	@RequestMapping("/")
+	public String index() {
+		return "redirect:/dashboard";
+	}
+	
 	@RequestMapping("/dashboard")
 	public String dashboard(Principal principal, Model model, @ModelAttribute("event") Event event) {
         String username = principal.getName();
         User user = userService.findByUsername(username);
-        model.addAttribute("currentUser", user);
+        model.addAttribute("user", user);
         List<Event> instate = eventService.getEventsByState(user.getState());
         model.addAttribute("instate", instate);
         List<Event> outstate = eventService.getEventsOutOfState(user.getState());

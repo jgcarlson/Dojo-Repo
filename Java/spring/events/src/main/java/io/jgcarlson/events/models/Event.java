@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +22,7 @@ public class Event {
 	private Long id;
 	private String name;
 	private String city;
-	private String state;
+	private String state = "NA";
 	private String date;
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
@@ -33,6 +34,8 @@ public class Event {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	private User host;
+	@OneToMany(mappedBy="event", fetch = FetchType.LAZY)
+    private List<Comment> comments;
 	
 	public Event() {}
 
@@ -91,7 +94,5 @@ public class Event {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	
-	
 
 }

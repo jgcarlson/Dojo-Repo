@@ -37,7 +37,7 @@
     						</c:if>
     						<input type="text" class="form-control" name="username" placeholder="Email">
     						<input type="password" class="form-control" name="password" placeholder="Password">
-    						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     						<button type="submit" class="btn btn-primary btn-block">Login!</button>
 					</fieldset>
 				</form>

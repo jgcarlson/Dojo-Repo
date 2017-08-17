@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import io.jgcarlson.events.models.Event;
+import io.jgcarlson.events.models.User;
 import io.jgcarlson.events.repositories.EventRepository;
 
 @Service
@@ -20,6 +21,10 @@ public class EventService {
 		return eventRepository.findAll();
 	}
 	
+	public Event findEvent(Long id) {
+		return eventRepository.findOne(id);
+	}
+	
 	public void saveEvent(Event event) {
 		eventRepository.save(event);
 	}
@@ -30,6 +35,24 @@ public class EventService {
 	
 	public List<Event> getEventsOutOfState(String state) {
 		return eventRepository.getEventsOutOfState(state);
+	}
+	
+	public void joinEvent(Event event, User user) {
+		List<User> users = event.getUsers();
+		if (!users.contains(user)) {
+			users.add(user);
+		}
+		eventRepository.save(event);
+	}
+	
+	public void unjoinEvent(Event event, User user) {
+		List<User> users = event.getUsers();
+		users.remove(user);
+		eventRepository.save(event);
+	}
+	
+	public void deleteEvent(Event event) {
+		eventRepository.delete(event);
 	}
 
 }

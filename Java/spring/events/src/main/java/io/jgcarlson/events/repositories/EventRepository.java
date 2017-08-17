@@ -11,6 +11,8 @@ import io.jgcarlson.events.models.Event;
 @Repository
 public interface EventRepository extends CrudRepository<Event, Long> {
 	
+	Event findOne(Long id);
+	
 	@Query("SELECT e FROM Event e JOIN e.host h WHERE e.state = ?1")
 	List<Event> getEventsByState(String state);
 	
